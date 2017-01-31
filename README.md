@@ -12,4 +12,4 @@ Specifically, for each benchmark it contains:
 
 ## Included Benchmarks:
 
-- [Citybench](citybench.md)
+- [Citybench](https://github.com/riccardotommasini/rsplab-benchmarks/blob/master/citybench/citybench.md)
