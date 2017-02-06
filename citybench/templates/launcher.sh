@@ -2,7 +2,7 @@
 # Helper script for mappingGen.py
 for f in $1/*.stream;
 do
-	#echo ${f##*/} $2 $3 
+	echo ${f##*/} $2 $3 
 	python templates/single_mapping_gen.py ${f##*/} $2 $3
 done
 	

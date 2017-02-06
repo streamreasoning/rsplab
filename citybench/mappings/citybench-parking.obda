@@ -25,8 +25,8 @@ driverClass	org.postgresql.Driver
 
 [MappingDeclaration] @collection [[
 
-mappingId	AarhusParkingObservation-ParkingVacancies
-target		:/AarhusParkingDataBRUUNS/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vacancies}^^xsd:long ; ssn:observedProperty :{PID} ; ssn:observedBy ses:AarhusParkingDataBRUUNS . 
+mappingId	AarhusParkingVacanciesObservation-AarhusParkingDataBRUUNS
+target		:/AarhusParkingDataBRUUNS/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vacancies}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusParkingDataBRUUNS . 
 source		select  _id as id, setseed(_id::int * 0.00000001), md5(random()::text) as random, "updatetime"::timestamp AS TIMESTAMP, "totalspaces"::int - "vehiclecount"::int as vacancies, sp."property" as PID
 			from "AarhusParkingDataBRUUNS", "service_properties" as sp
 			WHERE sp."service"='AarhusParkingDataBRUUNS'

@@ -25,19 +25,19 @@ driverClass	org.postgresql.Driver
 
 [MappingDeclaration] @collection [[
 mappingId	AarhusWeatherHumidityObservation-AarhusWeatherData
-target		:/AarhusWeatherData0-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty :{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
+target		:/AarhusWeatherData0-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
 source		select  setseed(0.00000001), md5(random()::text) as random, "TIMESTAMP"::timestamp AS TIMESTAMP, "hum" as val, sp."property" as PID
 			from "AarhusWeatherData0", "service_properties" as sp
 			WHERE sp."service"='AarhusWeatherData0' and sp."property_class"='Humidity'
 
 mappingId	AarhusWeatherTemperatureObservation-AarhusWeatherData
-target		:/AarhusWeatherData0-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
+target		:/AarhusWeatherData0-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
 source		select  setseed(0.00000002), md5(random()::text) as random, "TIMESTAMP"::timestamp AS TIMESTAMP, "tempm" as val, sp."property" as PID
 			from "AarhusWeatherData0", "service_properties" as sp
 			WHERE sp."service"='AarhusWeatherData0' and sp."property_class"='Temperature'
 
 mappingId	AarhusWeatherWindSpeedObservation-AarhusWeatherData
-target		:/AarhusWeatherData0-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
+target		:/AarhusWeatherData0-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
 source		select  setseed(0.00000003), md5(random()::text) as random, "TIMESTAMP"::timestamp AS TIMESTAMP, "wspdm" as val, sp."property" as PID
 			from "AarhusWeatherData0", "service_properties" as sp
 			WHERE sp."service"='AarhusWeatherData0' and sp."property_class"='WindSpeed'

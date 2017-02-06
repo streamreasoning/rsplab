@@ -1,0 +1,17 @@
+mappingId	AarhusWeatherHumidityObservation-$stream
+target		:/$stream-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty :{PID} ; ssn:observedBy ses:$stream . 
+source		select  setseed(0.00000001), md5(random()::text) as random, "TIMESTAMP"::timestamp AS TIMESTAMP, "hum" as val, sp."property" as PID
+			from "$stream", "service_properties" as sp
+			WHERE sp."service"='$stream' and sp."property_class"='Humidity'
+
+mappingId	AarhusWeatherTemperatureObservation-$stream
+target		:/$stream-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:$stream . 
+source		select  setseed(0.00000002), md5(random()::text) as random, "TIMESTAMP"::timestamp AS TIMESTAMP, "tempm" as val, sp."property" as PID
+			from "$stream", "service_properties" as sp
+			WHERE sp."service"='$stream' and sp."property_class"='Temperature'
+
+mappingId	AarhusWeatherWindSpeedObservation-AarhusWeatherData
+target		:/$stream-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:$stream . 
+source		select  setseed(0.00000003), md5(random()::text) as random, "TIMESTAMP"::timestamp AS TIMESTAMP, "wspdm" as val, sp."property" as PID
+			from "$stream", "service_properties" as sp
+			WHERE sp."service"='$stream' and sp."property_class"='WindSpeed'

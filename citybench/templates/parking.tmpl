@@ -1,0 +1,5 @@
+mappingId	AarhusParkingVacanciesObservation-$stream
+target		:/$stream/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vacancies}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
+source		select  _id as id, setseed(_id::int * 0.00000001), md5(random()::text) as random, "updatetime"::timestamp AS TIMESTAMP, "totalspaces"::int - "vehiclecount"::int as vacancies, sp."property" as PID
+			from "$stream", "service_properties" as sp
+			WHERE sp."service"='$stream'

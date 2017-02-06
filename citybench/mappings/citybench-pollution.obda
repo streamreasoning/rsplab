@@ -25,7 +25,7 @@ driverClass	org.postgresql.Driver
 
 [MappingDeclaration] @collection [[
 mappingId	AarhusPollutionObservationMax-AarhusPollutionData158324
-target		:/AarhusPollutionData158324-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty :{PID} ; ssn:observedBy ses:AarhusPollutionData158324 . 
+target		:/AarhusPollutionData158324-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusPollutionData158324 . 
 source		SELECT setseed(0.00000001), md5(random()::text) AS random, 
 			sp."property" as PID ,timestamp, GREATEST(ozone,particullate_matter,carbon_monoxide,sulfure_dioxide,nitrogen_dioxide) as val
 			FROM "AarhusPollutionData158324" AS ist, "service_properties" as sp
