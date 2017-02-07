@@ -1,6 +1,6 @@
 #Database
 
--postgres
+- postgres
 
 # Endpoints
 
