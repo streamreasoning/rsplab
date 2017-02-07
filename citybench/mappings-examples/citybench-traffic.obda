@@ -26,32 +26,31 @@ driverClass	org.postgresql.Driver
 [MappingDeclaration] @collection [[
 mappingId	AarhusTrafficObservationEstimatedTime-AarhusTrafficData158324
 target		:/AarhusTrafficData158324/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {et}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData158324 . 
-source		SELECT ist._id AS ID, tp."EstimatedTime" AS PID, "DISTANCE_IN_METERS"::float , "avgSpeed"::float AS et,  setseed(ist._id::int * 0.00000001), md5(random()::text) AS random , ist."TIMESTAMP"::timestamp AS TIMESTAMP
-			FROM "AarhusTrafficData158355" AS ist, "trafficMetaData" AS tmd, "traffic_properties" as tp
-			WHERE tmd."REPORT_ID"=ist."REPORT_ID" and tp."sensor"='AarhusTrafficData158324' and "avgSpeed"::float != 0.0
+source		SELECT ist._id AS ID, tp."property" AS PID, "DISTANCE_IN_METERS"::float , "avgSpeed"::float AS et,  setseed(ist._id::int * 0.00000001), md5(random()::text) AS random , ist."TIMESTAMP"::timestamp AS TIMESTAMP
+			FROM "AarhusTrafficData158324" AS ist, "trafficMetaData" AS tmd, "service_properties" as tp
+			WHERE tmd."REPORT_ID"=ist."REPORT_ID" and tp."service"='AarhusTrafficData158324' and "avgSpeed"::float != 0.0 and tp.property_class='EstimatedTime'
 
 mappingId	AarhusTrafficObservationVehicleCount-AarhusTrafficData158324
 target		:/AarhusTrafficData158324/{_ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vehicleCount}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData158324 . 
-source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, md5(random()::text) AS random, tp."VehicleCount" AS PID, "vehicleCount", setseed(_id::int * 0.00000002)
-			FROM "AarhusTrafficData158324",   "traffic_properties" AS tp
-			WHERE tp."sensor"='AarhusTrafficData158324'
+source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, md5(random()::text) AS random, tp."property" AS PID, "vehicleCount", setseed(_id::int * 0.00000002)
+			FROM "AarhusTrafficData158324",   "service_properties" AS tp
+			WHERE tp."service"='AarhusTrafficData158324' and tp.property_class='VehicleCount'
 
 mappingId	AarhusTrafficObservationCongestionLevel-AarhusTrafficData158324
 target		:/AarhusTrafficData158324/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {cl}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData158324 . 
-source		SELECT ist._id AS ID, tp."CongestionLevel" AS PID, "vehicleCount"::int / "DISTANCE_IN_METERS"::float AS cl, setseed(ist._id::int * 0.00000003), md5(random()::text) AS random, ist."TIMESTAMP"::timestamp AS TIMESTAMP
-			FROM "AarhusTrafficData158324" AS ist, "trafficMetaData" AS tmd, "traffic_properties" AS tp
-			where tmd."REPORT_ID"=ist."REPORT_ID"  and tp."sensor"='AarhusTrafficData158324'
+source		SELECT ist._id AS ID, tp."property" AS PID, "vehicleCount"::int / "DISTANCE_IN_METERS"::float AS cl, setseed(ist._id::int * 0.00000003), md5(random()::text) AS random, ist."TIMESTAMP"::timestamp AS TIMESTAMP
+			FROM "AarhusTrafficData158324" AS ist, "trafficMetaData" AS tmd, "service_properties" AS tp
+			where tmd."REPORT_ID"=ist."REPORT_ID"  and tp."service"='AarhusTrafficData158324' and tp.property_class='CongestionLevel'
 
 mappingId	AarhusTrafficObservationAvgSpeed-AarhusTrafficData158324
 target		:/AarhusTrafficData158324/{_ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {avgSpeed}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData158324 . 
-source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."AvgSpeed" AS PID, "avgSpeed"::int *1.0 as avgSpeed , setseed(_id::int * 0.000000004), md5(random()::text) as random
-			FROM "AarhusTrafficData158324", "traffic_properties" AS tp
-			WHERE tp."sensor" ='AarhusTrafficData158324'
+source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."property" AS PID, "avgSpeed"::int *1.0 as avgSpeed , setseed(_id::int * 0.000000004), md5(random()::text) as random
+			FROM "AarhusTrafficData158324", "service_properties" AS tp
+			WHERE tp."service" ='AarhusTrafficData158324' and tp.property_class='AvgSpeed'
 
 mappingId	AarhusTrafficObservationMeasureTime-AarhusTrafficData158324
 target		:/AarhusTrafficData158324/{_ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {avgMeasuredTime}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData158324 . 
-source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."MeasureTime" AS PID,"avgMeasuredTime"::int * 1.0 AS avgMeasuredTime, setseed(_id::int * 0.000000005), md5(random()::text) AS random
-			FROM "AarhusTrafficData158324", "traffic_properties" AS tp
-			WHERE tp."sensor" = 'AarhusTrafficData158324'
+source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."property"  AS PID,"avgMeasuredTime"::int * 1.0 AS avgMeasuredTime, setseed(_id::int * 0.000000005), md5(random()::text) AS random
+			FROM "AarhusTrafficData158324", "service_properties" AS tp
+			WHERE tp."service" = 'AarhusTrafficData158324' and tp.property_class='MeasureTime'
 ]]
-
