@@ -1,0 +1,22 @@
+version: '2'
+services:
+  postgres:
+    image: "cb/postgres:latest"
+    container_name: postgres
+    build: ./postgres
+    ports:
+     - "5432:5432"
+  quest:
+    container_name: quest
+    build: ./jetty8-docker/
+    ports:
+     - "8080:8080"
+    links: ['postgres:postgres']
+  triplewave:
+    container_name: cbtw_running
+    build: ./triplewave/
+    ports:
+      - "4000:4000"
+      - "4040:4040"
+      - "4242:4242"
+    links: ['quest:quest']
