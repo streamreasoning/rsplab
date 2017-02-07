@@ -1,5 +1,4 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
-from csvkit import csvsql
 from sys import argv
 import csv
 
@@ -23,4 +22,3 @@ with open(argv[1].replace('.q','.csv'), 'wb') as f:
 
 #print ("Finished")doc
 ##USAGE python <stream name> <query-template> <stream-mapping-template> <output-file>
-1
