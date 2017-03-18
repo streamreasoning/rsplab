@@ -11,6 +11,7 @@ WORKDIR $JETTY_HOME
 
 ADD lib/postgres.jar $JETTY_HOME/lib/ext/postgres.jar
 ADD lib/mysql.jar $JETTY_HOME/lib/ext/mysql.jar
+ADD mappings/    $JETTY_HOME/mappings
 
 ADD start.sh start.sh
 RUN chmod u+x start.sh
