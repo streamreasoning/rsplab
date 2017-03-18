@@ -1,7 +1,6 @@
-FROM rsplab/triplewave
+FROM tomma/triplewave
 
 ADD config.properties config/config.properties
-RUN ls config/
 
 ENTRYPOINT ["./start.sh"]
 CMD ["--default"]

@@ -1,5 +1,5 @@
 CNTNR_NAME=fuseki
-IMG_TAG=fuseki2
+IMG_TAG=fuseki
 ARGS=--log
 IT=-d
 PORT=3030

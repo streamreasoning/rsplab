@@ -1,7 +1,7 @@
 version: '2'
 services:
   fuseki:
-    container_name: fuseki2
+    container_name: fuseki
     build: ./fuseki-docker/
     ports:
      - "3030:3030"
