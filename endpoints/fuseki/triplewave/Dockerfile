@@ -1,4 +1,4 @@
-FROM tomma/triplewave
+FROM streareasoning/triplewave:rsplab
 
 ADD config.properties config/config.properties
 
