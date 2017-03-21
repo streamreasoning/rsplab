@@ -1,0 +1,34 @@
+[PrefixDeclaration]
+:		http://www.streamreasoning.org/ontologies/rsplab/citybench.owl#
+ct:		http://www.insight-centre.org/citytraffic
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+ses:		http://www.insight-centre.org/dataset/SampleEventService#
+ssn:		http://purl.oclc.org/NET/ssnx/ssn#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://192.168.99.100:5432/initdb
+username	root
+password	root
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+
+mappingId	AarhusPollutionObservationMax-data/streams/pollution/AarhusPollutionData201399
+target		:/data/streams/pollution/AarhusPollutionData201399-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:data/streams/pollution/AarhusPollutionData201399 . 
+source		SELECT setseed(0.00000001), md5(random()::text) AS random, 
+			sp."property" as PID ,timestamp, GREATEST(ozone,particullate_matter,carbon_monoxide,sulfure_dioxide,nitrogen_dioxide) as val
+			FROM "data/streams/pollution/AarhusPollutionData201399" AS ist, "service_properties" as sp
+			WHERE sp."service"='data/streams/pollution/AarhusPollutionData201399'
+
+
+
+
+
+
+
+]]

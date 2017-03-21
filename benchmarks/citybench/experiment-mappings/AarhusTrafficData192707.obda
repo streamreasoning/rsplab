@@ -1,0 +1,63 @@
+[PrefixDeclaration]
+:		http://www.streamreasoning.org/ontologies/rsplab/citybench.owl#
+ct:		http://www.insight-centre.org/citytraffic
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+ses:		http://www.insight-centre.org/dataset/SampleEventService#
+ssn:		http://purl.oclc.org/NET/ssnx/ssn#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://192.168.99.100:5432/initdb
+username	root
+password	root
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+
+
+mappingId	AarhusTrafficObservationEstimatedTime-data/streams/traffic/AarhusTrafficData192707
+target		:/data/streams/traffic/AarhusTrafficData192707/{ID}-{RANDOM} a ssn:Observation ; ct:hasValue {et}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:data/streams/traffic/AarhusTrafficData192707 . 
+source		SELECT tmd."REPORT_ID", ist._id AS ID, tp."EstimatedTime" AS PID, "DISTANCE_IN_METERS"::float / "avgSpeed"::float AS et,  setseed(ist._id::int * 0.000000001), 
+			md5(random()::text) AS random FROM "data/streams/traffic/AarhusTrafficData192707" AS ist, "trafficMetaData" AS tmd, "traffic_properties" AS tp
+			where tmd."REPORT_ID"=ist."REPORT_ID" and tp."sensor"='data/streams/traffic/AarhusTrafficData192707'
+			ORDER BY "TIMESTAMP"
+
+mappingId	AarhusTrafficObservationVehicleCount-data/streams/traffic/AarhusTrafficData192707
+target		:/data/streams/traffic/AarhusTrafficData192707/{_ID}-{RANDOM} a ssn:Observation ; ct:hasValue {vehicleCount}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:data/streams/traffic/AarhusTrafficData192707 . 
+source		SELECT _id, md5(random()::text) AS random, tp."VehicleCount" AS PID, "REPORT_ID", "vehicleCount", setseed(_id::int * 0.000000002)
+			FROM "data/streams/traffic/AarhusTrafficData192707",   "traffic_properties" AS tp
+			WHERE tp."sensor"='data/streams/traffic/AarhusTrafficData192707'
+			ORDER BY "TIMESTAMP"
+
+mappingId	AarhusTrafficObservationCongestionLevel-data/streams/traffic/AarhusTrafficData192707
+target		:/data/streams/traffic/AarhusTrafficData192707/{ID}-{RANDOM} a ssn:Observation ; ct:hasValue {cl}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:data/streams/traffic/AarhusTrafficData192707 . 
+source		SELECT ist._id AS ID, tp."CongestionLevel" AS PID, ist."REPORT_ID", "vehicleCount"::int / "DISTANCE_IN_METERS"::float AS cl, setseed(ist._id::int * 0.00000003), 
+			md5(random()::text) AS random
+			FROM "data/streams/traffic/AarhusTrafficData192707" AS ist, "trafficMetaData" AS tmd, "traffic_properties" AS tp
+			where tmd."REPORT_ID"=ist."REPORT_ID"  and tp."sensor"='data/streams/traffic/AarhusTrafficData192707'
+			ORDER BY "TIMESTAMP" 
+
+mappingId	AarhusTrafficObservationAvgSpeed-data/streams/traffic/AarhusTrafficData192707
+target		:/data/streams/traffic/AarhusTrafficData192707/{_ID}-{RANDOM} a ssn:Observation ; ct:hasValue {avgSpeed}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:data/streams/traffic/AarhusTrafficData192707 . 
+source		SELECT _id, tp."AvgSpeed" AS PID, "REPORT_ID", "avgSpeed"::int *1.0 AS avgSpeed , setseed(_id::int * 0.000000004), 
+			md5(random()::text) AS random
+			FROM "data/streams/traffic/AarhusTrafficData192707", "traffic_properties" AS tp
+			WHERE tp."sensor" ='data/streams/traffic/AarhusTrafficData192707'
+			ORDER BY "TIMESTAMP"
+
+mappingId	AarhusTrafficObservationMeASureTime-data/streams/traffic/AarhusTrafficData192707
+target		:/data/streams/traffic/AarhusTrafficData192707/{_ID}-{RANDOM} a ssn:Observation ; ct:hasValue {avgMeASuredTime}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:data/streams/traffic/AarhusTrafficData192707 . 
+source		SELECT _id, tp."MeASureTime" AS PID,"REPORT_ID", "avgMeASuredTime"::int * 1.0 AS avgMeASuredTime, setseed(_id::int * 0.000000005), md5(random()::text) AS random
+			FROM "data/streams/traffic/AarhusTrafficData192707", "traffic_properties" AS tp
+			WHERE tp."sensor" = 'data/streams/traffic/AarhusTrafficData192707'
+			ORDER BY "TIMESTAMP"
+
+
+
+
+
+]]
