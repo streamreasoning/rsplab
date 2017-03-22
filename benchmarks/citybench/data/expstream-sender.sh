@@ -15,17 +15,7 @@ pollution=(AarhusPollutionData201399 AarhusPollutionData184892 AarhusPollutionDa
 parking=(AarhusParkingDataSKOLEBAKKEN  AarhusParkingDataKALKVAERKSVEJ)
 traffic=(AarhusTrafficData158505 AarhusTrafficData182955 AarhusTrafficData186979 AarhusTrafficData192707)
 
- AarhusPollutionData158324      | table | root
- public | AarhusPollutionData158505      | table | root
- public | AarhusPollutionData179093      | table | root
- public | AarhusPollutionData182955      | table | root
- public | AarhusPollutionData184892      | table | root
- public | AarhusPollutionData195204      | table | root
- public | AarhusPollutionData195843      | table | root
- public | AarhusPollutionData201399      | table | root
- public | AarhusPollutionData204300      | table | root
- public | AarhusPollutionData206237      | table | root
- public | AarhusPollutionData206502
+
 # AarhusWeatherData0
 # UserLocationService
 
