@@ -12,7 +12,7 @@ traffic=(AarhusTrafficData158505 AarhusTrafficData182955 AarhusTrafficData186979
 for f in ${pollution[*]};
 do
 	echo $f
-	python scripts/single_mapping_gen.py data/streams/pollution/${f}.stream templates/pollution.tmpl ${f}.temp
+	python scripts/single_mapping_gen.py ${f} templates/pollution.tmpl ${f}.temp
 	python scripts/obda_file_gen.py templates/obda_file.tmpl ${f}.temp  ${f}.obda false
 	rm -f ${f}.temp
 done
@@ -20,7 +20,7 @@ done
 for f in ${parking[*]};
 do
 	echo $f
-	python scripts/single_mapping_gen.py data/streams/parking/${f}.stream templates/parking.tmpl ${f}.temp
+	python scripts/single_mapping_gen.py ${f} templates/parking.tmpl ${f}.temp
 	python scripts/obda_file_gen.py templates/obda_file.tmpl ${f}.temp  ${f}.obda false
 	rm -f ${f}.temp
 done
@@ -28,7 +28,7 @@ done
 for f in ${traffic[*]};
 do
 	echo $f
-	python scripts/single_mapping_gen.py data/streams/traffic/${f}.stream templates/traffic.tmpl ${f}.temp
+	python scripts/single_mapping_gen.py ${f} templates/traffic.tmpl ${f}.temp
 	python scripts/obda_file_gen.py templates/obda_file.tmpl ${f}.temp  ${f}.obda false
 	rm -f ${f}.temp
 done

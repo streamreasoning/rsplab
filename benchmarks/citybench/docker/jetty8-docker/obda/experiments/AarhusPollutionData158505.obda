@@ -18,12 +18,12 @@ driverClass	org.postgresql.Driver
 
 [MappingDeclaration] @collection [[
 
-mappingId	AarhusPollutionObservationMax-data/streams/pollution/AarhusPollutionData158505
-target		:/data/streams/pollution/AarhusPollutionData158505-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:data/streams/pollution/AarhusPollutionData158505 . 
+mappingId	AarhusPollutionObservationMax-AarhusPollutionData158505
+target		:AarhusPollutionData158505-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusPollutionData158505 . 
 source		SELECT setseed(0.00000001), md5(random()::text) AS random, 
 			sp."property" as PID ,timestamp, GREATEST(ozone,particullate_matter,carbon_monoxide,sulfure_dioxide,nitrogen_dioxide) as val
-			FROM "data/streams/pollution/AarhusPollutionData158505" AS ist, "service_properties" as sp
-			WHERE sp."service"='data/streams/pollution/AarhusPollutionData158505'
+			FROM "AarhusPollutionData158505" AS ist, "service_properties" as sp
+			WHERE sp."service"='AarhusPollutionData158505'
 
 
 
