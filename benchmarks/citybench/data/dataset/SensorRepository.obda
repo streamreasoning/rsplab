@@ -1,0 +1,74 @@
+[PrefixDeclaration]
+:		#
+q:		http://www.ict-citypulse.eu/ontologies/streamQoI/Quality
+ct:		http://www.insight-centre.org/citytraffic#
+tl:		http://purl.org/NET/c4dm/timeline.owl#
+up:		http://www.ict-citypulse.eu/ontologies/userprofile#
+ces:		http://www.insight-centre.org/ces#
+muo:		http://purl.oclc.org/NET/muo/ucum/
+osm:		http://www.insight-centre.org/ontologies/osm#
+owl:		http://www.w3.org/2002/07/owl#
+qoi:		http://ict-citypulse.eu/ontologies/StreamQoI/
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+sao:		http://purl.oclc.org/NET/UNIS/sao/sao#
+ses:		http://www.insight-centre.org/dataset/SampleEventService#
+ssn:		http://purl.oclc.org/NET/ssnx/ssn#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+emvo:		http://sense.deri.ie/vocab/emvo#
+owls:		http://www.daml.org/services/owl-s/1.2/Service.owl#
+prov:		http://purl.org/NET/provenance.owl#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+sce1:		http://ict-citypulse.eu/experiments/Scenario1/
+owlssc:		http://www.daml.org/services/owl-s/1.2/ServiceCategory.owl#
+owlssp:		http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://postgres:5432/initdb
+username	root
+password	root
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	AarhusTrafficObservationEstimatedTime
+target		:{OID} a ssn:Observation ; ct:hasValue {et}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:{rid} . 
+source		SELECT tp."EstimatedTime" as PID, ('AarhusTrafficData' || ist."REPORT_ID") as rid,"DISTANCE_IN_METERS"::float / "avgSpeed"::float as et, setseed(ist._id::int * 0.00000001), (ist._id::text || '-' || md5(random()::text)) AS oid
+			FROM "AarhusTrafficData203769" as ist, "trafficMetaData" as tmd, "traffic_properties" as tp
+			where tmd."REPORT_ID"=ist."REPORT_ID" and tp."sensor"='AarhusTrafficData203769'
+			ORDER BY "TIMESTAMP" 
+			LIMIT 1
+
+mappingId	AarhusTrafficObservationVehicleCount
+target		:{OID} a ssn:Observation ; ct:hasValue {vehicleCount}^^xsd:int ; ssn:observedProperty :{PID} ; ssn:observedBy ses:{rid} . 
+source		SELECT tp."VehicleCount" as PID, ('AarhusTrafficData' || "REPORT_ID") as rid, "vehicleCount", setseed(_id::int * 0.00000002), (_id::text || '-' || md5(random()::text)) AS oid
+			FROM "AarhusTrafficData203769",   "traffic_properties" as tp
+			WHERE tp."sensor"='AarhusTrafficData203769'
+			ORDER BY "TIMESTAMP"
+			LIMIT 1
+
+mappingId	AarhusTrafficObservationCongestionLevel
+target		:{OID} a ssn:Observation ; ct:hasValue {cl}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:{rid} . 
+source		SELECT tp."CongestionLevel" as PID, ('AarhusTrafficData' || ist."REPORT_ID") as rid, "vehicleCount"::int / "DISTANCE_IN_METERS"::float as cl, setseed(ist._id::int * 0.00000003), (ist._id::text || '-' || md5(random()::text)) AS oid
+			FROM "AarhusTrafficData203769" as ist, "trafficMetaData" as tmd, "traffic_properties" as tp
+			where tmd."REPORT_ID"=ist."REPORT_ID"  and tp."sensor"='AarhusTrafficData203769'
+			ORDER BY "TIMESTAMP" 
+			LIMIT 1
+
+mappingId	AarhusTrafficObservationAvgSpeed
+target		:{OID} a ssn:Observation ; ct:hasValue {avgSpeed}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:{rid} . 
+source		SELECT tp."AvgSpeed" as PID, ('AarhusTrafficData' || "REPORT_ID") as rid, "avgSpeed"::int *1.0 as avgSpeed , setseed(_id::int * 0.00000004), (_id::text || '-' || md5(random()::text)) AS oid
+			FROM "AarhusTrafficData203769", "traffic_properties" as tp
+			WHERE tp."sensor" ='AarhusTrafficData203769'
+			ORDER BY "TIMESTAMP"
+			LIMIT 1
+
+mappingId	AarhusTrafficObservationMeasureTime
+target		:{OID} a ssn:Observation ; ct:hasValue {avgMeasuredTime}^^xsd:double ; ssn:observedProperty :{PID} ; ssn:observedBy ses:{rid} . 
+source		SELECT tp."MeasureTime" as PID, ('AarhusTrafficData' || "REPORT_ID") as rid, "avgMeasuredTime"::int * 1.0 as avgMeasuredTime, setseed(_id::int * 0.00000004), (_id::text || '-' || md5(random()::text)) AS oid
+			FROM "AarhusTrafficData203769", "traffic_properties" as tp
+			WHERE tp."sensor" = 'AarhusTrafficData203769'
+			ORDER BY "TIMESTAMP"
+			LIMIT 1
+]]
+

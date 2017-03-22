@@ -4,7 +4,7 @@ import csv
 
 q = open( argv[1] ).read()
 
-sparql = SPARQLWrapper("http://192.168.99.100:8080/openrdf-sesame/repositories/SensorRepository")
+sparql = SPARQLWrapper("http://postgres:8080/openrdf-sesame/repositories/SensorRepository")
 sparql.setQuery(q)
 sparql.setReturnFormat(JSON)
 results = sparql.query().convert()
