@@ -7,8 +7,8 @@ host = argv[1]
 base_port = int(argv[2])
 base_ws_port = int(argv[3])
 base_url = argv[4]
-
-mapping_file = open( "properties.tmpl" )
+template = argv[5]
+mapping_file = open( template )
 mapping_tmpl = Template( mapping_file.read() )
 
 
@@ -36,7 +36,7 @@ for coll in ["pollution", "parking", "traffic"]:
     for s in eval(coll):
         m = { "stream":s,"stream_type":coll,
               "host":host, "port":base_port,
-              "ws_loc":"stream", "ws_port":base_ws_port, 
+              "ws_loc":"primus", "ws_port":base_ws_port, 
               "base_url":base_url}
         print m
         res = mapping_tmpl.substitute(m)
