@@ -1,0 +1,29 @@
+mappingId	AarhusTrafficObservationEstimatedTime-$stream
+target		:$stream/{ID}-ET{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {et}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
+source		SELECT ist._id AS ID, tp."property" AS PID, "DISTANCE_IN_METERS"::float / "avgSpeed"::float AS et,  setseed(ist._id::int * 0.00000001), md5(random()::text) AS random , ist."TIMESTAMP"::timestamp AS TIMESTAMP
+			FROM "$stream" AS ist, "trafficMetaData" AS tmd, "service_properties" as tp
+			WHERE tmd."REPORT_ID"=ist."REPORT_ID" and tp."service"='$stream' and "avgSpeed"::float != 0.0 and tp.property_class='EstimatedTime'
+
+mappingId	AarhusTrafficObservationVehicleCount-$stream
+target		:$stream/{_ID}-VC{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vehicleCount}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
+source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, md5(random()::text) AS random, tp."property" AS PID, "vehicleCount", setseed(_id::int * 0.00000002)
+			FROM "$stream",   "service_properties" AS tp
+			WHERE tp."service"='$stream' and tp.property_class='VehicleCount'
+
+mappingId	AarhusTrafficObservationCongestionLevel-$stream
+target		:$stream/{ID}-CL{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {cl}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
+source		SELECT ist._id AS ID, tp."property" AS PID, "vehicleCount"::int / "DISTANCE_IN_METERS"::float AS cl, setseed(ist._id::int * 0.00000003), md5(random()::text) AS random, ist."TIMESTAMP"::timestamp AS TIMESTAMP
+			FROM "$stream" AS ist, "trafficMetaData" AS tmd, "service_properties" AS tp
+			where tmd."REPORT_ID"=ist."REPORT_ID"  and tp."service"='$stream' and tp.property_class='CongestionLevel'
+
+mappingId	AarhusTrafficObservationAvgSpeed-$stream
+target		:$stream/{_ID}-VS{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {avgSpeed}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
+source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."property" AS PID, "avgSpeed"::int *1.0 as avgSpeed , setseed(_id::int * 0.000000004), md5(random()::text) as random
+			FROM "$stream", "service_properties" AS tp
+			WHERE tp."service" ='$stream' and tp.property_class='AvgSpeed'
+
+mappingId	AarhusTrafficObservationMeasureTime-$stream
+target		:$stream/{_ID}-MT{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {avgMeasuredTime}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
+source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."property"  AS PID,"avgMeasuredTime"::int * 1.0 AS avgMeasuredTime, setseed(_id::int * 0.000000005), md5(random()::text) AS random
+			FROM "$stream", "service_properties" AS tp
+			WHERE tp."service" = '$stream' and tp.property_class='MeasureTime'
