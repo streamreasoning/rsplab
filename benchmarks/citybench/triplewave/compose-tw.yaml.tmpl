@@ -1,0 +1,11 @@
+tw$stream_name:
+    labels:
+      stream.name: $stream
+      stream.type: $stream_type
+      stream.uuid: $uuid
+    container_name: $stream_name
+    command: experiments/$stream.properties
+    build: .
+    ports:
+      - "$port:$port"
+      - "$ws_port:$ws_port"
