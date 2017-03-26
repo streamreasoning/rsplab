@@ -8,25 +8,30 @@ import os.path
 comp_elem_tmpl = Template((open('./compose-tw.yaml.tmpl')).read())
 prop_template = Template((open('./properties.tmpl')).read())
 
+comp='./compose/'
+experiments='./experiments/'
+tmpl='./compose-templates/'
+
+
 def gen_prop(s, m):
   res = prop_template.substitute(m)
-  text_file = open("./experiments/"+s+".properties", "w")
+  text_file = open(experiments+s+".properties", "w")
   text_file.write(res)
   text_file.close()
 #end
 
 def gen_comp_elem(s, m):
   res = comp_elem_tmpl.substitute(m)
-  text_file = open("compose-templates/"+s+".yml.tmpl", "w")
+  text_file = open(tmpl+s+".yml.tmpl", "w")
   text_file.write(res)
   text_file.close()
 #end
 
 def gen_comp(q, streams):
-  with open("compose/"+q+".yml", "w") as compose_file:
-    compose_file.write(open("compose-templates/cadvisor.yml.tmpl", "r").read())
+  with open(comp+q+".yml", "w") as compose_file:
+    compose_file.write(open("./cadvisor.yml.tmpl", "r").read())
     for s in streams:
-      stream = open("compose-templates/"+s+".yml.tmpl", "r").read()
+      stream = open(tmpl+s+".yml.tmpl", "r").read()
       compose_file.write(stream)
   compose_file.close()
 
@@ -43,6 +48,15 @@ base_ws_port=4040
 
 mappings = {}
 queries = {}
+
+
+if not os.path.exists(experiments):
+    os.makedirs(experiments)
+if not os.path.exists(comp):
+    os.makedirs(comp)
+if not os.path.exists(tmpl):
+    os.makedirs(tmpl)
+
 
 for fname in glob.glob('./query-streams/*.txt'):
   l=fname.split("/")
