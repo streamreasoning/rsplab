@@ -40,8 +40,8 @@ def gen_comp(q, streams):
 traffic="Traffic"
 pollution="Pollution"
 parking="Parking"
-host="localhost"
-base_url="localhost"
+host="triplewave1.westeurope.cloudapp.azure.com:8080/openrdf-sesame/repositories"
+base_url="http://cbquest.westeurope.cloudapp.azure.com:8080/openrdf-sesame/repositories"
 base_port=4000
 base_ws_port=4040
 
