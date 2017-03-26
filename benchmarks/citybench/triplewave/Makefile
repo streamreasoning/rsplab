@@ -1,5 +1,5 @@
 CNTNR_NAME=city_wave_running
-IMG_TAG=city_wave
+IMG_TAG=citywave
 
 ARGS=experiments/AarhusPollutionData158505.properties
 

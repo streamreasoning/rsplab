@@ -6,7 +6,6 @@ import uuid
 import os.path
 
 comp_elem_tmpl = Template((open('./compose-tw.yaml.tmpl')).read())
-comp_tmpl = Template((open('./docker-compose.yml.tmpl')).read())
 prop_template = Template((open('./properties.tmpl')).read())
 
 def gen_prop(s, m):

@@ -1,29 +1,35 @@
 ###############################################################################
+########################### Metadata            ###############################
+###############################################################################
+
+stream_name=$stream
+payload=payload.jsonld
+
+###############################################################################
 ########################### Required  Resources ###############################
 ###############################################################################
 
 resources_path= ./resources
-sgraph=../rdf/example.sgraph
+sgraph=$stream_type.sgraph
 
 ###############################################################################
 ########################### Network   #########################################
 ###############################################################################
 
 # host
-hostname=rsplabdns.westeurope.cloudapp.azure.com
-
+hostname=$host
 # triplewave port
-port=4000
+port=$port
 
 # root path
 path=
 
 # endpoint for the websocket
-ws_stream_location=/primus
-ws_port=4040
+ws_stream_location=/$ws_loc
+ws_port=$ws_port
 
 # where is possobile to connect to the wesbsocket (should match you apache / ngix configuration)
-ws_address=ws://rsplabdns.westeurope.cloudapp.azure.com:4040/primus
+ws_address=ws://$host:$ws_port/$ws_loc
 
 ###############################################################################
 ########################### MODE    ###########################################
@@ -39,7 +45,7 @@ ws_address=ws://rsplabdns.westeurope.cloudapp.azure.com:4040/primus
 mode=replay
 
 # From
-rdf_query_endpoint=http://rsplabdns.westeurope.cloudapp.azure.com:8080/openrdf-sesame/repositories/AarhusTrafficData158324
+rdf_query_endpoint=$base_url/$stream
 
 # Enable External Stream Registration
 delayed=true
@@ -47,7 +53,8 @@ delayed=true
 # Enable Querying to External SPARQL Endpoint
 rdf_remote=true
 
-profiling_function=linearFunction
+profiling_function=dataBased
+scale_factor=1
 
 # if false 
 # path to the file

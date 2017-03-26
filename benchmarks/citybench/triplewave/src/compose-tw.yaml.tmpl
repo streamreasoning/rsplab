@@ -5,7 +5,7 @@ tw$stream_name:
       stream.uuid: $uuid
     container_name: $stream_name
     command: experiments/$stream.properties
-    build: .
+    build: ../
     ports:
       - "$port:$port"
       - "$ws_port:$ws_port"
