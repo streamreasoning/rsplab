@@ -1,6 +1,7 @@
 cadvisor:
   labels:
     stream.run.uudi: $run_uuid
+  container_name: $machine
   image: google/cadvisor:v0.24.0
   ports:
     - "9090:9090"
