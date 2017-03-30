@@ -3,9 +3,12 @@ tw$stream_name:
       stream.name: $stream
       stream.type: $stream_type
       stream.uuid: $uuid
-    container_name: $stream_name
-    command: experiments/$stream.properties
-    build: ../
+      stream.run.uudi: $run_uuid
+    container_name: $stream
+    command: running/$stream.properties
+    build: ./
     ports:
       - "$port:$port"
       - "$ws_port:$ws_port"
+    volumes:
+      - ./:/opt/tw/running

@@ -1,5 +1,5 @@
 CNTNR_NAME=city_wave_running
-IMG_TAG=citywave
+IMG_TAG=tomma/citywave
 
 ARGS=experiments/AarhusPollutionData158505.properties
 
@@ -20,7 +20,3 @@ clean:
 
 run:
 	docker run -p 4013:4013 -p 4053:4053 -it --name $(CNTNR_NAME) $(IMG_TAG) 
-
-properties:
-	python tw_stream_gen.py $(HOST) $(BASE_PORT) $(BASE_WS_PORT) $(BASE_URI) properties.tmpl
-	mkdir experiments ; mv *.properties experiments/ 
