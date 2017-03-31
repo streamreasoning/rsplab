@@ -21,7 +21,7 @@ def stream_type(stream):
     stype = parking if  parking in stream else stype
     stype = traffic if  traffic in stream else stype
 
-    return stype
+    return stype.lower()
 #end
 
 
@@ -41,8 +41,13 @@ def add_stream_to_compose(s, n):
 def save_properties(stream, number):
     with open("./"+stream+".properties", "w") as prop_file:
         prop = Template(open('./properties.tmpl').read())
-        scale_factor = stream.split("_")[1] if "_" in stream else 1
-        prop_map = { "stream":stream,"stream_type":stream_type(stream),
+	scale_factor=1
+
+	if "_" in stream:
+	    scale_factor = stream.split("_")[1]
+	    stream = stream.split("_")[0]
+
+	prop_map = { "stream":stream,"stream_type":stream_type(stream),
             "host":host, "port":(base_port+number),
             "ws_loc":"primus", "ws_port":(base_ws_port+number), 
             "base_url":base_url, "scale_factor":scale_factor, "run_uuid":run_uuid }
