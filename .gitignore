@@ -1,2 +1,5 @@
 *.xml
 *.jpg
+
+rsplab-benchmarks/benchmarks/citybench/triplewave/*.properties
+rsplab-benchmarks/benchmarks/citybench/triplewave/docker-compose.yml
