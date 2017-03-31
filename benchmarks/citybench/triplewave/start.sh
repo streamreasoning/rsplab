@@ -6,4 +6,4 @@ rm -rf ./*.properties
 rm -rf ./*.yml
 
 ./build $@
-docker-compose up
+docker-compose up -d
