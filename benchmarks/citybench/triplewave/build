@@ -8,7 +8,7 @@ import os
 machine=os.environ['MACHINE']
 run_uuid=str(uuid.uuid1())
 host=machine+".westeurope.cloudapp.azure.com"
-base_url="http://cbquest.westeurope.cloudapp.azure.com:8080/openrdf-sesame/repositories"
+base_url="http://citybench1.westeurope.cloudapp.azure.com/openrdf-sesame/repositories"
 base_port=4000
 base_ws_port=4040
 
