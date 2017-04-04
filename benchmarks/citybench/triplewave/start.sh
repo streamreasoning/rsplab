@@ -7,4 +7,6 @@ rm -rf ./*.yml
 
 ./build $@
 docker-compose up -d
+
+cat docker-compose.yml
 ./create-dashboards.sh
