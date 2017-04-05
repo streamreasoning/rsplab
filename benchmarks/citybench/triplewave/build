@@ -65,7 +65,7 @@ def streams(argv):
 
     with open("./docker-compose.yml", "a") as compose_file:
         cad = Template(open('./cadvisor.yml.tmpl').read())
-        compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":machine+"_running"}))
+        compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
         compose_file.write('\n')
         compose_file.close()
 

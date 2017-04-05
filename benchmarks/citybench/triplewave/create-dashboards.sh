@@ -166,21 +166,23 @@ function ensure_grafana_dashboards {
 
 	echo "Creating a dashboard for each running container"
   IFS=$NEWLINE
-  echo "input $@"
+
   for x in $CONTAINERS; do
 
-    CONTAINER_ID=`docker ps -a -f name=$x | awk '{print $1}'`
-    CONTAINER=`docker ps -a  -f name=$x | awk 'END {print $NF}'`
-    echo "container id ${CONTAINER_ID}"
+    CONTAINER=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $1}'`
+    CONTAINER_ID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $2}'`
+    STREAM_RUN_UUID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $3}'`
+    
+    echo "container name ${CONTAINER}, id ${CONTAINER_ID}, run uuid ${STREAM_RUN_UUID}"
     # Skip the header
     if [ "${CONTAINER_ID}" = "CONTAINER" ]; then
       continue
-    elif [ "${CONTAINER_ID}" = "triplewave1_running" ]; then
+    elif [ "${CONTAINER_ID}" = "cadvisor_running" ]; then
       continue
     fi
 
     echo "creating a dashboard for container '${x}'"
-    ensure_dashboard_from_template "${x}" "container_name='${x}'" "false"
+    ensure_dashboard_from_template "${x}" "container_name='${x}' AND stream.run.uudi='${STREAM_RUN_UUID}'" "false" 
   done
   echo "Done"
 }
