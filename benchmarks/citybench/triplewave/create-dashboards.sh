@@ -169,15 +169,15 @@ function ensure_grafana_dashboards {
 
   for x in $CONTAINERS; do
 
-    CONTAINER=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $1}'`
-    CONTAINER_ID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $2}'`
-    STREAM_RUN_UUID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $3}'`
+    CONTAINER=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $1}'`
+    CONTAINER_ID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $2}'`
+    STREAM_RUN_UUID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $3}'`
     
-    echo "container name ${CONTAINER}, id ${CONTAINER_ID}, run uuid ${STREAM_RUN_UUID}"
+    echo "container name ${CONTAINER} id ${CONTAINER_ID} run uuid ${STREAM_RUN_UUID}"
     # Skip the header
-    if [ "${CONTAINER_ID}" = "CONTAINER" ]; then
+    if [ "${CONTAINER}" = "NAMES" ]; then
       continue
-    elif [ "${CONTAINER_ID}" = "cadvisor_running" ]; then
+    elif [ "${CONTAINER}" = "cadvisor_running" ]; then
       continue
     fi
 
