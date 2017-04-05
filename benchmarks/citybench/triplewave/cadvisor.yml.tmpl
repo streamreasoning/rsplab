@@ -6,7 +6,7 @@ cadvisor:
   ports:
     - "9090:9090"
     - "80:8080"
-  command: -storage_driver=influxdb -storage_driver_db=triplewave -storage_driver_host=collector:8086
+  command: -storage_driver=influxdb -storage_driver_db=triplewave -storage_driver_host=collector:8086 --housekeeping_interval=100ms
   volumes:
     - /:/rootfs:ro
     - /var/run:/var/run:rw

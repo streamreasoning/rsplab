@@ -2,6 +2,8 @@
 
 export MACHINE=$(hostname)
 
+echo $MACHINE
+
 rm -rf ./*.properties 
 rm -rf ./*.yml
 
@@ -9,4 +11,6 @@ rm -rf ./*.yml
 docker-compose up -d
 
 cat docker-compose.yml
-./create-dashboards.sh
+echo $@
+
+./create-dashboards.sh $@

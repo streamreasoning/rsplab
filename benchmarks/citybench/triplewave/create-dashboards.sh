@@ -30,7 +30,8 @@ GRAFANA_URL='http://collector/'
 GRAFANA_API_URL='http://collector/api/'
 GRAFANA_LOGIN='admin'
 GRAFANA_PASSWORD='admin'
-GRAFANA_DATA_SOURCE_NAME='${MACHINE}'
+GRAFANA_DATA_SOURCE_NAME='triplewave'
+CONTAINERS=$@
 
 NEWLINE='
 '
@@ -128,6 +129,7 @@ function ensure_dashboard_from_template {
     | sed -e "s|___NETWORK_USAGE_TITLE___|$NET_USAGE_TITLE|g" \
     | sed -e "s|___TOOLTIP_SHARED___|$TOOLTIP_SHARED|g" \
     | sed -e "s|___CONTAINER_WHERE_CLAUSE___|$WHERE_CLAUSE|g" \
+    | sed -e "s|___DATA_SOURCE___|$GRAFANA_DATA_SOURCE_NAME|g" \
     > "${TEMP_FILE_1}"
 	ensure_grafana_dashboard "${TEMP_FILE_1}"
   RET=$?
@@ -164,20 +166,21 @@ function ensure_grafana_dashboards {
 
 	echo "Creating a dashboard for each running container"
   IFS=$NEWLINE
-  for x in `docker ps`; do
-       
-    CONTAINER_ID=`echo $x | awk '{print $1}'`
-    CONTAINER=`echo $x | awk 'END {print $NF}'`
+  echo "input $@"
+  for x in $CONTAINERS; do
 
+    CONTAINER_ID=`docker ps -a -f name=$x | awk '{print $1}'`
+    CONTAINER=`docker ps -a  -f name=$x | awk 'END {print $NF}'`
+    echo "container id ${CONTAINER_ID}"
     # Skip the header
     if [ "${CONTAINER_ID}" = "CONTAINER" ]; then
       continue
-    elif [ "${CONTAINER_ID}" = "cadvisor" ]; then
+    elif [ "${CONTAINER_ID}" = "triplewave1_running" ]; then
       continue
     fi
 
-    echo "creating a dashboard for container '${CONTAINER}'"
-    ensure_dashboard_from_template "${CONTAINER}" "container_name='${CONTAINER}'" "false"
+    echo "creating a dashboard for container '${x}'"
+    ensure_dashboard_from_template "${x}" "container_name='${x}'" "false"
   done
   echo "Done"
 }
