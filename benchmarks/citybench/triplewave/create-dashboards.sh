@@ -169,18 +169,12 @@ function ensure_grafana_dashboards {
 
   for x in $CONTAINERS; do
 
-    CONTAINER=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $1}'`
-    CONTAINER_ID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $2}'`
-    STREAM_RUN_UUID=`docker ps -a -f name=$x --format 'table {{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $3}'`
+    CONTAINER=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $1}'`
+    CONTAINER_ID=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "stream.run.uudi"}}' | awk '{print $2}'`
+    STREAM_RUN_UUID=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\table{{.Label "stream.run.uudi"}}' | awk '{print $3}'`
     
     echo "container name ${CONTAINER} id ${CONTAINER_ID} run uuid ${STREAM_RUN_UUID}"
-    # Skip the header
-    if [ "${CONTAINER}" = "NAMES" ]; then
-      continue
-    elif [ "${CONTAINER}" = "cadvisor_running" ]; then
-      continue
-    fi
-
+   
     echo "creating a dashboard for container '${x}' stream.run.uudi='${STREAM_RUN_UUID}'"
     ensure_dashboard_from_template "${x}" "container_name='${x}' AND stream.run.uudi='${STREAM_RUN_UUID}'" "false" 
   done
