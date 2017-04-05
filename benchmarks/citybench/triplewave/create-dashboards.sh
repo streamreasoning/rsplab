@@ -181,7 +181,7 @@ function ensure_grafana_dashboards {
       continue
     fi
 
-    echo "creating a dashboard for container '${x}'"
+    echo "creating a dashboard for container '${x}' stream.run.uudi='${STREAM_RUN_UUID}'"
     ensure_dashboard_from_template "${x}" "container_name='${x}' AND stream.run.uudi='${STREAM_RUN_UUID}'" "false" 
   done
   echo "Done"
