@@ -17,3 +17,6 @@ Q5 3mb, 20mb 30mb
 Increasing Number of Streams
 
 Q10  x2Poll, x5Poll, x8Poll
+
+
+aggiungi date agli esperimenti quando vengono runnati
