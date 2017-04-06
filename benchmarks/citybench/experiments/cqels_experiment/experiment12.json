@@ -1,7 +1,7 @@
 {	"metadata": {"id":"12", "duration": 3600,"comment":"### ?obId1 should be projected, however we cannot project it in this query as it demands ?obId1 to be grouped, which makes the semantics wrong.### as a result the latency cannot be evaluated."},
 
 	"engine":
-		{ "host": "http://csparql.westeurope.cloudapp.azure.com",
+		{ "host": "http://cqels.westeurope.cloudapp.azure.com",
 		  "port": 8182 },
 
 	"streams": [{
@@ -21,7 +21,7 @@
 			"name": "observer1",
 			"persist": true,
 			"type": "ws",
-			"host": "csparql.westeurope.cloudapp.azure.com",
+			"host": "cqels.westeurope.cloudapp.azure.com",
 			"port": 9101
 		}]
 	}]

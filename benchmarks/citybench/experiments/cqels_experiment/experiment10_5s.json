@@ -1,7 +1,7 @@
 {	"metadata": {"id":"10_5", "duration": 3600},
 
 	"engine":
-		{ "host": "http://csparql.westeurope.cloudapp.azure.com",
+		{ "host": "http://cqels.westeurope.cloudapp.azure.com",
 		  "port": 8182 },
 
 	"streams": [{
@@ -37,7 +37,7 @@
 			"name": "observer1",
 			"persist": true,
 			"type": "ws",
-			"host": "csparql.westeurope.cloudapp.azure.com",
+			"host": "cqels.westeurope.cloudapp.azure.com",
 			"port": 9101
 		}]
 	}]

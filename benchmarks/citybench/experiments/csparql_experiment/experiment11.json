@@ -1,0 +1,28 @@
+{	"metadata": {"id":"11", "duration": 3600,"comment":"negation not supported in cqels"},
+
+	"engine":
+		{ "host": "http://csparql.westeurope.cloudapp.azure.com",
+		  "port": 8182 },
+
+	"streams": [{
+		"name": "AarhusWeatherData0",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	}],
+	
+	"static":[],
+
+	"queries": [{
+		"name": "Q11",
+		"body": "select ?obId1 where { stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0> [range 3s ] {?obId1 a ?ob.?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1.?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1.?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusWeatherData0>.}###Filter (!bound(?obId2))}",
+		"repeat": 1,
+		"result_path": "./",
+		"observers": [{
+			"name": "observer1",
+			"persist": true,
+			"type": "ws",
+			"host": "csparql.westeurope.cloudapp.azure.com",
+			"port": 9101
+		}]
+	}]
+}
