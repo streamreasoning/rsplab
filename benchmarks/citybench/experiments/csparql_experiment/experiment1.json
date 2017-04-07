@@ -7,7 +7,7 @@
 	"streams": [{
 		"name": "AarhusTrafficData182955",
 		"scale_factor": 1,
-		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4001/sgraph"
 	},{
 		"name": "AarhusTrafficData158505",
 		"scale_factor": 1,
@@ -18,7 +18,7 @@
 
 	"queries": [{
 		"name": "Q1",
-		"body": "REGISTER QUERY Q1 AS SELECT ?obId1 ?obId2 ?v1 ?v2 from stream AarhusTrafficData182955> [range 3000ms step 1s] from stream AarhusTrafficData158505> [range 3000ms step 1s] FROM https://rsplab.blob.core.windows.net/static/SensorRepository.rd>  where {?p1   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.?p2   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. {?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1.?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1.?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData182955>.}{?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2.?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2.?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505>.}}",
+		"body": "REGISTER QUERY Q1 AS SELECT ?obId1 ?obId2 ?v1 ?v2 from stream <AarhusTrafficData182955> [range 3000ms step 1s] from stream <AarhusTrafficData158505> [range 3000ms step 1s] FROM https://rsplab.blob.core.windows.net/static/SensorRepository.rd>  where {?p1   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.?p2   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. {?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1.?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1.?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData182955>.}{?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2.?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2.?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505>.}}",
 		"repeat": 1,
 		"result_path": "./",
 		"observers": [{
