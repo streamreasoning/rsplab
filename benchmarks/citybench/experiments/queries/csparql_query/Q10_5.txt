@@ -1,9 +1,9 @@
  select ?obId1 ?obId2 ?obId3 ?obId4 ?obId5 
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData182955> [range 3s step 1s] \n
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData158505> [range 3s step 1s] \n
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData206502> [range 3s step 1s] \n
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData179093> [range 3s step 1s] \n
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData195843> [range 3s step 1s] \n
+from  stream <AarhusPollutionData182955> [range 3s step 1s] \n
+from  stream <AarhusPollutionData158505> [range 3s step 1s] \n
+from  stream <AarhusPollutionData206502> [range 3s step 1s] \n
+from  stream <AarhusPollutionData179093> [range 3s step 1s] \n
+from  stream <AarhusPollutionData195843> [range 3s step 1s] \n
 FROM <https://rsplab.blob.core.windows.net/static/SensorRepository.rdf>
 where {
 
