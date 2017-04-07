@@ -3,7 +3,7 @@
 	"engine":
 		{ "host": "http://csparql.westeurope.cloudapp.azure.com",
 		  "port": 8182 },
-
+   
 	"streams": [{
 		"name": "AarhusTrafficData182955",
 		"scale_factor": 1,
