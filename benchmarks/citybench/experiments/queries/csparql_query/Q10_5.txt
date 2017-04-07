@@ -4,7 +4,7 @@ from  stream <AarhusPollutionData158505> [range 3s step 1s] \n
 from  stream <AarhusPollutionData206502> [range 3s step 1s] \n
 from  stream <AarhusPollutionData179093> [range 3s step 1s] \n
 from  stream <AarhusPollutionData195843> [range 3s step 1s] \n
-FROM <https://rsplab.blob.core.windows.net/static/SensorRepository.rdf>
+
 where {
 
 #?p1   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.
