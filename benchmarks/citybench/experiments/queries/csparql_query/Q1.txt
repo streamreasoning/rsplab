@@ -1,6 +1,6 @@
 select ?obId1 ?obId2 ?v1 ?v2
- from stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData182955> [range 3000ms step 1s]
- from stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData158505> [range 3000ms step 1s]
+ from stream AarhusTrafficData182955> [range 3000ms step 1s]
+ from stream AarhusTrafficData158505> [range 3000ms step 1s]
  FROM <http://127.0.0.1:9000/WebGlCity/RDF/SensorRepository.rdf> 
  
 where {

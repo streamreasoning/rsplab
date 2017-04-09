@@ -1,0 +1,28 @@
+{	"metadata": {"id":"12", "duration": 3600,"comment":"### ?obId1 should be projected, however we cannot project it in this query as it demands ?obId1 to be grouped, which makes the semantics wrong.### as a result the latency cannot be evaluated."},
+
+	"engine":
+		{ "host": "http://cqels.westeurope.cloudapp.azure.com",
+		  "port": 8182 },
+
+	"streams": [{
+		"name": "AarhusTrafficData186979",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	}],
+	
+	"static":[],
+
+	"queries": [{
+		"name": "Q12",
+		"body": "select (count(?obId1) as ?obCnt)   where {?p1   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData186979> [range 3000ms]{?obId1 a ?ob.?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1.?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1.?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusTrafficData186979>.}Filter(?v1>= -1)}### group by ?obId1 having (count(?obId1) >3)",
+		"repeat": 1,
+		"result_path": "./",
+		"observers": [{
+			"name": "observer1",
+			"persist": true,
+			"type": "ws",
+			"host": "cqels.westeurope.cloudapp.azure.com",
+			"port": 9101
+		}]
+	}]
+}

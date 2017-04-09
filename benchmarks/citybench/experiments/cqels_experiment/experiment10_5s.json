@@ -1,0 +1,44 @@
+{	"metadata": {"id":"10x5", "duration": 3600},
+
+	"engine":
+		{ "host": "http://cqels.westeurope.cloudapp.azure.com",
+		  "port": 8182 },
+
+	"streams": [{
+		"name": "AarhusPollutionData182955",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	},{
+		"name": "AarhusPollutionData158505",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	},{
+		"name": "AarhusPollutionData206502",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	},{
+		"name": "AarhusPollutionData179093",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	},{
+		"name": "AarhusPollutionData195843",
+		"scale_factor": 1,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	}],
+	
+	"static":[],
+
+	"queries": [{
+		"name": "Q10x5",
+		"body": "REGISTER QUERY Q10x5 AS SELECT ?obId1 ?obId2 ?obId3 ?obId4 ?obId5 ?v1 ?v2    WHERE { ?p1   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. ?p2   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. ?p3   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. ?p4   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. ?p5   a <http://www.insight-centre.org/citytraffic#CongestionLevel>. STREAM <AarhusPollutionData182955> [RANGE 3000ms SLIDE 1s] \n {?obId1 a ?ob. ?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1. ?obId1 <http://purl.oclc.org/NET/sao/hasValue> ?v1. ?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData182955>. } STREAM <AarhusPollutionData158505> [RANGE 3000ms SLIDE 1s] \n {?obId2 a ?ob. ?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p2. ?obId2 <http://purl.oclc.org/NET/sao/hasValue> ?v2. ?obId2 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData158505>. } STREAM <AarhusPollutionData206502> [RANGE 3000ms SLIDE 1s] \n {?obId3 a ?ob. ?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p3. ?obId3 <http://purl.oclc.org/NET/sao/hasValue> ?v3. ?obId3 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData206502>. } STREAM <AarhusPollutionData179093> [RANGE 3000ms SLIDE 1s] \n {?obId4 a ?ob. ?obId4 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p4. ?obId4 <http://purl.oclc.org/NET/sao/hasValue> ?v4. ?obId4 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData179093>. } STREAM <AarhusPollutionData195843> [RANGE 3000ms SLIDE 1s] \n {?obId5 a ?ob. ?obId5 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p5. ?obId5 <http://purl.oclc.org/NET/sao/hasValue> ?v5. ?obId5 <http://purl.oclc.org/NET/ssnx/ssn#observedBy> <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData195843>. }}",
+		"repeat": 1,
+		"result_path": "./",
+		"observers": [{
+			"name": "observer1",
+			"persist": true,
+			"type": "ws",
+			"host": "cqels.westeurope.cloudapp.azure.com",
+			"port": 9101
+		}]
+	}]
+}

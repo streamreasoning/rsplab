@@ -1,17 +1,11 @@
- select ?obId1 ?obId2 ?obId3 ?obId4 ?obId5 
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData182955> [range 3s step 1s] 
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData158505> [range 3s step 1s] 
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData206502> [range 3s step 1s] 
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData179093> [range 3s step 1s] 
-from  stream <http://www.insight-centre.org/dataset/SampleEventService#AarhusPollutionData195843> [range 3s step 1s] 
-FROM <http://127.0.0.1:9000/WebGlCity/RDF/SensorRepository.rdf>
-where {
+REGISTER QUERY Q10x5 SELECT ?obId1 ?obId2 ?obId3 ?obId4 ?obId5 
+FROM  stream <AarhusPollutionData182955> [range 3s step 1s] \n
+FROM  stream <AarhusPollutionData158505> [range 3s step 1s] \n
+FROM  stream <AarhusPollutionData206502> [range 3s step 1s] \n
+FROM  stream <AarhusPollutionData179093> [range 3s step 1s] \n
+FROM  stream <AarhusPollutionData195843> [range 3s step 1s] \n
 
-#?p1   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.
-#?p2   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.
-#?p3   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.
-#?p4   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.
-#?p5   a <http://www.insight-centre.org/citytraffic#CongestionLevel>.
+WHERE {
 
 {
 ?obId1 <http://purl.oclc.org/NET/ssnx/ssn#observedProperty> ?p1.
