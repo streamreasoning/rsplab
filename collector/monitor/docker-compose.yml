@@ -1,0 +1,36 @@
+influxsrv:
+  image: influxdb:latest
+  container_name: influxsrv
+  ports:
+    - "8086:8086"
+    - "8080:8086"
+  volumes:
+    - influxdata:/var/lib/influxdb:rw
+
+grafana:
+  build: ./grafana
+  container_name: grafana
+  ports:
+    - "80:3000"
+  links:
+    - influxsrv:influxsrv
+  volumes:
+    - grafanadb:/var/lib/grafana
+  environment:
+    - INFLUXDB_HOST=collector
+    - INFLUXDB_PORT=8086
+    - INFLUXDB_NAME=rspengine
+    - INFLUXDB_USER=root
+    - INFLUXDB_PASS=root
+
+notebook:
+  image: jupyter/minimal-notebook
+  links:
+    - influxsrv:influxsrv
+    - grafana:grafana
+  ports:
+    8080:8888
+  volumes:
+    - /home/rspdev/rsplib/:/home/jovyan/work
+    - resultsdata:/home/jovyan/work/data
+
