@@ -26,12 +26,11 @@ INFLUXDB_DB_NAME=triplewave
 INFLUXDB_DB_LOGIN=root
 INFLUXDB_DB_PASSWORD=root
 
-GRAFANA_URL='http://collector/'
-GRAFANA_API_URL='http://collector/api/'
+GRAFANA_URL='http://collector:3000/'
+GRAFANA_API_URL='http://collector:3000/api/'
 GRAFANA_LOGIN='admin'
 GRAFANA_PASSWORD='admin'
 GRAFANA_DATA_SOURCE_NAME='triplewave'
-CONTAINERS=$@
 
 NEWLINE='
 '
@@ -167,16 +166,17 @@ function ensure_grafana_dashboards {
 	echo "Creating a dashboard for each running container"
   IFS=$NEWLINE
 
-  for x in $CONTAINERS; do
+  for x in `docker ps --format '{{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}'`; do
+    CONTAINER=`echo $x | awk '{print $1}'`
+    CONTAINER_ID=`echo $x | awk '{print $2}'`
+    STREAM_RUN_UUID=`echo $x | awk '{print $3}'`
 
-    CONTAINER=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $1}'`
-    CONTAINER_ID=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $2}'`
-    STREAM_RUN_UUID=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "stream.run.uuid"}}' | awk '{print $3}'`
-    
-    echo "container name ${CONTAINER} id ${CONTAINER_ID} run uuid ${STREAM_RUN_UUID}"
-   
+    if [ "${CONTAINER}" = "cadvisor_running" ]; then
+      continue
+    fi
+
     echo "creating a dashboard for container '${x}' stream.run.uuid='${STREAM_RUN_UUID}'"
-    ensure_dashboard_from_template "${x}" "container_name='${x}' AND stream.run.uuid='${STREAM_RUN_UUID}'" "false" 
+    ensure_dashboard_from_template "${CONTAINER}" "container_name='${CONTAINER}' AND stream.run.uuid='${STREAM_RUN_UUID}'" "false"
   done
   echo "Done"
 }
