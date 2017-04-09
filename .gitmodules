@@ -1,0 +1,3 @@
+[submodule "collector/rsplib"]
+	path = collector/rsplib
+	url = https://github.com/riccardotommasini/rsplib.git
