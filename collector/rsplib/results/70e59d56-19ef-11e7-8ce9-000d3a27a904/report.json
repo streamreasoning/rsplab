@@ -1,0 +1,68 @@
+{
+    "!Experiment": {
+        "engine": {
+            "host": "http://csparql.westeurope.cloudapp.azure.com", 
+            "port": 8182
+        }, 
+        "metadata": {
+            "data": "Tue Apr  4 15:05:33 CEST 2017", 
+            "duration": 10, 
+            "id": "1"
+        }, 
+        "queries": [
+            {
+                "body": "REGISTER STREAM Q1 AS CONSTRUCT {?s ?p ?o} FROM STREAM <AarhusPollutionData182955> [RANGE 30s STEP 5s] WHERE {?s ?p ?o}", 
+                "name": "Q1", 
+                "observers": [
+                    {
+                        "host": "csparql.westeurope.cloudapp.azure.com", 
+                        "name": "observer1", 
+                        "persist": true, 
+                        "port": 9101, 
+                        "type": "ws"
+                    }, 
+                    {
+                        "host": "csparql.westeurope.cloudapp.azure.com", 
+                        "name": "observer2", 
+                        "persist": true, 
+                        "port": 9102, 
+                        "type": "ws"
+                    }
+                ], 
+                "repeat": 1, 
+                "result_path": "./"
+            }
+        ], 
+        "static": [], 
+        "streams": [
+            {
+                "location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph", 
+                "name": "AarhusPollutionData182955", 
+                "scale_factor": 10
+            }
+        ]
+    }, 
+    "D": [], 
+    "E": {
+        "backloop": true, 
+        "empty_results": false, 
+        "host": "csparql/", 
+        "inference": false, 
+        "name": "csparql", 
+        "port": 8182, 
+        "runUUID": "70e59d56-19ef-11e7-8ce9-000d3a27a904", 
+        "timestam_function": false
+    }, 
+    "K": null, 
+    "Q": [
+        {
+            "id": "Q1", 
+            "status": "RUNNING", 
+            "type": "STREAM"
+        }
+    ], 
+    "R": null, 
+    "S": [
+        "AarhusPollutionData182955 already exists"
+    ]
+}

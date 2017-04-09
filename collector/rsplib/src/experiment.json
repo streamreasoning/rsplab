@@ -1,0 +1,36 @@
+	{	"metadata": {"id":"1", "data":"Tue Apr  4 15:05:33 CEST 2017", "duration": 10},
+
+	"engine": [{
+		"host": "http://csparql.westeurope.cloudapp.azure.com",
+		"port": 8182
+	}],
+
+	"streams": [{
+		"name": "AarhusPollutionData182955",
+		"scale_factor": 10,
+		"location": "http://triplewave1.westeurope.cloudapp.azure.com:4000/sgraph"
+	}],
+	
+	"static":[],
+
+	"queries": [{
+		"name": "Q1",
+		"body": "REGISTER STREAM Q1 AS CONSTRUCT {?s ?p ?o} FROM STREAM <AarhusPollutionData182955> [RANGE 30s STEP 5s] WHERE {?s ?p ?o}",
+		"repeat": 1,
+		"result_path": "./",
+		"observers": [{
+			"name": "observer1",
+			"persist": true,
+			"type": "ws",
+			"host": "csparql.westeurope.cloudapp.azure.com",
+			"port": 9101
+		}, 
+		{
+			"name": "observer2",
+			"persist": true,
+			"type": "ws",
+			"host": "csparql.westeurope.cloudapp.azure.com",
+			"port": 9102
+		}]
+	}]
+}

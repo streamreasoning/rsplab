@@ -1,0 +1,193 @@
+FORMAT: 1A
+HOST: http://rsp.streamreasoning.org/api
+
+# RSP API
+
+APIs allowing consumers to interact with RDF Stream processors.
+
+## Stream Collection [/streams]
+
+### List All Streams [GET]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "streamURL": "str2",
+            "status": "RUNNING"
+          },
+          {
+            "streamURL": "str1",
+            "status": "RUNNING"
+          }
+        ]
+
+## Streams [/streams/{stream}]
+
+### Retrieve a Stream [GET]
+
++ Request
+    + Parameters
+        + stream (required, string, `str1`) ... String `name` of the Stream.
+
++ Response 200 (application/json)
+        
+        {
+            "streamURL": "str2",
+            "status": "RUNNING"
+        }
+
+### Register a Stream [POST]
+
++ Request (application/x-www-form-urlencoded)
+
+    + Parameters
+        + stream (required, string) ... String `name` of the Stream.
+    
+    + Headers
+    
+    
+                streamIri: (uri, `http://192.168.99.100:4000/sgraph`) ... Location URI of the Stream.
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            "Stream str1 succesfully registered with IRI http://192.168.99.100:4000/sgraph"
+
+### Delete a Stream [DELETE]    
+
+     {TODO}
+
+## Query Collection [/queries]
+
+### List All queries [GET]
++ Request
+    + Parameters
+        + query (required, string, `query1`) String name of the query
+
++ Response 200 (application/json)
+
+        [
+          {
+            "id": "query2",
+            "type": "STREAM",
+            "status": "RUNNING"
+          },
+          {
+            "id": "query1",
+            "type": "STREAM",
+            "status": "RUNNING"
+          }
+        ]
+
+## Queries [/queries/{query}]
+
+### Retrieve a queries [GET]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Stream.
+
++ Response 200 (application/json)
+        
+        {
+          "id": "query1",
+          "type": "STREAM",
+          "streams": [
+            "str1"
+          ],
+          "body": "REGISTER STREAM query1 AS CONSTRUCT {?s ?p ?o} FROM STREAM <str1> [RANGE 1m STEP 1m] WHERE {?s ?p ?o}",
+          "status": "RUNNING"
+        }
+
+### Register a Query [POST]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) String name of the query
+
+    + Headers
+
+
+            queryBody: REGISTER STREAM query1 AS CONSTRUCT {?s ?p ?o} FROM STREAM <str1> [RANGE 1m STEP 1m] WHERE {?s ?p ?o}
+
++ Response 200 (application/x-www-form-urlencoded)
+    
+    
+            "Query query1 succesfully registered"
+    
+### Unregister a Query [DELETE]
+
+    + {TODO}
+
+## Observers Collection [/queries/{query}/observers]
+
+### List Observers of a Query [GET]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+
++ Response 200 (application/json)
+        
+        [
+          {
+            "id": "observer2",
+            "url": "ws://localhost:8282/query1"
+          },
+          {
+            "id": "observer1",
+            "url": "ws://localhost:8282/query1"
+          }
+        ]
+        
+
+## Observers [/queries/{query}/observers/{observer}]
+
+### Retrieve a Query's Observer[GET]
+
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+        + observer (required, string, `obs1`) ... String `name` of the Observer.
+
++ Response 200 (application/json)
+        
+        {
+          "id": "query1-observer1",
+          "queryName": "query1",
+          "url": "ws://localhost:8282/query1",
+          "observer": {
+            "sendEmptyResults": true,
+            "host": "localhost",
+            "port": 8282,
+            "path": "/query1",
+            "dataPath": "ws://localhost:8282/query1/results"
+          }
+        }
+
+
+### Register an Observer to a Query [POST]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+        + observer (required, string, `obs1`) ... String `name` of the Observer.
+
+    + Body
+    
+            + type (optional, string, `ws`) ... The type of the observer (websocket or pull)
+            + host (optional, string, `localhost`) ... The address of the websocket observer
+            + port (optional, integer, `9999`) ... The port of the websocket observer
+            
++ Response 200 (application/x-www-form-urlencoded)
+        
+        "http://localhost:8181/queries/query1/observers/{query}-{observer}"
+
+
+
+### Remove an Observer from a Query [DELETE]
+    
+    + {TODO}
