@@ -1,0 +1,23 @@
+#! /usr/bin/python
+
+from string import Template
+import uuid
+import os
+
+engine=os.environ['ENGINE']
+comp = Template((open('./docker-compose.yaml.tmpl')).read())
+prop = Template((open('./tmpl.properties')).read())
+
+m = {'engine':engine, 'uuid':uuid.uuid1(), 'env':'${env:RSP_DATA}'}
+
+res = comp.substitute(m)
+text_file = open("docker-compose.yml", "w")
+text_file.write(res)
+text_file.close()
+
+res = prop.substitute(m)
+text_file = open("./setup.properties", "w")
+text_file.write(res)
+text_file.close()
+
+print m
