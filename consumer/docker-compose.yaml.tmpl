@@ -18,7 +18,7 @@ $engine:
       run.engine: $engine
     container_name: $engine
     command: /opt/rspservice/config/setup.properties
-    image: streamreasoning/$engine
+    image: streamreasoning/$engine:latest
     ports:
       - "80:8182"
       - "9100-9200:9100-9200"
