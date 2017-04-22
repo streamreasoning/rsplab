@@ -4,7 +4,6 @@ cadvisor:
   ports:
     - "9090:9090"
     - "8080:8080"
-    - "8080:8080"
   command: -storage_driver=influxdb -storage_driver_db=rspengines -storage_driver_host=collector:8086 --housekeeping_interval=100ms
   volumes:
     - /:/rootfs:ro
