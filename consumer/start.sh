@@ -8,7 +8,7 @@ export ENGINE=$(hostname)
 #Pull latest version of the engine
 docker pull streamreasoning/$ENGINE 
 #Delete the old (untagged) one
-docker images -f "dangling=true" -q 
+docker rmi $(docker images -f "dangling=true" -q)
 
 #Programmatically build the docker-compose file to run the engine 
 ./build
