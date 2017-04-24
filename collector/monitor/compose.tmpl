@@ -11,9 +11,9 @@ grafana:
   build: ./grafana
   container_name: grafana
   ports:
-    - "80:3000"
+    - "3000:3000"
   links:
-    - $influx:influxsrv
+    - influxsrv:influxsrv
   volumes:
     - grafanadb:/var/lib/grafana
   environment:
@@ -24,12 +24,12 @@ grafana:
     - INFLUXDB_PASS=root
 
 notebook:
-  image: jupyter/minimal-notebook
+  image: streamreasoning/rsplab-noteboo:latest
   links:
     - influxsrv:influxsrv
     - grafana:grafana
   ports:
-    8080:8888
+    - "80:8888"
   volumes:
     - /home/rspdev/rsplib/:/home/jovyan/work
     - $qres:/home/jovyan/work/data
