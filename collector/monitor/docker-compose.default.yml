@@ -5,7 +5,7 @@ influxsrv:
     - "8086:8086"
     - "8080:8086"
   volumes:
-    - prova:/var/lib/influxdb:rw
+    - influxdata:/var/lib/influxdb:rw
 
 grafana:
   build: ./grafana
@@ -13,7 +13,7 @@ grafana:
   ports:
     - "80:3000"
   links:
-    - prova:influxsrv
+    - influxsrv:influxsrv
   volumes:
     - grafanadb:/var/lib/grafana
   environment:
@@ -32,6 +32,4 @@ notebook:
     8080:8888
   volumes:
     - /home/rspdev/rsplib/:/home/jovyan/work
-    - tenta:/home/jovyan/work/data
-
-
+    - resultsdata:/home/jovyan/work/data

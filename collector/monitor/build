@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+from string import Template
+from sys import argv
+import uuid
+import os
+
+volumes = argv[1:]
+
+with open("./docker-compose.yml", "a") as compose_file: 
+        comp = Template(open('./compose.tmpl').read())
+        compose_map = {"influx":volumes[0], "qres":volumes[1]}
+        compose_file.write(comp.substitute(compose_map))
+        compose_file.write('\n')
+        compose_file.close()
