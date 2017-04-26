@@ -27,7 +27,7 @@ def stream_type(stream):
 
 def add_stream_to_compose(s, n):
     with open("./docker-compose.yml", "a") as compose_file: 
-        comp = Template(open('./scripts/compose-tw.yaml.tmpl').read())
+        comp = Template(open('./scripts/triplewave.tmpl').read())
         compose_map = {
               "stream_name":s.lower(), "stream":s, "stream_type":stream_type(s),
               "uuid":str(uuid.uuid4()), "run_uuid":run_uuid,
@@ -64,7 +64,7 @@ def streams(argv):
             compose_file.close()
 
     with open("./scripts/docker-compose.yml", "a") as compose_file:
-        cad = Template(open('./scripts/cadvisor.yml.tmpl').read())
+        cad = Template(open('./scripts/cadvisor.tmpl').read())
         compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
         compose_file.write('\n')
         compose_file.close()

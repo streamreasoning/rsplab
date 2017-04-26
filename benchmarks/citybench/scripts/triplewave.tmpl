@@ -11,4 +11,4 @@ tw$stream_name:
       - "$port:$port"
       - "$ws_port:$ws_port"
     volumes:
-      - ./:/opt/tw/running
+      - $PWD/running/:/opt/tw/running:rw
