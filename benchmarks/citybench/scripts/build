@@ -27,7 +27,7 @@ def stream_type(stream):
 
 def add_stream_to_compose(s, n):
     with open("./docker-compose.yml", "a") as compose_file: 
-        comp = Template(open('./compose-tw.yaml.tmpl').read())
+        comp = Template(open('./scripts/compose-tw.yaml.tmpl').read())
         compose_map = {
               "stream_name":s.lower(), "stream":s, "stream_type":stream_type(s),
               "uuid":str(uuid.uuid4()), "run_uuid":run_uuid,
@@ -39,8 +39,8 @@ def add_stream_to_compose(s, n):
 
 
 def save_properties(stream, number):
-    with open("./"+stream+".properties", "w") as prop_file:
-        prop = Template(open('./properties.tmpl').read())
+    with open("./running/"+stream+".properties", "w") as prop_file:
+        prop = Template(open('./scripts/properties.tmpl').read())
 	scale_factor=1
 
 	if "_" in stream:
@@ -57,14 +57,14 @@ def save_properties(stream, number):
 
 def streams(argv):
     stream_number = 0
-    if os.path.isfile("./docker-compose.yml"):
-        with open("./docker-compose.yml", "a") as compose_file: 
+    if os.path.isfile("./scripts/docker-compose.yml"):
+        with open("./scripts/docker-compose.yml", "a") as compose_file: 
             compose_file.seek(0)
             compose_file.truncate()
             compose_file.close()
 
-    with open("./docker-compose.yml", "a") as compose_file:
-        cad = Template(open('./cadvisor.yml.tmpl').read())
+    with open("./scripts/docker-compose.yml", "a") as compose_file:
+        cad = Template(open('./scripts/cadvisor.yml.tmpl').read())
         compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
         compose_file.write('\n')
         compose_file.close()
