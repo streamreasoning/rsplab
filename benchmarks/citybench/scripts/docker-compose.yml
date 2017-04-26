@@ -1,0 +1,16 @@
+cadvisor:
+  labels:
+    stream.run.uudi: b6ffc90a-2a94-11e7-b46c-000d3a27b5e4
+  container_name: cadvisor_running
+  image: google/cadvisor:v0.24.0
+  ports:
+    - "9090:9090"
+    - "80:8080"
+  command: -storage_driver=influxdb -storage_driver_db=triplewave -storage_driver_host=collector:8086 --housekeeping_interval=100ms
+  volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+
+
