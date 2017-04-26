@@ -1,0 +1,44 @@
+cadvisor:
+  labels:
+    stream.run.uudi: 2794d22e-1d6f-11e7-9f22-2cf0ee0ade0a
+  container_name: cadvisor_running
+  image: google/cadvisor:v0.24.0
+  ports:
+    - "9090:9090"
+    - "80:8080"
+  command: -storage_driver=influxdb -storage_driver_db=triplewave -storage_driver_host=collector:8086 --housekeeping_interval=100ms
+  volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+
+
+twaarhustrafficdata182955:
+    labels:
+      stream.name: AarhusTrafficData182955
+      stream.type: traffic
+      stream.uuid: 294bb5b2-6786-4a40-b9c9-2342440a5178
+      stream.run.uuid: 2794d22e-1d6f-11e7-9f22-2cf0ee0ade0a
+    container_name: AarhusTrafficData182955
+    command: running/AarhusTrafficData182955.properties
+    build: ./
+    ports:
+      - "4000:4000"
+      - "4040:4040"
+    volumes:
+      - ./:/opt/tw/running
+twaarhustrafficdata158505:
+    labels:
+      stream.name: AarhusTrafficData158505
+      stream.type: traffic
+      stream.uuid: ff08b304-56d0-487e-9e0b-1da7c42f681d
+      stream.run.uuid: 2794d22e-1d6f-11e7-9f22-2cf0ee0ade0a
+    container_name: AarhusTrafficData158505
+    command: running/AarhusTrafficData158505.properties
+    build: ./
+    ports:
+      - "4001:4001"
+      - "4041:4041"
+    volumes:
+      - ./:/opt/tw/running

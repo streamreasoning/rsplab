@@ -1,0 +1,15 @@
+version: '2'
+services:
+  postgres:
+    image: "cb/postgres:latest"
+    container_name: postgres
+    build: ./postgres
+    ports:
+     - "5432:5432"
+  quest:
+    container_name: quest
+    build: ./quest/sesame/
+    ports:
+     - "80:8080"
+    links: 
+      - 'postgres:postgres'

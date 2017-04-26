@@ -1,5 +1,0 @@
-mappingId	AarhusParkingVacanciesObservation-$stream
-target		:$stream/{_ID}-{TS} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vacancies}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
-source		select  _id, md5("updatetime"::text) as TS, "updatetime"::timestamp AS TIMESTAMP, "totalspaces"::int - "vehiclecount"::int as vacancies, sp."property" as PID
-			from "$stream", "service_properties" as sp
-			WHERE sp."service"='$stream'

@@ -1,1 +1,0 @@
-csparql experiment configuration
