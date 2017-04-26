@@ -6,7 +6,7 @@ tw$stream_name:
       stream.run.uuid: $run_uuid
     container_name: $stream
     command: running/$stream.properties
-    build: ./
+    image: streamreasoning/twcitybench
     ports:
       - "$port:$port"
       - "$ws_port:$ws_port"

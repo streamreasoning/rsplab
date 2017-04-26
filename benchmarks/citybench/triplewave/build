@@ -73,7 +73,7 @@ def streams(argv):
         save_properties(argv[i], stream_number)
         add_stream_to_compose(argv[i], stream_number)
         stream_number  +=1
-        
+
 if len(argv) > 1 and argv[1] == '-q':
     query_streams = [argv[2]]
     with open(argv[2]) as input_file:
