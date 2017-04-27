@@ -1,0 +1,23 @@
+--2016-10-10 08:51:19--  http://github.com/YABench/yabench/archive/v1.1.1.tar.gz
+Resolving github.com... 192.30.253.113
+Connecting to github.com|192.30.253.113|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/YABench/yabench/archive/v1.1.1.tar.gz [following]
+--2016-10-10 08:51:19--  https://github.com/YABench/yabench/archive/v1.1.1.tar.gz
+Connecting to github.com|192.30.253.113|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/YABench/yabench/tar.gz/v1.1.1 [following]
+--2016-10-10 08:51:20--  https://codeload.github.com/YABench/yabench/tar.gz/v1.1.1
+Resolving codeload.github.com... 192.30.253.120
+Connecting to codeload.github.com|192.30.253.120|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 183404 (179K) [application/x-gzip]
+Saving to: 'v1.1.1.tar.gz'
+
+     0K .......... .......... .......... .......... .......... 27%  241K 1s
+    50K .......... .......... .......... .......... .......... 55%  502K 0s
+   100K .......... .......... .......... .......... .......... 83% 1.96M 0s
+   150K .......... .......... .........                       100% 1.78M=0.3s
+
+2016-10-10 08:51:21 (514 KB/s) - 'v1.1.1.tar.gz' saved [183404/183404]
+

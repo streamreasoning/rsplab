@@ -2,7 +2,7 @@ version: '2'
 services:
   fuseki:
     container_name: fuseki
-    build: ./fuseki-docker/
+    build: ./fuseki/
     ports:
      - "3030:3030"
   triplewave:
