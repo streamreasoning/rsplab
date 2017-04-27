@@ -1,31 +1,39 @@
 
-#RSP Lab Streamer 
+#RSP Lab 
 
-This repository contains the configurations, the data and the queries for each benchmark included in the RSP Lab suite.
+RSP Lab aims at being the a full stack development environment for RSP Engines.
+To this extent, we started by realizing a platform that will support research in RSP by simplifying one of the hardest tasks: the evaluation.
 
-Specifically, for each benchmark it contains:  
-    - A domain description
-    - A description of the data, i.e. Ontologies and Streams or generators
-    - The queries as they are provided and also translated in RSL-QL syntax
+## Streamer
+This repository **currently** contains two benchmarks CityBench and LSBench.
+For each benchmark we provide:  
+    - A domain description.
+    - A description of the data, i.e. Ontologies and Streams or generators.
+    - The queries as they are provided.
     - A set of scripts used to elaborate on the benchmark data and made them available for the RSP Lab suite
 
-## Included Benchmarks:
+### TripleWave
 
-- [Citybench](https://github.com/riccardotommasini/rsplab-benchmarks/blob/master/citybench/citybench.md)
+### Included Benchmarks:
 
+- [CityBench](https://github.com/streamreasoning/rsplab/blob/master/citybench/README.md)
+- [LSBench](https://github.com/riccardotommasini/rsplab/blob/master/lsbench/README.md)
 
-## Build
+## Consumer
 
-    Each streaming endpoint relies on the existence of a (virtual) RDF endpoint and a triplewave instance
+### RSPServices
+### C-SPARQL
+### CQELS
 
-    the RDF endpoint can be either a fuseki or quest one.
-        fuseki:
-            config.ttl that exposes at least a query endpoint and load the data (example in folder fuseki)
-        quest: 
-            requires postgres or mysql running with the relational data loaded
-            postgress loading script available in quest/postgres 
+## Collector
 
+### iPython Notebook
+### Grafana
+### InfluxDB
 
-### Form DockerHub
+## Deployment
 
-#Run
+### Azure
+### AWS
+
+Information on how to set up and run existing experiments can be found in the wiki.
