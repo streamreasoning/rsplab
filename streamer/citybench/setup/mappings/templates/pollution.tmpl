@@ -1,7 +1,0 @@
-mappingId	AarhusPollutionObservationMax-$stream
-target		:$stream-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:$stream . 
-source		SELECT setseed(0.00000001), md5(random()::text) AS random, 
-			sp."property" as PID ,timestamp, GREATEST(ozone,particullate_matter,carbon_monoxide,sulfure_dioxide,nitrogen_dioxide) as val
-			FROM "$stream" AS ist, "service_properties" as sp
-			WHERE sp."service"='$stream'
-

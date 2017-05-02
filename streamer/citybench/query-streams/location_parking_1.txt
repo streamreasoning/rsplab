@@ -1,3 +1,0 @@
-AarhusParkingDataKALKVAERKSVEJ
-SampleEventService
-UserLocationService
