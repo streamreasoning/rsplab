@@ -1,5 +1,5 @@
 [PrefixDeclaration]
-:		http://www.streamreasoning.org/ontologies/rsplab/citybench.owl#
+:		http://www.rsp-lab.org/triplewave/citybench/
 ct:		http://www.insight-centre.org/citytraffic#
 owl:		http://www.w3.org/2002/07/owl#
 rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -19,8 +19,8 @@ driverClass	org.postgresql.Driver
 [MappingDeclaration] @collection [[
 
 mappingId	AarhusParkingVacanciesObservation-AarhusParkingDataSKOLEBAKKEN
-target		:AarhusParkingDataSKOLEBAKKEN/{_ID}-{TS} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vacancies}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusParkingDataSKOLEBAKKEN . 
-source		select  _id, md5("updatetime"::text) as TS, "updatetime"::timestamp AS TIMESTAMP, "totalspaces"::int - "vehiclecount"::int as vacancies, sp."property" as PID
+target		:AarhusParkingDataSKOLEBAKKEN/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {vacancies}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusParkingDataSKOLEBAKKEN . 
+source		select  _id as id, setseed(_id::int * 0.00000001), md5(random()::text) as random, "updatetime"::timestamp AS TIMESTAMP, "totalspaces"::int - "vehiclecount"::int as vacancies, sp."property" as PID
 			from "AarhusParkingDataSKOLEBAKKEN", "service_properties" as sp
 			WHERE sp."service"='AarhusParkingDataSKOLEBAKKEN'
 

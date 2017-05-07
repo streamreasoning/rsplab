@@ -34,3 +34,4 @@ do
 done
 
 
+mkdir latest && mv ./*.obda latest
