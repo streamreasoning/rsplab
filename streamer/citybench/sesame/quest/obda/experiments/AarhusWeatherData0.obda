@@ -1,0 +1,45 @@
+[PrefixDeclaration]
+:		http://www.streamreasoning.org/ontologies/rsplab/citybench.owl#
+ct:		http://www.insight-centre.org/citytraffic#
+dr:		http://www.insight-centre/DataRequest#
+ces:		http://www.insight-centre.org/ces#
+dul:		http://www.loa.istc.cnr.it/ontologies/DUL.owl#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+ses:		http://www.insight-centre.org/dataset/SampleEventService#
+ssn:		http://purl.oclc.org/NET/ssnx/ssn#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+prof:		http://www.daml.org/services/owl-s/1.2/Profile.owl#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+service:		http://www.daml.org/services/owl-s/1.2/Service.owl#
+servicep:	http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#
+grounding:	http://www.daml.org/services/owl-s/1.2/Grounding.owl#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://postgres:5432/initdb
+username	root
+password	root
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	AarhusWeatherHumidityObservation-AarhusWeatherData
+target		:AarhusWeatherData0/H{ID} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
+source		select  md5("TIMESTAMP"::text) as ID, "TIMESTAMP"::timestamp AS TIMESTAMP, "hum" as val, sp."property" as PID
+			from "AarhusWeatherData0", "service_properties" as sp
+			WHERE sp."service"='AarhusWeatherData0' and sp."property_class"='Humidity'
+
+mappingId	AarhusWeatherTemperatureObservation-AarhusWeatherData
+target		:AarhusWeatherData0/T{ID} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
+source		select  md5("TIMESTAMP"::text) as ID, "TIMESTAMP"::timestamp AS TIMESTAMP, "tempm" as val, sp."property" as PID
+			from "AarhusWeatherData0", "service_properties" as sp
+			WHERE sp."service"='AarhusWeatherData0' and sp."property_class"='Temperature'
+
+mappingId	AarhusWeatherWindSpeedObservation-AarhusWeatherData
+target		:AarhusWeatherData0/W{ID} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:double ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 
+source		select  md5("TIMESTAMP"::text) as ID, "TIMESTAMP"::timestamp AS TIMESTAMP, "wspdm" as val, sp."property" as PID
+			from "AarhusWeatherData0", "service_properties" as sp
+			WHERE sp."service"='AarhusWeatherData0' and sp."property_class"='WindSpeed'
+]]
+
