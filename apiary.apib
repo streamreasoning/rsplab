@@ -1,0 +1,292 @@
+FORMAT: 1A
+HOST: http://rsp.streamreasoning.org/api
+
+# RSP API
+
+APIs allowing consumers to interact with RDF Stream processors.
+
+## Engine Collection [/engine]
+
+### Status [GET]
+
++ Response 200 (application/json)
+    
+        {
+            "name": "csparql",
+            "host": "csparql/",
+            "port": 8182,
+            "empty_results": false,
+            "inference": false,
+            "timestamfunction": false,
+            "backloop": true
+        }
+
+## Datasets Collection [/datasets]
+
+### List All Datasets [GET]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "iri": "https://streamreasoning.org/ds1.rdf",
+            "isDefault": false,
+            "name": "ds1",
+            "serialization": "RDF/XML",
+            "status": "STATIC"
+          },
+          {
+            "iri": "https://streamreasoning.org/ds2.rdf",
+            "isDefault": true,
+            "name": "ds2",
+            "serialization": "JSON-LD",
+            "status": "STATIC"
+          }
+        ]
+
+## Datasets [/datasets/{dataset}]
+
+### Retrieve a Datasets [GET]
+
++ Request
+    + Parameters
+        + dataset (required, string, `str1`) ... String `name` of the Datasets.
+
++ Response 200 (application/json)
+        
+        {
+            "iri": "https://streamreasoning.org/SensorRepository.rdf",
+            "isDefault": false,
+            "name": "SensorRepository",
+            "serialization": "RDF/XML",
+            "status": "STATIC"
+        }
+
+### Register a Dataset [POST]
+
++ Request (application/x-www-form-urlencoded)
+
+    + Parameters
+        + dataset (required, string) ... String `name` of the Dataset.
+    
+    + Body
+    
+            + location: `https://streamreasoning.org/SensorRepository.rdf`)
+            + name: (string, `SensorRepository`) ... internal name of the dataset.
+            + serialization: (string, `RDF/XML`)  ... serialization of the dataset.
+            + default: (boolean, 'false')  ... specifies if the dataset should be considered as default in queries
+
++ Response 200 (application/json)
+
+    + Body
+    
+            "Dataset SensorRepository succesfully registered with IRI https://streamreasoning.org/SensorRepository.rdf"
+
+### Delete a Dataset [DELETE]    
+
++ Request
+    + Parameters
+        + dataset (required, string, `str1`) ... String `name` of the Datasets.
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            "Dataset SensorRepository succesfully unregistered"
+
+## Stream Collection [/streams]
+
+### List All Streams [GET]
+
++ Response 200 (application/json)
+
+        [
+          {
+            "streamURL": "str2",
+            "status": "RUNNING"
+          },
+          {
+            "streamURL": "str1",
+            "status": "RUNNING"
+          }
+        ]
+
+## Streams [/streams/{stream}]
+
+### Retrieve a Stream [GET]
+
++ Request
+    + Parameters
+        + stream (required, string, `str1`) ... String `name` of the Stream.
+
++ Response 200 (application/json)
+        
+        {
+            "streamURL": "str2",
+            "status": "RUNNING"
+        }
+
+### Register a Stream [POST]
+
++ Request (application/x-www-form-urlencoded)
+
+    + Parameters
+        + stream (required, string) ... String `name` of the Stream.
+    
+    + Body
+    
+    
+                streamIri: (uri, `http://192.168.99.100:4000/sgraph`) ... Location URI of the Stream.
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            "Stream str1 succesfully registered with IRI http://192.168.99.100:4000/sgraph"
+
+### Delete a Stream [DELETE]    
+
++ Request
+    + Parameters
+        + stream (required, string, `str1`) ... String `name` of the stream.
+
++ Response 200 (application/json)
+    
+    + Body
+    
+            "stream name succesfully unregistered"
+
+## Query Collection [/queries]
+
+### List All queries [GET]
++ Request
+    + Parameters
+        + query (required, string, `query1`) String name of the query
+
++ Response 200 (application/json)
+
+        [
+          {
+            "id": "query2",
+            "type": "STREAM",
+            "status": "RUNNING"
+          },
+          {
+            "id": "query1",
+            "type": "STREAM",
+            "status": "RUNNING"
+          }
+        ]
+
+## Queries [/queries/{query}]
+
+### Retrieve a queries [GET]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Stream.
+
++ Response 200 (application/json)
+        
+        {
+          "id": "query1",
+          "type": "STREAM",
+          "streams": [
+            "str1"
+          ],
+          "body": "REGISTER STREAM query1 AS CONSTRUCT {?s ?p ?o} FROM STREAM <str1> [RANGE 1m STEP 1m] WHERE {?s ?p ?o}",
+          "status": "RUNNING"
+        }
+
+### Register a Query [POST]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) String name of the query
+
+    + Body
+
+
+            queryBody: REGISTER STREAM query1 AS CONSTRUCT {?s ?p ?o} FROM STREAM <str1> [RANGE 1m STEP 1m] WHERE {?s ?p ?o}
+
++ Response 200 (application/x-www-form-urlencoded)
+    
+    
+            "Query query1 succesfully registered"
+
+### Delete a Query [DELETE]
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+
+## Observers Collection [/queries/{query}/observers]
+
+### List Observers of a Query [GET]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+
++ Response 200 (application/json)
+        
+        [
+          {
+            "id": "observer2",
+            "url": "ws://localhost:8282/query1"
+          },
+          {
+            "id": "observer1",
+            "url": "ws://localhost:8282/query1"
+          }
+        ]
+        
+
+## Observers [/queries/{query}/observers/{observer}]
+
+### Retrieve a Query's Observer[GET]
+
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+        + observer (required, string, `obs1`) ... String `name` of the Observer.
+
++ Response 200 (application/json)
+        
+        {
+          "id": "query1-observer1",
+          "queryName": "query1",
+          "url": "ws://localhost:8282/query1",
+          "observer": {
+            "sendEmptyResults": true,
+            "host": "localhost",
+            "port": 8282,
+            "path": "/query1",
+            "dataPath": "ws://localhost:8282/query1/results"
+          }
+        }
+
+
+### Register an Observer to a Query [POST]
+
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+        + observer (required, string, `obs1`) ... String `name` of the Observer.
+
+    + Body
+    
+            + type (optional, string, `ws`) ... The type of the observer (websocket or pull)
+            + host (optional, string, `localhost`) ... The address of the websocket observer
+            + port (optional, integer, `9999`) ... The port of the websocket observer
+            
++ Response 200 (application/x-www-form-urlencoded)
+        
+        "http://localhost:8181/queries/query1/observers/{query}-{observer}"
+
+### Delete an Observer from a Query [DELETE]
+    
++ Request
+    + Parameters
+        + query (required, string, `query1`) ... String `name` of the Query.
+        + observer (required, string, `obs1`) ... String `name` of the Observer.
