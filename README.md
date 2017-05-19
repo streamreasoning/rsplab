@@ -3,6 +3,9 @@
 
 [![DOI](https://zenodo.org/badge/80531774.svg)](https://zenodo.org/badge/latestdoi/80531774)
 
+
+## [Documentation](https://github.com/streamreasoning/rsplab/wiki)
+
 RSP Lab aims at being the a full stack development environment for RSP Engines.
 To this extent, we started by realizing a platform that will support research in RSP by simplifying one of the hardest tasks: the evaluation.
 
