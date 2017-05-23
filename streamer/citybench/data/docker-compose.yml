@@ -12,3 +12,4 @@ quest:
   links: ['postgres:postgres']
   volumes:
     - ./quest/obda:/usr/local/jetty8/obda
+    - questdata:/root/.aduna/openrdf-sesame/repositories/
