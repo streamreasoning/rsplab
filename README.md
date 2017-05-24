@@ -1,4 +1,6 @@
-# RSP Lab [![DOI](https://zenodo.org/badge/80531774.svg)](https://zenodo.org/badge/latestdoi/80531774)
+# RSP Lab 
+
+[![DOI](https://zenodo.org/badge/80531774.svg)](https://zenodo.org/badge/latestdoi/80531774)
 
 In Stream Reasoning (SR),  empirical research on RDF Stream Processing (RSP) is attracting a growing attention. 
 The SR community proposed methodologies and benchmarks to investigate the RSP solution space and improve existing approaches. 
