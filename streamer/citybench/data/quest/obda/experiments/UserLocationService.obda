@@ -1,0 +1,32 @@
+[PrefixDeclaration]
+:		http://www.rsp-lab.org/triplewave/citybench/
+ct:		http://www.insight-centre.org/citytraffic#
+dr:		http://www.insight-centre/DataRequest#
+ces:		http://www.insight-centre.org/ces#
+dul:		http://www.loa.istc.cnr.it/ontologies/DUL.owl#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+ses:		http://www.insight-centre.org/dataset/SampleEventService#
+ssn:		http://purl.oclc.org/NET/ssnx/ssn#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+prof:		http://www.daml.org/services/owl-s/1.2/Profile.owl#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+service:		http://www.daml.org/services/owl-s/1.2/Service.owl#
+servicep:	http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#
+grounding:	http://www.daml.org/services/owl-s/1.2/Grounding.owl#
+
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://postgres:5432/initdb
+username	root
+password	root
+driverClass	org.postgresql.Driver
+
+[MappingDeclaration] @collection [[
+mappingId	UserLocationObservation
+target		:{ID} a ssn:Observation ; ssn:featureOfInterest <http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#context_do63jk2t8c3bjkfb119ojgkhs7> ; ct:hasLat {lat}^^xsd:double ; ct:hasLon {long}^^xsd:double . 
+source		select *
+			from "UserLocationService"
+]]
+
