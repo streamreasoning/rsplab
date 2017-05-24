@@ -15,4 +15,4 @@ docker-compose up -d
 cat docker-compose.yml
 echo $@
 	
-./scripts/create-dashboards.sh $@
+#./scripts/create-dashboards.sh $@
