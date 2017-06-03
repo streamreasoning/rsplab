@@ -25,3 +25,7 @@ To this extent, we started by realizing a platform that will support research
 
 Information on how to set up and run existing 
 experiments can be found in the [wiki](https://github.com/streamreasoning/rsplab/wiki).
+
+## Slack Channel
+
+Ask for support or suggest your ideas through the #rsplab channel @ [StreamReasoningSlack](https://streamreasoningslack.herokuapp.com/)
