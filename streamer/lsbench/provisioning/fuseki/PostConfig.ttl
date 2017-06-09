@@ -1,0 +1,30 @@
+@prefix :      <http://base/#> .
+@prefix tdb:   <http://jena.hpl.hp.com/2008/tdb#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ja:    <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
+
+:dataset  a     ja:RDFDataset .
+
+<#service1> rdf:type fuseki:Service ;
+    fuseki:name                       "LSBenchPostStream" ;
+    fuseki:serviceQuery               "query" ;    # SPARQL query service (alt name)
+    fuseki:serviceUpdate              "update" ;   # SPARQL update service
+    fuseki:serviceUpload              "upload" ;   # Non-SPARQL upload service
+    fuseki:serviceReadWriteGraphStore "data" ;     # SPARQL Graph store protocol (read and write)
+    # A separate read-only graph store endpoint:
+    fuseki:serviceReadGraphStore      "get" ;      # SPARQL Graph store protocol (read only)
+    fuseki:dataset                   <#post> ;
+    .
+
+<#post>    rdf:type ja:RDFDataset ;
+    rdfs:label "Data" ;
+    ja:namedGraph
+        [ ja:graphName      <http://streamreasoning/rsplab/lsbench/input> ;
+          ja:graph          <#postgraph> ] ;
+    .
+
+<#postgraph> rdf:type ja:MemoryModel ;
+    ja:content [ja:externalContent <file:../../post.ttl> ] .
+

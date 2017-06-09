@@ -1,0 +1,70 @@
+10
+
+dir
+103
+svn+ssh://duc@london.ins.cwi.nl/export/scratch2/duc/repositories/sibstream/SocialGraph/src/sib
+svn+ssh://duc@london.ins.cwi.nl/export/scratch2/duc/repositories
+
+
+
+2012-06-17T06:54:24.918391Z
+103
+duc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+53680aca-37c8-4977-80b1-87eb0aec63a5
+
+graphalgo
+dir
+
+storage
+dir
+
+dictionary
+dir
+
+generator
+dir
+
+extras
+dir
+
+vocabulary
+dir
+
+serializer
+dir
+
+objects
+dir
+
+bibm
+dir
+
+testdriver
+dir
+
+util
+dir
+
+old
+dir
+
+csvreader
+dir
+
+experiment
+dir
+

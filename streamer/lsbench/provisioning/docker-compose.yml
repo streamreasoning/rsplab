@@ -1,0 +1,14 @@
+version: '2'
+services:
+  fuseki:
+    container_name: fuseki
+    build: ./fuseki/
+    ports:
+     - "3030:3030"
+  triplewave:
+    container_name: lstw_running
+    build: ./triplewave/
+    ports:
+      - "4000:4000"
+      - "4040:4040"
+    links: ['fuseki:fuseki']
