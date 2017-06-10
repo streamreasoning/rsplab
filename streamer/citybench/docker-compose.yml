@@ -1,0 +1,15 @@
+twaarhustrafficdata182955:
+    labels:
+      stream.name: AarhusTrafficData182955
+      stream.type: traffic
+      stream.uuid: d14fd1e9-51da-4dd9-917c-89517e06db7c
+      stream.run.uuid: 1dffec66-4610-11e7-88a9-784f43a5c461
+    container_name: AarhusTrafficData182955
+    command: running/AarhusTrafficData182955.properties
+    image: streamreasoning/twcitybench
+    ports:
+      - "4000:4000"
+      - "4040:4040"
+    volumes:
+      - ./running/:/opt/tw/running:rw
+

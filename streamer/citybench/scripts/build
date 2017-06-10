@@ -7,8 +7,8 @@ import os
 
 machine=os.environ['MACHINE']
 run_uuid=str(uuid.uuid1())
-host=machine+".westeurope.cloudapp.azure.com"
-base_url="http://citybench1.westeurope.cloudapp.azure.com/openrdf-sesame/repositories"
+host="localhost"
+base_url="http://172.17.0.1:8080/openrdf-sesame/repositories"
 base_port=4000
 base_ws_port=4040
 
@@ -63,11 +63,11 @@ def streams(argv):
             compose_file.truncate()
             compose_file.close()
 
-    with open("./docker-compose.yml", "a") as compose_file:
-        cad = Template(open('./scripts/cadvisor.tmpl').read())
-        compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
-        compose_file.write('\n')
-        compose_file.close()
+    # with open("./docker-compose.yml", "a") as compose_file:
+    #     cad = Template(open('./scripts/cadvisor.tmpl').read())
+    #     compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
+    #     compose_file.write('\n')
+    #     compose_file.close()
 
     for i in range(1,len(argv)):
         save_properties(argv[i], stream_number)
