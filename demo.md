@@ -19,3 +19,6 @@ In this demo we show all the workflow necessary for deploying and executing a RS
 The goal of this demostration is to explain how to use RSPlab effectively to observe changes in the engine dynamics. Indeed, 
 we intend to exploit the assisted data visualization tools to show how each of the aforementioned steps impact on the systems performance.
  
+## References
+
+[1] Tommasini, Riccardo, et al. "Heaven: A Framework for Systematic Comparative Research Approach for RSP Engines." International Semantic Web Conference. Springer, Cham, 2016.
