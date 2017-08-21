@@ -29,3 +29,11 @@ experiments can be found in the [wiki](https://github.com/streamreasoning/rsplab
 ## Slack Channel
 
 Ask for support or suggest your ideas through the #rsplab channel @ [StreamReasoningSlack](https://streamreasoningslack.herokuapp.com/)
+
+# UPDATES
+
+- RSPLab Resource Paper accepted at ISWC 20171 [Accepted Papers](https://iswc2017.semanticweb.org/program/accepted-papers/)
+- RSPLab demo details available at [rsp-lab.org/demo](rsp-lab.org/demo)
+
+
+
