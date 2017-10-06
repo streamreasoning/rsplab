@@ -4,7 +4,7 @@
 
 In Stream Reasoning (SR),  empirical research on RDF Stream Processing (RSP) is attracting a growing attention. 
 The SR community proposed methodologies and benchmarks to investigate the RSP solution space and improve existing approaches. 
-In this paper, we present \rsplab, an infrastructure that reduces the effort required to design and execute reproducible experiments as well as share their results.
+In this paper, we present RSPlab, an infrastructure that reduces the effort required to design and execute reproducible experiments as well as share their results.
 RSPlab integrates two existing RSP benchmarks (LSBench and CityBench) and two RSP engines (C-SPARQL engine and CQELS).  
 It provides a programmatic environment to: deploy in the cloud RDF Streams and RSP engines, interact with them using TripleWave and RSP Services, and continuously monitor their performances and collect statistics. RSPlab is released as open-source under an Apache 2.0 license.
 
@@ -33,7 +33,7 @@ Ask for support or suggest your ideas through the #rsplab channel @ [StreamReaso
 # UPDATES
 
 - RSPLab Resource Paper accepted at ISWC 2017! [Accepted Papers](https://iswc2017.semanticweb.org/program/accepted-papers/)
-- RSPLab demo details available at [rsp-lab.org/demo](rsp-lab.org/demo)
+- RSPLab demo details available at [http://rsp-lab.org/demo](rsp-lab.org/demo)
 
 
 
