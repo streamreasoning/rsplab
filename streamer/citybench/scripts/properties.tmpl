@@ -1,4 +1,15 @@
 ###############################################################################
+########################### REPOSITORY  ###############################
+###############################################################################
+
+server.name=$stream
+server.port=8080
+ontop.properties=./postgres.properties
+ontop.owl=./obda/experiments/citybench.owl
+ontop.obda=./obda/experiments/$stream.obda
+
+
+###############################################################################
 ########################### Metadata            ###############################
 ###############################################################################
 
@@ -46,7 +57,7 @@ ws_address=ws://$host:$ws_port/$ws_loc
 mode=replay
 
 # From
-rdf_query_endpoint=$base_url/$stream
+rdf_query_endpoint=$base_url
 
 # Enable External Stream Registration
 delayed=true

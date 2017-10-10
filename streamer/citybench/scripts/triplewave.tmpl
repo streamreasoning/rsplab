@@ -1,3 +1,14 @@
+sparql$stream_name:
+    labels:
+      server.name: $stream
+    container_name: data_server_$stream
+    command: running/$stream.properties
+    build: ./ontop/
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./running/:/opt/tw/running:rw
+
 tw$stream_name:
     labels:
       stream.name: $stream

@@ -1,0 +1,14 @@
+PREFIX ct: <http://www.insight-centre.org/citytraffic#>
+PREFIX ssn: <http://purl.oclc.org/NET/ssnx/ssn#>
+
+CONSTRUCT {
+$observation a ssn:Observation ; 
+    ct:hasValue ?value ;
+    ssn:observedBy ?sensor ;
+    ssn:observedProperty ?property .
+}
+WHERE { 
+$observation ct:hasValue ?value ;
+    ssn:observedBy ?sensor ;
+    ssn:observedProperty ?property .
+}

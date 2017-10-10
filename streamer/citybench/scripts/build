@@ -8,7 +8,6 @@ import os
 machine=os.environ['MACHINE']
 run_uuid=str(uuid.uuid1())
 host="localhost"
-base_url="http://172.17.0.1:8080/openrdf-sesame/repositories"
 base_port=4000
 base_ws_port=4040
 
@@ -50,7 +49,7 @@ def save_properties(stream, number):
 	prop_map = { "stream":stream,"stream_type":stream_type(stream),
             "host":host, "port":(base_port+number),
             "ws_loc":"primus", "ws_port":(base_ws_port+number), 
-            "base_url":base_url, "scale_factor":scale_factor, "run_uuid":run_uuid }
+            "base_url":"http://data_server_"+stream+":8080/"+stream+"/sparql", "scale_factor":scale_factor, "run_uuid":run_uuid }
         prop_file.write(prop.substitute(prop_map))
         prop_file.close()
 #end
@@ -68,6 +67,13 @@ def streams(argv):
     #     compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
     #     compose_file.write('\n')
     #     compose_file.close()
+
+
+    with open("./docker-compose.yml", "a") as compose_file:
+        cad = Template(open('./scripts/postgres.tmpl').read())
+        compose_file.write(cad.substitute({'run_uuid':run_uuid, "machine":"cadvisor_running"}))
+        compose_file.write('\n')
+        compose_file.close()
 
     for i in range(1,len(argv)):
         save_properties(argv[i], stream_number)

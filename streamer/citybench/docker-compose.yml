@@ -1,15 +1,40 @@
-twaarhustrafficdata182955:
-    labels:
-      stream.name: AarhusTrafficData182955
-      stream.type: traffic
-      stream.uuid: d14fd1e9-51da-4dd9-917c-89517e06db7c
-      stream.run.uuid: 1dffec66-4610-11e7-88a9-784f43a5c461
-    container_name: AarhusTrafficData182955
-    command: running/AarhusTrafficData182955.properties
-    image: streamreasoning/twcitybench
-    ports:
-      - "4000:4000"
-      - "4040:4040"
-    volumes:
-      - ./running/:/opt/tw/running:rw
+version: '3'
+services:
+  postgres:
+   labels:
+    stream.run.uudi: f67820ae-a83a-11e7-8371-1a00a83a5601
+   container_name: postgres
+   build: ./postgres
+   ports:
+    - "5432:5432"
+
+  ontop:
+      labels:
+        server.name: AarhusTrafficData158505
+      container_name: data_server
+      command: running/AarhusTrafficData158505.properties
+      build: ./ontop
+      depends_on:
+        - postgres
+      ports:
+        - "8080:8080"
+      volumes:
+        - ./running/:/usr/local/streamer/running:rw
+
+  triplewave:
+      labels:
+        stream.name: AarhusTrafficData158505
+        stream.type: traffic
+        stream.uuid: 36ac860f-1457-42d0-a934-59c33602e8ca
+        stream.run.uuid: f67820ae-a83a-11e7-8371-1a00a83a5601
+      container_name: AarhusTrafficData158505
+      command: running/AarhusTrafficData158505.properties
+      build: ./triplewave
+      depends_on:
+        - ontop
+      ports:
+        - "4000:4000"
+        - "4040:4040"
+      volumes:
+        - ./running/:/opt/tw/running:rw
 
