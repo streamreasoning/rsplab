@@ -3,7 +3,7 @@
 #Hostname coincide with the engine to run csparql/cquels 
 #If necessary modifies /etc/hosts
 
-export ENGINE=$(hostname)
+export ENGINE=csparql
 
 #Pull latest version of the engine
 docker pull streamreasoning/$ENGINE 

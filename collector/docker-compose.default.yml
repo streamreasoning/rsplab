@@ -17,9 +17,9 @@ grafana:
   volumes:
     - grafanadb:/var/lib/grafana
   environment:
-    - INFLUXDB_HOST=collector
+    - INFLUXDB_HOST=influxsrv
     - INFLUXDB_PORT=8086
-    - INFLUXDB_NAME=rspengine
+    - INFLUXDB_NAME=rspengines
     - INFLUXDB_USER=root
     - INFLUXDB_PASS=root
 

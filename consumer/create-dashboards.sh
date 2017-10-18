@@ -17,8 +17,8 @@
 #   create-dashboards.sh
 #
 
-INFLUXDB_API_URL='http://collector:8086/'
-INFLUXDB_API_REMOTE_URL='http:/collector:8086/'      # url for commands proxied through Grafana
+INFLUXDB_API_URL='http://localhost:8086/'
+INFLUXDB_API_REMOTE_URL='http://localhost:8086/'      # url for commands proxied through Grafana
 INFLUXDB_ROOT_LOGIN='root'
 INFLUXDB_ROOT_PASSWORD='root'
 
@@ -26,8 +26,8 @@ INFLUXDB_DB_NAME=rspengines
 INFLUXDB_DB_LOGIN=root
 INFLUXDB_DB_PASSWORD=root
 
-GRAFANA_URL='http://collector:3000/'
-GRAFANA_API_URL='http://collector:3000/api/'
+GRAFANA_URL='http://localhost:3000/'
+GRAFANA_API_URL='http://localhost:3000/api/'
 GRAFANA_LOGIN='admin'
 GRAFANA_PASSWORD='admin'
 GRAFANA_DATA_SOURCE_NAME='rspengines'

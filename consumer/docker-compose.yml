@@ -11,13 +11,13 @@ cadvisor:
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
 
-$engine:
+csparql:
     labels: 
-      run.uuid: $uuid
-      run.engine: $engine
-    container_name: $engine
+      run.uuid: 7b4a7ab3-b3fa-11e7-8fd5-8c85902d2485
+      run.engine: csparql
+    container_name: csparql
     command: /opt/rspservice/config/setup.properties
-    image: streamreasoning/$engine:latest
+    image: streamreasoning/csparql:latest
     ports:
       - "8182:8182"
       - "9100-9200:9100-9200"
