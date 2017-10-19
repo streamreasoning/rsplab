@@ -1,0 +1,11 @@
+{ "ssn": "http://purl.oclc.org/NET/ssnx/ssn#",
+  "ses": "http://www.insight-centre.org/dataset/SampleEventService#",
+  "ct": "http://www.insight-centre.org/citytraffic#",
+  "prov":"http://www.w3.org/ns/prov#",
+  "sld":"http://www.streamreasoning.org/sld#",
+  "xsd":"http://www.w3.org/2001/XMLSchema#",
+  "generatedAt" : {
+  "@id": "http://www.w3.org/ns/prov#generatedAtTime", 
+  "@type": "http://www.w3.org/2001/XMLSchema#dateTime" }
+
+}

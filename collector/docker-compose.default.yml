@@ -3,7 +3,6 @@ influxsrv:
   container_name: influxsrv
   ports:
     - "8086:8086"
-    - "8080:8086"
   volumes:
     - influxdata:/var/lib/influxdb:rw
 
@@ -29,7 +28,7 @@ notebook:
     - influxsrv:influxsrv
     - grafana:grafana
   ports:
-    8080:8888
+    8888:8888
   volumes:
     - /home/rspdev/rsplib/:/home/jovyan/work
     - resultsdata:/home/jovyan/work/data

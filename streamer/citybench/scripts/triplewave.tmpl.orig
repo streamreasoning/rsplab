@@ -1,0 +1,47 @@
+<<<<<<< HEAD
+
+
+  tw$stream_name:
+      labels:
+        stream.name: $stream
+        stream.type: $stream_type
+        stream.uuid: $uuid
+        stream.run.uuid: $run_uuid
+      container_name: $stream
+      command: running/$stream.properties
+      image: streamreasoning/twcitybench
+      networks:
+        static-network:
+          ipv4_address: $host
+      ports:
+        - "$port:$port"
+        - "$ws_port:$ws_port"
+      volumes:
+        - ./running/:/opt/tw/running:rw
+=======
+sparql$stream_name:
+    labels:
+      server.name: $stream
+    container_name: data_server_$stream
+    command: running/$stream.properties
+    build: ./ontop/
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./running/:/opt/tw/running:rw
+
+tw$stream_name:
+    labels:
+      stream.name: $stream
+      stream.type: $stream_type
+      stream.uuid: $uuid
+      stream.run.uuid: $run_uuid
+    container_name: $stream
+    command: running/$stream.properties
+    image: streamreasoning/twcitybench
+    ports:
+      - "$port:$port"
+      - "$ws_port:$ws_port"
+    volumes:
+      - ./running/:/opt/tw/running:rw
+>>>>>>> db67e4902aedbb3c18c9e9c3900f8540acbd29b6

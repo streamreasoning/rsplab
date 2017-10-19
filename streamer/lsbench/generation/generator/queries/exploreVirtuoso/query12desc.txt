@@ -1,4 +1,0 @@
-QueryType=Select
-
-10recentday=10RecentDays
-tag=LocationTag

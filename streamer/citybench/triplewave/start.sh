@@ -1,6 +1,8 @@
 #!/bin/bash
 #. triplewave.properties
  
+sh wait-for-it.sh  postgres:5432
+sh wait-for-it.sh  data_server:8080
 
 while [[ "$#" > 1 ]]; do case $1 in
     --configuration) configuration="$2";;

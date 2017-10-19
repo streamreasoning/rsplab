@@ -1,0 +1,24 @@
+run_uuid: random
+cadvisor:
+  ports:
+    - "9090:9090"
+  storage_driver: influxdb 
+  storage_driver_db: triplewave 
+  storage_driver_host: "collector:8086"
+  housekeeping_interval: "100ms"
+#
+influxdb:
+  api_url: /
+  api_remote_url: /    # url for commands proxied through grafana_data_source_name
+  root_login: root
+  root_password: root
+  databse: triplewave
+  db_login: root
+  db_password: root
+#
+grafana:
+  port: 3000
+  api_url: api/
+  login: admin
+  password: admin
+  grafana_data_source_name: triplewave

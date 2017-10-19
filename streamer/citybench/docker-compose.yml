@@ -1,48 +1,40 @@
-version: '2'
-networks:
-  static-network:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          ip_range: 172.28.5.0/24
+version: '3'
 services:
+  postgres:
+   labels:
+    stream.run.uudi: f67820ae-a83a-11e7-8371-1a00a83a5601
+   container_name: postgres
+   build: ./postgres
+   ports:
+    - "5432:5432"
 
-
-  twaarhustrafficdata182955:
+  ontop:
       labels:
-        stream.name: AarhusTrafficData182955
-        stream.type: traffic
-        stream.uuid: fe557b15-6b75-42fb-a2ed-e1f8dd027df0
-        stream.run.uuid: 5ce3fb8a-b3fb-11e7-837c-8c85902d2485
-      container_name: AarhusTrafficData182955
-      command: running/AarhusTrafficData182955.properties
-      image: streamreasoning/twcitybench
-      networks:
-        static-network:
-          ipv4_address: 172.20.0.1
+        server.name: AarhusTrafficData158505
+      container_name: data_server
+      command: running/AarhusTrafficData158505.properties
+      build: ./ontop
+      depends_on:
+        - postgres
       ports:
-        - "4000:4000"
-        - "4040:4040"
+        - "8080:8080"
       volumes:
-        - ./running/:/opt/tw/running:rw
+        - ./running/:/usr/local/streamer/running:rw
 
-
-
-  twaarhustrafficdata158505:
+  triplewave:
       labels:
         stream.name: AarhusTrafficData158505
         stream.type: traffic
-        stream.uuid: 3ff47af6-af18-434f-83f6-440c2da823ea
-        stream.run.uuid: 5ce3fb8a-b3fb-11e7-837c-8c85902d2485
+        stream.uuid: 36ac860f-1457-42d0-a934-59c33602e8ca
+        stream.run.uuid: f67820ae-a83a-11e7-8371-1a00a83a5601
       container_name: AarhusTrafficData158505
       command: running/AarhusTrafficData158505.properties
-      image: streamreasoning/twcitybench
-      networks:
-        static-network:
-          ipv4_address: 172.20.0.2
+      build: ./triplewave
+      depends_on:
+        - ontop
       ports:
-        - "4001:4001"
-        - "4041:4041"
+        - "4000:4000"
+        - "4040:4040"
       volumes:
         - ./running/:/opt/tw/running:rw
 
