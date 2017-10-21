@@ -1,4 +1,4 @@
-FROM rsplab-stream-server
+FROM streamreasoning/stream-server:latest
 
 ADD ./obda/experiments ./obda/experiments
 ADD ./default.properties ./default.properties
