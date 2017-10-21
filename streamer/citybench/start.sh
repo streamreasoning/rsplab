@@ -9,7 +9,7 @@ docker build -t  streamreasoning/twcitybench ./triplewave/
 
 rm -rf ./*.yml
 
-./scripts/build $@
+python3 ./scripts/build $@
 docker-compose up -d
 
 cat docker-compose.yml

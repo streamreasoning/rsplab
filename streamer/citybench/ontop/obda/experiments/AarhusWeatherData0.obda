@@ -16,13 +16,6 @@ service:		http://www.daml.org/services/owl-s/1.2/Service.owl#
 servicep:	http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#
 grounding:	http://www.daml.org/services/owl-s/1.2/Grounding.owl#
 
-[SourceDeclaration]
-sourceUri	datasource1
-connectionUrl	jdbc:postgresql://postgres:5432/initdb
-username	root
-password	root
-driverClass	org.postgresql.Driver
-
 [MappingDeclaration] @collection [[
 mappingId	AarhusWeatherHumidityObservation-AarhusWeatherData
 target		:AarhusWeatherData0/H{ID} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {val}^^xsd:long ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusWeatherData0 . 

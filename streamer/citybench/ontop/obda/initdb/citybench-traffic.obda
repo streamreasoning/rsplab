@@ -16,13 +16,6 @@ service:		http://www.daml.org/services/owl-s/1.2/Service.owl#
 servicep:	http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#
 grounding:	http://www.daml.org/services/owl-s/1.2/Grounding.owl#
 
-[SourceDeclaration]
-sourceUri	datasource1
-connectionUrl	jdbc:postgresql://postgres:5432/initdb
-username	root
-password	root
-driverClass	org.postgresql.Driver
-
 [MappingDeclaration] @collection [[
 mappingId	AarhusTrafficObservationEstimatedTime-AarhusTrafficData158324
 target		:/AarhusTrafficData158324/{ID}-{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {et}^^xsd:decimal ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData158324 . 

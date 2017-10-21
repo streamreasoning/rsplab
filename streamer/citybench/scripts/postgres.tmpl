@@ -1,7 +1,7 @@
-postgres:
-   labels:
-    stream.run.uudi: $run_uuid
-   container_name: postgres
-   build: ./postgres
-   ports:
-    - "5432:5432"
+      postgres:
+          labels:
+           stream.run.uudi: $run_uuid
+          container_name: postgres
+          build: ./postgres
+          ports:
+           - "5432:5432"

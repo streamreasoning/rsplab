@@ -1,5 +1,3 @@
-#!/Users/andreamauri/homebrew/bin/python3
-
 from string import Template
 from sys import argv
 import uuid
@@ -11,7 +9,11 @@ run_uuid=str(uuid.uuid1())
 host="localhost"
 base_port=4000
 base_ws_port=4040
-base_host="172.20.0.1"
+
+ds_port=9090
+def ds_url(stream, port):
+    return "http://ds"+stream.lower()+":"+str(port)+"/"+stream+"/sparql"
+#end
 
 def stream_type(stream):
     traffic="Traffic"
@@ -27,14 +29,19 @@ def stream_type(stream):
 
 
 def add_stream_to_compose(s, n):
-    base_host_as_number = ipaddress.IPv4Address(base_host)
-    new_host = str(base_host_as_number+n)
+
     with open("./docker-compose.yml", "a") as compose_file: 
         comp = Template(open('./scripts/triplewave.tmpl').read())
         compose_map = {
-              "stream_name":s.lower(), "stream":s, "stream_type":stream_type(s),
-              "uuid":str(uuid.uuid4()), "run_uuid":run_uuid,
-              "ws_port":(base_ws_port+n),  "port":(base_port+n) , "host":new_host}
+              "stream_name":s.lower(), 
+              "stream":s, 
+              "stream_type":stream_type(s),
+              "uuid":str(uuid.uuid4()), 
+              "run_uuid":run_uuid,
+              "ws_port":(base_ws_port+n),  
+              "port":(base_port+n) , 
+              "host":host,
+              "ds_port":(ds_port+n)}
         compose_file.write(comp.substitute(compose_map))
         compose_file.write('\n')
     compose_file.close()
@@ -51,13 +58,17 @@ def save_properties(stream, number):
             scale_factor = stream.split("_")[1]
             stream = stream.split("_")[0]
         
-        base_host_as_number = ipaddress.IPv4Address(base_host)
-        new_host = str(base_host_as_number+number)
+        prop_map = { 
+                "stream": stream,
+                "stream_type": stream_type(stream),
+                "host": host, 
+                "port": (base_port+number),
+                "ws_loc": "primus", 
+                "ws_port": (base_ws_port+number), 
+                "base_url": ds_url(stream, (ds_port+number)), 
+                "scale_factor": scale_factor, "run_uuid":run_uuid,
+                "ds_port":(ds_port+number) }
 
-	prop_map = { "stream":stream,"stream_type":stream_type(stream),
-            "host":host, "port":(base_port+number),
-            "ws_loc":"primus", "ws_port":(base_ws_port+number), 
-            "base_url":"http://data_server_"+stream+":8080/"+stream+"/sparql", "scale_factor":scale_factor, "run_uuid":run_uuid }
         prop_file.write(prop.substitute(prop_map))
         prop_file.close()
 #end

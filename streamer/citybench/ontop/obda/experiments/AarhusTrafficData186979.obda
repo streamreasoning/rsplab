@@ -9,12 +9,6 @@ xml:		http://www.w3.org/XML/1998/namespace
 xsd:		http://www.w3.org/2001/XMLSchema#
 rdfs:		http://www.w3.org/2000/01/rdf-schema#
 
-[SourceDeclaration]
-sourceUri	datasource1
-connectionUrl	jdbc:postgresql://postgres:5432/initdb
-username	root
-password	root
-driverClass	org.postgresql.Driver
 
 [MappingDeclaration] @collection [[
 
