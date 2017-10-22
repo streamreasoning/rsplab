@@ -1,6 +1,0 @@
-[submodule "collector/rsplib"]
-	path = collector/rsplib
-	url = https://github.com/riccardotommasini/rsplib.git
-[submodule "streamer/server"]
-	path = streamer/server
-	url = https://github.com/riccardotommasini/sse
