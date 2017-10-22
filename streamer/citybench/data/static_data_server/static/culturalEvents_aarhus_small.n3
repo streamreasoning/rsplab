@@ -1,0 +1,38 @@
+@prefix ct: <http://www.insight-centre.org/citytraffic#> .
+@prefix ns1: <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix prov: <http://purl.org/NET/provenance.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sao: <http://purl.oclc.org/NET/sao/> .
+@prefix tl: <http://purl.org/NET/c4dm/timeline.owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix unit0: <http://purl.oclc.org/NET/muo/citypulse/unit/events> .
+
+
+<http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus> a sao:streamEvent ;
+	sao:time [a tl:Interval ;
+		tl:end "2014-05-06T19:30:00"^^xsd:dateTime;
+		tl:start "2014-05-06T19:30:00"^^xsd:dateTime;
+	] ;
+	prov:used <http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#ob1> .
+
+
+
+
+<http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#ob1> a sao:Point, ns1:Observation ;
+	sao:hasUnitOfMeasurement unit0:eventData ;
+	ns1:featureOfInterest <http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#foi1> ;
+	sao:time [a tl:Instant; 
+		tl:at "2014-05-06T19:30:00"^^xsd:dateTime ];
+	sao:value "sample title" .
+
+
+
+
+<http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#foi1> a sao:FeatureOfInterest ;
+	ct:hasFirstNode [ a ct:Node ;
+		ct:hasLatitude 56.1519158 ;
+		ct:hasLongitude 10.19887 ;
+		ct:hasNodeName "samplenode" ] .
+

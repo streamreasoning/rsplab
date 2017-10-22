@@ -1,25 +1,34 @@
-cadvisor:
-  image: google/cadvisor:v0.24.0
-  container_name: cadvisor
-  ports:
-    - "9090:9090"
-    - "8081:8081"
-  command: -storage_driver=influxdb -storage_driver_db=rspengines -storage_driver_host=172.17.0.3:8086 --housekeeping_interval=100ms
-  volumes:
-    - /:/rootfs:ro
-    - /var/run:/var/run:rw
-    - /sys:/sys:ro
-    - /var/lib/docker/:/var/lib/docker:ro
-
-csparql:
-    labels: 
-      run.uuid: 7b4a7ab3-b3fa-11e7-8fd5-8c85902d2485
-      run.engine: csparql
-    container_name: csparql
-    command: /opt/rspservice/config/setup.properties
-    image: streamreasoning/csparql:latest
-    ports:
-      - "8182:8182"
-      - "9100-9200:9100-9200"
-    volumes:
-      - ./:/opt/rspservice/config:rw
+version: '3'
+networks:
+  demo:
+    external:
+      name: demo
+services:
+    cadvisor:
+      image: google/cadvisor:v0.24.0
+      container_name: cadvisor
+      ports:
+        - "9090:9090"
+        - "8081:8081"
+      command: -storage_driver=influxdb -storage_driver_db=rspengines -storage_driver_host=influxsrv:8086 --housekeeping_interval=100ms
+      volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:rw
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
+      networks:
+        - demo
+    csparql:
+        labels: 
+          run.uuid: 0a974640-b679-11e7-8da7-8c85902d2485
+          run.engine: csparql
+        container_name: csparql
+        command: /opt/rspservice/config/setup.properties
+        image: streamreasoning/csparql:latest
+        ports:
+          - "8182:8182"
+          - "9100-9200:9100-9200"
+        volumes:
+          - ./:/opt/rspservice/config:rw
+        networks:
+          - demo

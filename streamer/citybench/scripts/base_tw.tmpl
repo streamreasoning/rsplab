@@ -1,8 +1,6 @@
-version: '2'
+version: '3'
 networks:
-  static-network:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          ip_range: 172.28.5.0/24
+  demo:
+    external:
+      name: demo
 services:

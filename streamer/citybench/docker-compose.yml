@@ -1,48 +1,42 @@
-version: '2'
+version: '3'
 networks:
-  static-network:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-          ip_range: 172.28.5.0/24
+  demo:
+    external:
+      name: demo
 services:
+    twaarhustrafficdata182955:
+        hostname: AarhusTrafficData182955
+        labels:
+          stream.name: AarhusTrafficData182955
+          stream.type: traffic
+          stream.uuid: fc8edefb-3491-4f20-9b9c-fd0edc926b6c
+          stream.run.uuid: c6f31374-b678-11e7-aa12-8c85902d2485
+        container_name: AarhusTrafficData182955
+        command: running/AarhusTrafficData182955.properties
+        image: streamreasoning/twcitybench
+        networks:
+          - demo
+        ports:
+          - "4000:4000"
+          - "4040:4040"
+        volumes:
+          - ./running/:/opt/tw/running:rw
 
-
-  twaarhustrafficdata182955:
-      labels:
-        stream.name: AarhusTrafficData182955
-        stream.type: traffic
-        stream.uuid: fe557b15-6b75-42fb-a2ed-e1f8dd027df0
-        stream.run.uuid: 5ce3fb8a-b3fb-11e7-837c-8c85902d2485
-      container_name: AarhusTrafficData182955
-      command: running/AarhusTrafficData182955.properties
-      image: streamreasoning/twcitybench
-      networks:
-        static-network:
-          ipv4_address: 172.20.0.1
-      ports:
-        - "4000:4000"
-        - "4040:4040"
-      volumes:
-        - ./running/:/opt/tw/running:rw
-
-
-
-  twaarhustrafficdata158505:
-      labels:
-        stream.name: AarhusTrafficData158505
-        stream.type: traffic
-        stream.uuid: 3ff47af6-af18-434f-83f6-440c2da823ea
-        stream.run.uuid: 5ce3fb8a-b3fb-11e7-837c-8c85902d2485
-      container_name: AarhusTrafficData158505
-      command: running/AarhusTrafficData158505.properties
-      image: streamreasoning/twcitybench
-      networks:
-        static-network:
-          ipv4_address: 172.20.0.2
-      ports:
-        - "4001:4001"
-        - "4041:4041"
-      volumes:
-        - ./running/:/opt/tw/running:rw
+    twaarhustrafficdata158505:
+        hostname: AarhusTrafficData158505
+        labels:
+          stream.name: AarhusTrafficData158505
+          stream.type: traffic
+          stream.uuid: 05336a3c-3d3b-4173-a8c0-a416d65c372b
+          stream.run.uuid: c6f31374-b678-11e7-aa12-8c85902d2485
+        container_name: AarhusTrafficData158505
+        command: running/AarhusTrafficData158505.properties
+        image: streamreasoning/twcitybench
+        networks:
+          - demo
+        ports:
+          - "4001:4001"
+          - "4041:4041"
+        volumes:
+          - ./running/:/opt/tw/running:rw
 

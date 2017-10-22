@@ -1,25 +1,34 @@
-cadvisor:
-  image: google/cadvisor:v0.24.0
-  container_name: cadvisor
-  ports:
-    - "9090:9090"
-    - "8081:8081"
-  command: -storage_driver=influxdb -storage_driver_db=rspengines -storage_driver_host=172.17.0.3:8086 --housekeeping_interval=100ms
-  volumes:
-    - /:/rootfs:ro
-    - /var/run:/var/run:rw
-    - /sys:/sys:ro
-    - /var/lib/docker/:/var/lib/docker:ro
-
-$engine:
-    labels: 
-      run.uuid: $uuid
-      run.engine: $engine
-    container_name: $engine
-    command: /opt/rspservice/config/setup.properties
-    image: streamreasoning/$engine:latest
-    ports:
-      - "8182:8182"
-      - "9100-9200:9100-9200"
-    volumes:
-      - ./:/opt/rspservice/config:rw
+version: '3'
+networks:
+  demo:
+    external:
+      name: demo
+services:
+    cadvisor:
+      image: google/cadvisor:v0.24.0
+      container_name: cadvisor
+      ports:
+        - "9090:9090"
+        - "8081:8081"
+      command: -storage_driver=influxdb -storage_driver_db=rspengines -storage_driver_host=influxsrv:8086 --housekeeping_interval=100ms
+      volumes:
+        - /:/rootfs:ro
+        - /var/run:/var/run:rw
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
+      networks:
+        - demo
+    $engine:
+        labels: 
+          run.uuid: $uuid
+          run.engine: $engine
+        container_name: $engine
+        command: /opt/rspservice/config/setup.properties
+        image: streamreasoning/$engine:latest
+        ports:
+          - "8182:8182"
+          - "9100-9200:9100-9200"
+        volumes:
+          - ./:/opt/rspservice/config:rw
+        networks:
+          - demo

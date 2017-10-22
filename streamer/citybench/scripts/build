@@ -12,7 +12,7 @@ host="localhost"
 base_url="http://172.17.0.1:8080/openrdf-sesame/repositories"
 base_port=4000
 base_ws_port=4040
-base_host="172.20.0.1"
+base_host="172.20.0.100"
 
 def stream_type(stream):
     traffic="Traffic"
@@ -35,7 +35,7 @@ def add_stream_to_compose(s, n):
         compose_map = {
               "stream_name":s.lower(), "stream":s, "stream_type":stream_type(s),
               "uuid":str(uuid.uuid4()), "run_uuid":run_uuid,
-              "ws_port":(base_ws_port+n),  "port":(base_port+n) , "host":new_host}
+              "ws_port":(base_ws_port+n),  "port":(base_port+n) }
         compose_file.write(comp.substitute(compose_map))
         compose_file.write('\n')
     compose_file.close()
@@ -58,7 +58,7 @@ def save_properties(stream, number):
         prop_map = {
                     "stream":stream,
                     "stream_type":stream_type(stream),
-                    "host":new_host,
+                    "host":stream,
                     "port":(base_port+number),
                     "ws_loc":"primus",
                     "ws_port":(base_ws_port+number),

@@ -1,14 +1,32 @@
-postgres:
-   container_name: postgres
-   build: ./postgres
-   ports:
-    - "5432:5432"
+version: '3'
+networks:
+  demo:
+    external:
+      name: demo
+services:
+    postgres:
+      container_name: postgres
+      build: ./postgres
+      ports:
+        - "5432:5432"
+      networks:
+        - demo
 
-quest:
-  container_name: quest
-  build: ./quest
-  ports:
-    - "8080:8080"
-  links: ['postgres:postgres']
-  volumes:
-    - ./quest/obda:/usr/local/jetty8/obda
+    quest:
+      container_name: quest
+      build: ./quest
+      ports:
+        - "80:8080"
+      links: ['postgres:postgres']
+      volumes:
+        - ./quest/obda:/usr/local/jetty8/obda
+      networks:
+        - demo
+
+    static_data:
+      container_name: static_data
+      build: ./static_data_server
+      ports:
+        - "8080:12345"
+      networks:
+        - demo

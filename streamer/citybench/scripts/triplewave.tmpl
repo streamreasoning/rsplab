@@ -1,19 +1,17 @@
-
-
-  tw$stream_name:
-      labels:
-        stream.name: $stream
-        stream.type: $stream_type
-        stream.uuid: $uuid
-        stream.run.uuid: $run_uuid
-      container_name: $stream
-      command: running/$stream.properties
-      image: streamreasoning/twcitybench
-      networks:
-        static-network:
-          ipv4_address: $host
-      ports:
-        - "$port:$port"
-        - "$ws_port:$ws_port"
-      volumes:
-        - ./running/:/opt/tw/running:rw
+    tw$stream_name:
+        hostname: $stream
+        labels:
+          stream.name: $stream
+          stream.type: $stream_type
+          stream.uuid: $uuid
+          stream.run.uuid: $run_uuid
+        container_name: $stream
+        command: running/$stream.properties
+        image: streamreasoning/twcitybench
+        networks:
+          - demo
+        ports:
+          - "$port:$port"
+          - "$ws_port:$ws_port"
+        volumes:
+          - ./running/:/opt/tw/running:rw
