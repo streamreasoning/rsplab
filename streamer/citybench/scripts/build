@@ -30,6 +30,8 @@ def stream_type(stream):
 
 def add_stream_to_compose(s, n):
 
+    # change "host" value to host variable for local connection
+
     with open("./docker-compose.yml", "a") as compose_file: 
         comp = Template(open('./scripts/triplewave.tmpl').read())
         compose_map = {
@@ -58,6 +60,8 @@ def save_properties(stream, number):
             scale_factor = stream.split("_")[1]
             stream = stream.split("_")[0]
         
+        # change "host" value to host variable for local connection
+
         prop_map = { 
                 "stream": stream.lower(),"stream_name": stream,
                 "stream_type": stream_type(stream),
