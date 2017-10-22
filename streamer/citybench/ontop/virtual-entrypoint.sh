@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+eco "Going To sleep"
 sleep 5
+
 
 ./wait-for-it.sh postgres:5432 --timeout=30 -- echo "Postgress Ready"
 

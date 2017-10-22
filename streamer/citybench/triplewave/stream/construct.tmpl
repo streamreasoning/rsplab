@@ -6,9 +6,11 @@ $observation a ssn:Observation ;
     ct:hasValue ?value ;
     ssn:observedBy ?sensor ;
     ssn:observedProperty ?property .
+    ?property a ?pt .
 }
 WHERE { 
 $observation ct:hasValue ?value ;
     ssn:observedBy ?sensor ;
     ssn:observedProperty ?property .
+    ?property a ?pt .
 }

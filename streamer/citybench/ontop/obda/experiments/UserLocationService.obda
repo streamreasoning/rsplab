@@ -1,5 +1,5 @@
 [PrefixDeclaration]
-:		http://www.rsp-lab.org/triplewave/citybench/
+:		http://www.streamreasoning.org/ontologies/rsplab/citybench.owl#
 ct:		http://www.insight-centre.org/citytraffic#
 dr:		http://www.insight-centre/DataRequest#
 ces:		http://www.insight-centre.org/ces#
@@ -16,9 +16,16 @@ service:		http://www.daml.org/services/owl-s/1.2/Service.owl#
 servicep:	http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#
 grounding:	http://www.daml.org/services/owl-s/1.2/Grounding.owl#
 
+[SourceDeclaration]
+sourceUri	datasource1
+connectionUrl	jdbc:postgresql://192.168.99.100:5432/initdb
+username	root
+password	root
+driverClass	org.postgresql.Driver
+
 [MappingDeclaration] @collection [[
 mappingId	UserLocationObservation
-target		:{ID} a ssn:Observation ; ssn:featureOfInterest <http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#context_do63jk2t8c3bjkfb119ojgkhs7> ; ct:hasLat {lat}^^xsd:double ; ct:hasLon {long}^^xsd:double . 
+target		{ID} a ssn:Observation ; ssn:featureOfInterest <http://iot.ee.surrey.ac.uk/citypulse/datasets/aarhusculturalevents/culturalEvents_aarhus#context_do63jk2t8c3bjkfb119ojgkhs7> ; ct:hasLat {lat}^^xsd:double ; ct:hasLon {long}^^xsd:double . 
 source		select *
 			from "UserLocationService"
 ]]

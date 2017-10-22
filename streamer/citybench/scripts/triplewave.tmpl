@@ -3,7 +3,7 @@
             server.name: $stream
           container_name: ds$stream_name
           command: running/$stream.properties
-          build: ./ontop/
+          image: citybench-data-server
           ports:
             - "$ds_port:$ds_port"
           volumes:
