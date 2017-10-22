@@ -23,14 +23,14 @@ grafana:
     - INFLUXDB_PASS=root
 
 notebook:
-  build: ./rsplib
+  build: ./lab
   links:
     - influxsrv:influxsrv
     - grafana:grafana
   ports:
     - "8888:8888"
   volumes:
-    - /Users/riccardo/_Projects/RSP/rsplab/collector/rsplib:/home/jovyan/work:rw
+    - /Users/riccardo/_Projects/RSP/rsplab/collector/lab:/home/jovyan/work:rw
     - resultsdata:/home/jovyan/work/data
 
 
