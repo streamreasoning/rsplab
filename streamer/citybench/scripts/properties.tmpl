@@ -2,18 +2,18 @@
 ########################### REPOSITORY  ###############################
 ###############################################################################
 
-server.name=$stream
+server.name=$stream_name
 server.port=$ds_port
 ontop.properties=./postgres.properties
 ontop.owl=./obda/experiments/citybench.owl
-ontop.obda=./obda/experiments/$stream.obda
+ontop.obda=./obda/experiments/$stream_name.obda
 
 
 ###############################################################################
 ########################### Metadata            ###############################
 ###############################################################################
 
-stream_name=$stream
+stream_name=$stream_name
 payload=payload.jsonld
 run_uuid=$run_uuid
 

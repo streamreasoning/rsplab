@@ -1,7 +1,7 @@
-      ds$stream_name:
+      ds$stream:
           labels:
-            server.name: $stream
-          container_name: ds$stream_name
+            server.name: $stream_name
+          container_name: ds$stream
           command: running/$stream.properties
           image: citybench-data-server
           ports:
@@ -9,14 +9,14 @@
           volumes:
              - ./running/:/usr/local/streamer/running:rw
 
-      tw$stream_name:
+      tw$stream:
           labels:
             stream.name: $stream
             stream.type: $stream_type
             stream.uuid: $uuid
             stream.run.uuid: $run_uuid
           container_name: $stream
-          command: running/$stream.properties
+          command: running/$stream_name.properties
           image: streamreasoning/twcitybench
           ports:
             - "$port:$port"

@@ -10,7 +10,7 @@ host="localhost"
 base_port=4000
 base_ws_port=4040
 
-ds_port=9090
+ds_port=1990
 def ds_url(stream, port):
     return "http://ds"+stream.lower()+":"+str(port)+"/"+stream+"/sparql"
 #end
@@ -33,14 +33,14 @@ def add_stream_to_compose(s, n):
     with open("./docker-compose.yml", "a") as compose_file: 
         comp = Template(open('./scripts/triplewave.tmpl').read())
         compose_map = {
-              "stream_name":s.lower(), 
-              "stream":s, 
+              "stream_name":s, 
+              "stream":s.lower(), 
               "stream_type":stream_type(s),
               "uuid":str(uuid.uuid4()), 
               "run_uuid":run_uuid,
               "ws_port":(base_ws_port+n),  
               "port":(base_port+n) , 
-              "host":host,
+              "host":s.lower(),
               "ds_port":(ds_port+n)}
         compose_file.write(comp.substitute(compose_map))
         compose_file.write('\n')
@@ -59,9 +59,9 @@ def save_properties(stream, number):
             stream = stream.split("_")[0]
         
         prop_map = { 
-                "stream": stream,
+                "stream": stream.lower(),"stream_name": stream,
                 "stream_type": stream_type(stream),
-                "host": host, 
+                "host": stream.lower(), 
                 "port": (base_port+number),
                 "ws_loc": "primus", 
                 "ws_port": (base_ws_port+number), 
