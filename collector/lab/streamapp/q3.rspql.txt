@@ -1,0 +1,3 @@
+CONSTRUCT {?s ?p ?o}
+FROM NAMED WINDOW <win1> [RANGE 30s , SLIDE 5s] ON STREAM <AarhusTrafficData158505>
+WHERE  { WINDOW ?w { ?s ?p ?o }}
