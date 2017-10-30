@@ -166,15 +166,17 @@ function ensure_grafana_dashboards {
 	echo "Creating a dashboard for each running container"
   IFS=$NEWLINE
 
-  for x in `docker ps --format '{{.Names}}\t' | awk '{print $1}'` ; do
+
+
+  for x in `docker ps --filter label=monitor=t --format '{{.Names}}\t' | awk '{print $1}'` ; do
 
     if [ "${x}" = "cadvisor" ]; then
       continue
     fi
 
-    CONTAINER=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $1}'`
-    CONTAINER_ID=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $2}'`
-    UUID=`docker ps -a -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $3}'`
+    CONTAINER=`docker ps -a --filter label=monitor=t -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $1}'`
+    CONTAINER_ID=`docker ps -a --filter label=monitor=t -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $2}'`
+    UUID=`docker ps -a --filter label=monitor=t -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $3}'`
     
     echo "creating a dashboard for container '${x}' run.engine='${UUID}'"
     ensure_dashboard_from_template "${x}" "run.engine='${x}' AND run.uuid='${UUID}'" "false" 

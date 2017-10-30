@@ -2,13 +2,12 @@
 
 #Hostname coincide with the engine to run csparql/cquels 
 #If necessary modifies /etc/hosts
-
+# csparql, cqels, jasper
 export ENGINE=csparql
 
 #Pull latest version of the engine
-docker pull streamreasoning/$ENGINE 
+# docker pull streamreasoning/$ENGINE 
 #Delete the old (untagged) one
-docker rmi $(docker images -f "dangling=true" -q)
 
 #Programmatically build the docker-compose file to run the engine 
 ./build
@@ -17,4 +16,4 @@ docker rmi $(docker images -f "dangling=true" -q)
 docker-compose up --force-recreate -d
 
 #Create dashboard on the collector vm speaking with the running grafana instance (Port 3000)
-./create-dashboards.sh
+#./create-dashboards.sh
