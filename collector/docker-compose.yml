@@ -31,9 +31,8 @@ notebook:
   ports:
     - "8888:8888"
   volumes:
-    - ../collector/lab:/home/jovyan/work:rw
-    - ../consumer/:/home/jovyan/consumer:rw
-    - ../streamer/:/home/jovyan/streamer:rw
+    - ../collector/lab/streamapp:/home/jovyan/work/streamapp:rw
+    - ../collector/lab/demo:/home/jovyan/work/demo:rw
     - resultsdata:/home/jovyan/work/data
     - /:/rootfs:ro
     - /var/run:/var/run:rw
