@@ -6,8 +6,10 @@
           image: citybench-data-server
           ports:
             - "$ds_port:$ds_port"
+          networks:
+            - demo
           volumes:
-             - ./running/:/usr/local/streamer/running:rw
+            - ./running/:/usr/local/streamer/running:rw
 
       tw$stream:
           labels:
@@ -15,6 +17,8 @@
             stream.type: $stream_type
             stream.uuid: $uuid
             stream.run.uuid: $run_uuid
+          networks:
+            - demo
           container_name: $stream
           command: running/$stream_name.properties
           image: streamreasoning/twcitybench

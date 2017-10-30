@@ -2,7 +2,6 @@ from string import Template
 from sys import argv
 import uuid
 import os
-import ipaddress
 
 machine=os.environ['MACHINE']
 run_uuid=str(uuid.uuid1())
@@ -26,7 +25,6 @@ def stream_type(stream):
 
     return stype.lower()
 #end
-
 
 def add_stream_to_compose(s, n):
 
