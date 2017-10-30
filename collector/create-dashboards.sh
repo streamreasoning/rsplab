@@ -17,20 +17,20 @@
 #   create-dashboards.sh
 #
 
-INFLUXDB_API_URL='http://192.168.99.101:8086/'
-INFLUXDB_API_REMOTE_URL='http://192.168.99.101:8086/'      # url for commands proxied through Grafana
+INFLUXDB_API_URL='http://localhost:8086/'
+INFLUXDB_API_REMOTE_URL='http://localhost:8086/'      # url for commands proxied through Grafana
 INFLUXDB_ROOT_LOGIN='root'
 INFLUXDB_ROOT_PASSWORD='root'
 
-INFLUXDB_DB_NAME=cadvisor
-INFLUXDB_DB_LOGIN=cadvisor
-INFLUXDB_DB_PASSWORD=cadvisor
+INFLUXDB_DB_NAME=rspengines
+INFLUXDB_DB_LOGIN=root
+INFLUXDB_DB_PASSWORD=root
 
-GRAFANA_URL='http://192.168.99.101:3000/'
-GRAFANA_API_URL='http://192.168.99.101:3000/api/'
+GRAFANA_URL='http://localhost:3000/'
+GRAFANA_API_URL='http://localhost:3000/api/'
 GRAFANA_LOGIN='admin'
 GRAFANA_PASSWORD='admin'
-GRAFANA_DATA_SOURCE_NAME=cadvisor
+GRAFANA_DATA_SOURCE_NAME='rspengines'
 
 NEWLINE='
 '
@@ -128,8 +128,9 @@ function ensure_dashboard_from_template {
     | sed -e "s|___NETWORK_USAGE_TITLE___|$NET_USAGE_TITLE|g" \
     | sed -e "s|___TOOLTIP_SHARED___|$TOOLTIP_SHARED|g" \
     | sed -e "s|___CONTAINER_WHERE_CLAUSE___|$WHERE_CLAUSE|g" \
+    | sed -e "s|___DATA_SOURCE___|$GRAFANA_DATA_SOURCE_NAME|g" \
     > "${TEMP_FILE_1}"
-	ensure_grafana_dashboard "${TEMP_FILE_1}"
+  ensure_grafana_dashboard "${TEMP_FILE_1}"
   RET=$?
   unlink "${TEMP_FILE_1}"
   if [ "${RET}" -ne "0" ]; then
@@ -159,22 +160,26 @@ function ensure_grafana_dashboard {
 }
 
 function ensure_grafana_dashboards {
-	echo "Creating a dashboard for 'All Containers'"
+  echo "Creating a dashboard for 'All Containers'"
   ensure_dashboard_from_template 'All Containers (Stacked)' 'container_name !~ /\\\\//' "true"
 
-	echo "Creating a dashboard for each running container"
+  echo "Creating a dashboard for each running container"
   IFS=$NEWLINE
-  for x in `docker ps`; do
-    CONTAINER_ID=`echo $x | awk '{print $1}'`
-    CONTAINER=`echo $x | awk 'END {print $NF}'`
 
-    # Skip the header
-    if [ "${CONTAINER_ID}" = "CONTAINER" ]; then
+
+
+  for x in `docker ps --filter label=monitor=t --format '{{.Names}}\t' | awk '{print $1}'` ; do
+
+    if [ "${x}" = "cadvisor" ]; then
       continue
     fi
 
-    echo "creating a dashboard for container '${CONTAINER}'"
-    ensure_dashboard_from_template "${CONTAINER}" "container_name='${CONTAINER}'" "false"
+    CONTAINER=`docker ps -a --filter label=monitor=t -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $1}'`
+    CONTAINER_ID=`docker ps -a --filter label=monitor=t -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $2}'`
+    UUID=`docker ps -a --filter label=monitor=t -f name=$x --format '{{.Names}}\t {{.ID}}\t{{.Label "run.uuid"}}' | awk '{print $3}'`
+    
+    echo "creating a dashboard for container '${x}' run.engine='${UUID}'"
+    ensure_dashboard_from_template "${x}" "run.engine='${x}' AND run.uuid='${UUID}'" "false" 
   done
   echo "Done"
 }

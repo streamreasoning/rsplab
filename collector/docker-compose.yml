@@ -24,13 +24,20 @@ grafana:
 
 notebook:
   build: ./lab
+  container_name: controller
   links:
     - influxsrv:influxsrv
     - grafana:grafana
   ports:
     - "8888:8888"
   volumes:
-    - /Users/riccardo/_Projects/RSP/rsplab/collector/lab:/home/jovyan/work:rw
+    - ../collector/lab:/home/jovyan/work:rw
+    - ../consumer/:/home/jovyan/consumer:rw
+    - ../streamer/:/home/jovyan/streamer:rw
     - resultsdata:/home/jovyan/work/data
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
 
 
