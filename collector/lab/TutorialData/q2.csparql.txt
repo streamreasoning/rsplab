@@ -1,8 +1,0 @@
-SELECT *
-FROM STREAM <AarhusTrafficData182955> [RANGE 3s STEP 1s] 
-FROM STREAM <AarhusTrafficData158505> [RANGE 3s STEP 1s] 
-WHERE 
-    {
-        ?p1 ?p ?o
-        
-}
