@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY sao "http://purl.oclc.org/NET/sao/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY emvo "http://sense.deri.ie/vocab/emvo#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY ssn "http://purl.oclc.org/NET/ssnx/ssn#" >
+    <!ENTITY ces "http://www.insight-centre.org/ces#" >
+    <!ENTITY muo "http://purl.oclc.org/NET/muo/ucum/" >
+    <!ENTITY prov "http://purl.org/NET/provenance.owl#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY tl "http://purl.org/NET/c4dm/timeline.owl#" >
+    <!ENTITY ct "http://www.insight-centre.org/citytraffic#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY osm "http://www.insight-centre.org/ontologies/osm#" >
+    <!ENTITY qoi "http://ict-citypulse.eu/ontologies/StreamQoI/" >
+    <!ENTITY sce1 "http://ict-citypulse.eu/experiments/Scenario1/" >
+    <!ENTITY owls "http://www.daml.org/services/owl-s/1.2/Service.owl#" >
+    <!ENTITY up "http://www.ict-citypulse.eu/ontologies/userprofile#" >
+    <!ENTITY q "http://www.ict-citypulse.eu/ontologies/streamQoI/Quality" >
+    <!ENTITY owlssc "http://www.daml.org/services/owl-s/1.2/ServiceCategory.owl#" >
+    <!ENTITY owlssp "http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#" >
+]>
+<rdf:RDF xmlns="http://www.rsplab.org/triplewave/citybench/"
+     xml:base="http://www.rsplab.org/triplewave/citybench/"
+     xmlns:ses="http://www.insight-centre.org/dataset/SampleEventService#"
+     xmlns:ces="http://www.insight-centre.org/ces#"
+     xmlns:ct="http://www.insight-centre.org/citytraffic#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ssn="http://purl.oclc.org/NET/ssnx/ssn#">
+
+    <owl:Class rdf:about="&ct;CongestionLevelA">
+        <rdfs:subClassOf rdf:resource="&ct;CongestionLevelT"/>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&ct;CongestionLevelB">
+        <rdfs:subClassOf rdf:resource="&ct;CongestionLevelT"/>
+    </owl:Class>
+
+
+    <!-- http://www.insight-centre.org/citytraffic#CongestionLevelT -->
+
+    <owl:Class rdf:about="&ct;CongestionLevelT"/>
+</rdf:RDF>
+
+
