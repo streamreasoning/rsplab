@@ -1,0 +1,8 @@
+CONSTRUCT {?s ?p ?o }
+FROM STREAM <AarhusTrafficData182955> [RANGE 3s STEP 1s] 
+FROM STREAM <AarhusTrafficData158505> [RANGE 3s STEP 1s] 
+WHERE 
+    {
+        ?s ?p ?o
+        
+}

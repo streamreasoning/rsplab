@@ -1,0 +1,5 @@
+CONSTRUCT {?s ?p ?o} 
+FROM STREAM <UnionStreamOut> [RANGE 30s STEP 5s]
+WHERE { 
+     ?s ?p ?o 
+}
