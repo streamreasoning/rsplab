@@ -16,4 +16,4 @@ export ENGINE=csparql
 docker-compose up --force-recreate -d
 
 #Create dashboard on the collector vm speaking with the running grafana instance (Port 3000)
-#./create-dashboards.sh
+./create-dashboards.sh
