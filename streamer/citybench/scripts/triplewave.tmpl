@@ -2,7 +2,7 @@
           labels:
             server.name: $stream_name
           container_name: ds$stream
-          command: running/$stream.properties
+          command: running/$stream_name.properties
           image: citybench-data-server
           ports:
             - "$ds_port:$ds_port"
