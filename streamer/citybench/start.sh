@@ -13,9 +13,11 @@ docker build -t  streamreasoning/twcitybench ./triplewave/
 rm -rf ./*.yml
 
 python ./scripts/build $@
-docker-compose up
 
 cat docker-compose.yml
+
+docker-compose up -d
+
 echo $@
 	
 #./scripts/create-dashboards.sh $@

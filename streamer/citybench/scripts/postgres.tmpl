@@ -3,5 +3,7 @@
            stream.run.uudi: $run_uuid
           container_name: postgres
           build: ./postgres
+          networks:
+            - demo
           ports:
            - "5432:5432"
