@@ -1,14 +1,18 @@
 #! /usr/bin/python
-
+from sys import argv
 from string import Template
 import uuid
 import os
 
-engine=os.environ['ENGINE']
+if len(argv) > 2 and (argv[1] == '-e' or argv[1] == '--engine'):
+    engine = argv[2]
+else:
+	engine = os.environ['ENGINE']
+
 comp = Template((open('./docker-compose.yaml.tmpl')).read())
 prop = Template((open('./tmpl.properties')).read())
 
-m = {'engine':engine, 'uuid':uuid.uuid1(), 'env':'${env:RSP_DATA}'}
+m = {'engine':engine, 'uuid':uuid.uuid1(), 'env':engine}
 
 res = comp.substitute(m)
 text_file = open("docker-compose.yml", "w")

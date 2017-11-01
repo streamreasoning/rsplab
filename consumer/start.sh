@@ -3,14 +3,14 @@
 #Hostname coincide with the engine to run csparql/cquels 
 #If necessary modifies /etc/hosts
 # csparql, cqels, jasper
-export ENGINE=csparql
+
 
 #Pull latest version of the engine
 # docker pull streamreasoning/$ENGINE 
 #Delete the old (untagged) one
 
 #Programmatically build the docker-compose file to run the engine 
-./build
+./build $@
 
 #Run the engine and cadvisor
 docker-compose up --force-recreate -d
