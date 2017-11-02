@@ -1,0 +1,2914 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.rsplab.org/triplewave/citybench/"
+     xml:base="http://www.rsplab.org/triplewave/citybench/"
+     xmlns:ses="http://www.insight-centre.org/dataset/SampleEventService#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:ns="http://creativecommons.org/ns#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:prof="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+     xmlns:servicep="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#"
+     xmlns:dr="http://www.insight-centre/DataRequest#"
+     xmlns:ssn="http://purl.oclc.org/NET/ssnx/ssn#"
+     xmlns:ces="http://www.insight-centre.org/ces#"
+     xmlns:ct="http://www.insight-centre.org/citytraffic#"
+     xmlns:citybench="http://www.rsplab.org/triplewave/citybench/#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+     xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://www.rsplab.org/triplewave/citybench/">
+        <dc:title>Citybench Ontology</dc:title>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology is the one used to annotate data for the citybench RDF Stream Processing Benchmark. It contains classes from the following ontologies: Semantic Senso Network, Dolce, DAML service, service category, service parameter and profile, process, grounding. It also integrates the following vocabularies, that were previously provided in separated files from the insight-centre: Service Parameter, Ces, data request.</rdfs:comment>
+        <rdfs:seeAlso rdf:datatype="http://www.w3.org/2001/XMLSchema#string">http://citypulse.insight-centre.org/ontology/ces/</rdfs:seeAlso>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://creativecommons.org/ns#license -->
+
+    <owl:AnnotationProperty rdf:about="http://creativecommons.org/ns#license"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/rights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#mappableTo -->
+
+    <owl:AnnotationProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#mappableTo">
+        <rdfs:label xml:lang="en">mappable to</rdfs:label>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#isDefinedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#isDefinedBy"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#label"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#seeAlso -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#seeAlso"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#attachedSystem -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#attachedSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isLocationOf"/>
+        <owl:inverseOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#onPlatform"/>
+        <rdfs:comment>Relation between a Platform and any Systems (e.g., Sensors) that are attached to the Platform.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>attached system</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#PlatformSite</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#deployedOnPlatform -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#deployedOnPlatform">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasParticipant"/>
+        <owl:inverseOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#inDeployment"/>
+        <rdfs:comment>Relation between a deployment and the platform on which the system was deployed.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>deployed on platform</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#Deployment</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#deployedSystem -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#deployedSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasParticipant"/>
+        <owl:inverseOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasDeployment"/>
+        <rdfs:comment>Relation between a deployment and the deployed system.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>deployed system</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#Deployment</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#deploymentProcessPart -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#deploymentProcessPart">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasPart"/>
+        <rdfs:comment>Has part relation between a deployment process and its constituent processes.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>deployment process part</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#Deployment</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#detects -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#detects">
+        <rdfs:comment>A relation from a sensor to the Stimulus that the sensor can detect.   
+The Stimulus itself will be serving as a proxy for (see isProxyOf) some observable property.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>detects</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#endTime -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#endTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegion"/>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>end time</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Base#Time</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <dc:source>skos:exactMatch &apos;featureOfInterest&apos; [O&amp;M - ISO/DIS 19156] 
+		                    http://portal.opengeospatial.org/files/?artifact_id=41579</dc:source>
+        <rdfs:comment>A relation between an observation and the entity whose quality was observed.   For example, in an observation of the weight of a person, the feature of interest is the person and the quality is weight.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>feature of interest</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#forProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#forProperty">
+        <rdfs:comment>A relation between some aspect of a sensing entity and a property.  For example, from a sensor to the properties it can observe, or from a deployment to the properties it was installed to observe.  Also from a measurement capability to the property the capability is described for.  (Used in conjunction with ofFeature).</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>for property</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasDeployment -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasDeployment">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isParticipantIn"/>
+        <rdfs:comment>Relation between a System and a Deployment, recording that the System/Sensor was deployed in that Deployment.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has deployment</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#Deployment</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasInput -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasInput">
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has input</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#Process</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementCapability -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementCapability">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <rdfs:comment>Relation from a Sensor to a MeasurementCapability describing the measurement properties of the sensor.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has measurement  capability</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementProperty">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <rdfs:comment>Relation from a MeasurementCapability to a MeasurementProperty.  For example, to an accuracy (see notes at MeasurementCapability).</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has measurement property</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#MeasuringCapability</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasOperatingProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasOperatingProperty">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <rdfs:comment>Relation from an OperatingRange to a Property.  For example, to a battery lifetime.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has operating property</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#OperatingRestriction</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasOperatingRange -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasOperatingRange">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <rdfs:comment>Relation from a System to an OperatingRange describing the normal operating environment of the System.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has operating range</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#OperatingRestriction</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasOutput -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasOutput">
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has output</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#Process</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasQuality"/>
+        <owl:inverseOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#isPropertyOf"/>
+        <rdfs:comment>A relation between a FeatureOfInterest and a Property of that feature.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has property</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasSubSystem -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasSubSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasPart"/>
+        <rdfs:comment>Haspart relation between a system and its parts.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has subsystem</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#System</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasSurvivalProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasSurvivalProperty">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <rdfs:comment>Relation from a SurvivalRange to a Property describing the survial range of a system.  For example, to the temperature extreme that a system can withstand before being considered damaged.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has survival property</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#OperatingRestriction</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasSurvivalRange -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasSurvivalRange">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <rdfs:comment>A Relation from a System to a SurvivalRange.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>has survival range</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#OperatingRestriction</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#hasValue -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegion"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#implementedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#implementedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#describes"/>
+        <owl:inverseOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#implements"/>
+        <rdfs:comment>A relation between the description of an algorithm, procedure or method and an entity that implements that method in some executable way.  For example, between a scientific measuring method and a sensor the senses via that method.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>implemented by</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#implements -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#implements">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isDescribedBy"/>
+        <rdfs:comment>A relation between an entity that implements a method in some executable way and the description of an algorithm, procedure or method.  For example, between a Sensor and the scientific measuring method that the Sensor uses to observe a Property.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>implements</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#inCondition -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#inCondition">
+        <rdfs:comment>Describes the prevailing environmental conditions for MeasurementCapabilites, OperatingConditions and SurvivalRanges.  Used for example to say that a sensor has a particular accuracy in particular conditions.  (see also MeasurementCapability)</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>in condition</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Base#ConstraintBlock</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#inDeployment -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#inDeployment">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isParticipantIn"/>
+        <rdfs:comment>Relation between a Platform and a Deployment, recording that the object was used as a platform for a system/sensor for a particular deployment: as in this PhysicalObject is acting as a Platform inDeployment Deployment.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>in deployment</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#Deployment</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#isProducedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#isProducedBy">
+        <rdfs:comment>Relation between a producer and a produced entity: for example, between a sensor and the produced output.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>is produced by</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#Process</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#isPropertyOf -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#isPropertyOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isQualityOf"/>
+        <rdfs:comment>Relation between a FeatureOfInterest and a Property (a Quality observable by a sensor) of that feature.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>is property of</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#isProxyFor -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#isProxyFor">
+        <rdfs:comment>A relation from a Stimulus to the Property that the Stimulus is serving as a proxy for.  For example, the expansion of the quicksilver is a stimulus that serves as a proxy for temperature, or an increase or decrease in the spinning of cups on a wind sensor is serving as a proxy for wind speed.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>isProxyFor</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#madeObservation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#madeObservation">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isObjectIncludedIn"/>
+        <owl:inverseOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observedBy"/>
+        <rdfs:comment>Relation between a Sensor and Observations it has made.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>made observation</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Observation#Observation</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observationResult -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observationResult">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <dc:source>skos:closeMatch &apos;result&apos; [O&amp;M - ISO/DIS 19156] 
+		                    http://portal.opengeospatial.org/files/?artifact_id=41579</dc:source>
+        <rdfs:comment>Relation linking an Observation (i.e., a description of the context, the Situation, in which the observatioin was made) and a Result, which contains a value representing the value associated with the observed Property.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>observation result</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observationResultTime -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observationResultTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegion"/>
+        <dc:source>http://www.opengeospatial.org/standards/om</dc:source>
+        <rdfs:comment>The result time is the time when the procedure associated with the observation act was applied.</rdfs:comment>
+        <rdfs:comment>The result time shall describe the time when the result became available, typically when the procedure associated with the observation was completed For some observations this is identical to the phenomenonTime. However, there are important cases where they differ.[O&amp;M]</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>observation result time</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Observation#Observation</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegion"/>
+        <dc:source>http://www.opengeospatial.org/standards/om</dc:source>
+        <rdfs:comment>Rebadged as phenomenon time in [O&amp;M]. The phenomenon time shall describe the time that the result applies to the property of the feature-of-interest. This is often the time of interaction by a sampling procedure or observation procedure with a real-world feature.</rdfs:comment>
+        <rdfs:comment>The sampling time is the time that the result applies to the feature-of-interest. This is the time usually required for geospatial analysis of the result.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>observation sampling time</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Observation#Observation</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observedBy -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#includesObject"/>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observedProperty -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observedProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <dc:source>skos:exactMatch &apos;observedProperty&apos; [O&amp;M - ISO/DIS 19156] 
+		                    http://portal.opengeospatial.org/files/?artifact_id=41579</dc:source>
+        <rdfs:comment>Relation linking an Observation to the Property that was observed.  The observedProperty should be a Property (hasProperty) of the FeatureOfInterest (linked by featureOfInterest) of this observation.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>observed property</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#observes -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observes">
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementCapability"/>
+            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#forProperty"/>
+        </owl:propertyChainAxiom>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#madeObservation"/>
+            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#observedProperty"/>
+        </owl:propertyChainAxiom>
+        <rdfs:comment>Relation between a Sensor and a Property that the sensor can observe.
+
+Note that, given the DUL modelling of Qualities, a sensor defined with &apos;observes only Windspeed&apos; technically links the sensor to particular instances of Windspeed, not to the concept itself - OWL can&apos;t express concept-concept relations, only individual-individual.  The property composition ensures that if an observation is made of a particular quality then one can infer that the sensor observes that quality.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>observes</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Sensor#Measuring</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#ofFeature -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#ofFeature">
+        <rdfs:comment>A relation between some aspect of a sensing entity and a feature.  For example, from a sensor to the features it can observe properties of, or from a deployment to the features it was installed to observe.  Also from a measurement capability to the feature the capability is described for.  (Used in conjunction with forProperty).</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>of feature</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#onPlatform -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#onPlatform">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasLocation"/>
+        <rdfs:comment>Relation between a System (e.g., a Sensor) and a Platform.  The relation locates the sensor relative to other described entities entities: i.e., the Sensor s1&apos;s location is Platform p1.  More precise locations for sensors in space (relative to other entities, where attached to another entity, or in 3D space) are made using DOLCE&apos;s Regions (SpaceRegion).</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>on platform</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Deploy#PlatformSite</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#qualityOfObservation -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#qualityOfObservation">
+        <rdfs:subPropertyOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasProperty"/>
+        <dc:source>skos:exactMatch &apos;resultQuality&apos; [O&amp;M - ISO/DIS 19156] 
+		                    http://portal.opengeospatial.org/files/?artifact_id=41579</dc:source>
+        <rdfs:comment>Relation linking an Observation to the adjudged quality of the result.  This is of course complimentary to the MeasurementCapability information recorded for the Sensor that made the Observation.</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>quality of observation</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Observation#Observation</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#sensingMethodUsed -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#sensingMethodUsed">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#satisfies"/>
+        <dc:source>http://www.bipm.org/en/committees/jc/jcgm/wg2.html</dc:source>
+        <rdfs:comment>A (measurement) procedure is a detailed description of a measurement according to one or more measurement principles and to a given measurement method, based on a measurement model and including any calculation to obtain a measurement result [VIM 2.6]</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>sensing method used</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#startTime -->
+
+    <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/ssnx/ssn#startTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegion"/>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>start time</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Base#Time</rdfs:seeAlso>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#serviceParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#serviceParameter"/>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasAccuracy -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasAccuracy">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Accuracy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasAggregation -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasAggregation">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasPattern"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Aggregation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasAvailability -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasAvailability">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Availability"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasBandWidthConsumption -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasBandWidthConsumption">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#BandWidthConsumption"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasConstraint -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasConstraint">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Constraint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasEnergyConsumption -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasEnergyConsumption">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EnergyConsumption"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasEventPayload -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasEventPayload">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventPayload"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasExpression -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasExpression">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#Constraint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasFilter -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasFilter">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasPattern"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Filter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasFrequency -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasFrequency">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasLatency -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasLatency">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Latency"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasNFP -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasNFP">
+        <rdfs:subPropertyOf rdf:resource="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#serviceParameter"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#NFP"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasPattern -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasPattern">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasPreference -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasPreference">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Preference"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasPrice -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasPrice">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Price"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasReliability -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasReliability">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Reliability"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasSecurity -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasSecurity">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasNFP"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Security"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasSelection -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasSelection">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#hasPattern"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#Selection"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasService -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasService">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#ServiceNode"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasSubPattern -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasSubPattern">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasWindow -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#hasWindow">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#SlidingWindow"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#onEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#onEvent">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#Filter"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventService"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#onPayload -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#onPayload">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#Filter"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/ces#EventPayload"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#onProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#onProperty">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#Constraint"/>
+        <rdfs:range rdf:resource="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#ServiceParameter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#selectedProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/ces#selectedProperty">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#Selection"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasFirstNode -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/citytraffic#hasFirstNode">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/citytraffic#hasPlace"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/citytraffic#Node"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasPlace -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/citytraffic#hasPlace">
+        <rdfs:range rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasSecondNode -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/citytraffic#hasSecondNode">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/citytraffic#hasPlace"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/citytraffic#Node"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#locatesIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.insight-centre.org/citytraffic#locatesIn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+        <rdfs:range rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#actsFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#actsFor">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#actsThrough"/>
+        <rdfs:comment>The relation holding between any Agent, and a SocialAgent. In principle, a SocialAgent requires at least one PhysicalAgent in order to act, but this dependency can be &apos;delegated&apos;; e.g. a university can be acted for by a department, which on its turm is acted for by physical agents.</rdfs:comment>
+        <rdfs:label xml:lang="en">acts for</rdfs:label>
+        <rdfs:label xml:lang="it">agisce per</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#actsThrough -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#actsThrough">
+        <rdfs:comment>The relation holding between a PhysicalAgent and a SocialAgent. In principle, a SocialAgent requires at least one PhysicalAgent in order to act, but this dependency can be &apos;delegated&apos;, e.g. a university can be acted for by a department, which is acted for by physical agents. AKA isActedBy</rdfs:comment>
+        <rdfs:label xml:lang="en">acts through</rdfs:label>
+        <rdfs:label xml:lang="it">agisce mediante</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#characterizes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#characterizes">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isCharacterizedBy"/>
+        <rdfs:comment>A relation between concepts and collections, where a Concept is said to characterize a Collection; it corresponds to a link between the (reified) intensional and extensional interpretations of a _proper subset of_ a (reified) class. This is different from covers, because it refers to an interpretation the entire reified class.
+E.g. the collection of vintage saxophones is characterized by the Concept &apos;manufactured by hand&apos;, while it gets covered by the Concept &apos;Saxophone&apos; with the Parameter &apos;Vintage&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">caratterizza</rdfs:label>
+        <rdfs:label xml:lang="en">characterizes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#classifies -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#classifies">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isClassifiedBy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between a Concept and an Entity, e.g. the Role &apos;student&apos; classifies a Person &apos;John&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">classifica</rdfs:label>
+        <rdfs:label xml:lang="en">classifies</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#conceptualizes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#conceptualizes">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isConceptualizedBy"/>
+        <rdfs:comment>A relation stating that an Agent is internally representing a SocialObject: situations, descriptions, concepts, etc. E.g., &apos;John believes in the conspiracy theory&apos;; &apos;Niels Bohr created the solar-system metaphor for the atomic theory&apos;; &apos;Jacques assumes all swans are white&apos;; &apos;the task force members share the attack plan&apos;.
+Conceptualizations can be distinguished into different forms, primarily based on the type of SocialObject that is conceptualized. Descriptions and concepts can be &apos;assumed&apos;, situations can be &apos;believed&apos; or &apos;known&apos;, plans can be &apos;adopted&apos;, etc. (see ontology: http://www.loa-cnr.it/ontologies/Conceptualization.owl.</rdfs:comment>
+        <rdfs:label xml:lang="en">conceptualizes</rdfs:label>
+        <rdfs:label xml:lang="it">concettualizza</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#concretelyExpresses -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#concretelyExpresses">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isConcretelyExpressedBy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an InformationRealization and a Description, e.g. &apos;the printout of the Italian Constitution concretelyExpresses the Italian Constitution&apos;. It should be supplied also with a rule stating that the InformationRealization realizes an InformationObject that expresses the Description</rdfs:comment>
+        <rdfs:label xml:lang="en">concretely expresses</rdfs:label>
+        <rdfs:label xml:lang="it">esprime concretamente</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#coparticipatesWith -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#coparticipatesWith">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#coparticipatesWith"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>A relation between two objects participating in a same Event; e.g., &apos;Vitas and Jimmy are playing tennis&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">co-participates with</rdfs:label>
+        <rdfs:label xml:lang="it">copartecipa con</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#covers -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#covers">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isCoveredBy"/>
+        <rdfs:comment>A relation between concepts and collections, where a Concept is said to cover a Collection; it corresponds to a link between the (reified) intensional and extensional interpretations of a (reified) class.
+E.g. the collection of vintage saxophones is covered by the Concept &apos;Saxophone&apos; with the Parameter &apos;Vintage&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">covers</rdfs:label>
+        <rdfs:label xml:lang="it">ricopre</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#defines -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#defines">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#usesConcept"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isDefinedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between a Description and a Concept, e.g. a Workflow for a governmental Organization defines the Role &apos;officer&apos;, or &apos;the Italian Traffic Law defines the role Vehicle&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">defines</rdfs:label>
+        <rdfs:label xml:lang="it">definisce</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#definesRole -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#definesRole">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#defines"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRoleDefinedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between a description and a role, e.g. the recipe for a cake defines the role &apos;ingredient&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">defines role</rdfs:label>
+        <rdfs:label xml:lang="it">definisce il ruolo</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#definesTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#definesTask">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#defines"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isTaskDefinedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between a description and a task, e.g. the recipe for a cake defines the task &apos;boil&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">defines task</rdfs:label>
+        <rdfs:label xml:lang="it">definisce il task</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#describes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#describes">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isDescribedBy"/>
+        <rdfs:comment>The relation between a Description and an Entity : a Description gives a unity to a Collection of parts (the components), or constituents, by assigning a Role to each of them in the context of a whole Object (the system).
+A same Entity can be given different descriptions, for example, an old cradle can be given a unifying Description based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot.</rdfs:comment>
+        <rdfs:label xml:lang="en">describes</rdfs:label>
+        <rdfs:label xml:lang="it">descrive</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#directlyFollows -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#directlyFollows">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#follows"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyPrecedes"/>
+        <rdfs:comment>The intransitive follows relation. For example, Wednesday directly precedes Thursday. Directness of precedence depends on the designer conceptualization.</rdfs:comment>
+        <rdfs:label xml:lang="en">directly follows</rdfs:label>
+        <rdfs:label xml:lang="it">segue direttamente</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#directlyPrecedes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#directlyPrecedes">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#precedes"/>
+        <rdfs:comment>The intransitive precedes relation. For example, Monday directly precedes Tuesday. Directness of precedence depends on the designer conceptualization.</rdfs:comment>
+        <rdfs:label xml:lang="en">directly precedes</rdfs:label>
+        <rdfs:label xml:lang="it">precede direttamente</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#executesTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#executesTask">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isClassifiedBy"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isExecutedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an action and a task, e.g. &apos;putting some water in a pot and putting the pot on a fire until the water starts bubbling&apos; executes the task &apos;boiling&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">esegue il task</rdfs:label>
+        <rdfs:label xml:lang="en">executes task</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#expands -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#expands">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToDescription"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isExpandedIn"/>
+        <rdfs:comment>A partial order relation that holds between descriptions. It represents the proper part relation between a description and another description featuring the same properties as the former, with at least one additional one.
+Descriptions can be expanded either by adding other descriptions as parts, or by refining concepts that are used by them. 
+An &apos;intention&apos; to expand must be present (unless purely formal theories are considered, but even in this case a criterion of relevance is usually active).</rdfs:comment>
+        <rdfs:label xml:lang="it">espande</rdfs:label>
+        <rdfs:label xml:lang="en">expands</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#expresses -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#expresses">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isExpressedBy"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an InformationObject and a &apos;meaning&apos;, generalized here as a &apos;SocialObject&apos;. For example: &apos;A Beehive is a structure in which bees are kept, typically in the form of a dome or box.&apos; (Oxford dictionary)&apos;; &apos;the term Beehive expresses the concept Beehive in my apiculture ontology&apos;.
+The intuition for &apos;meaning&apos; is intended to be very broad. A separate, large comment is included for those who want to investigate more on what kind of meaning can be represented in what form.</rdfs:comment>
+        <rdfs:comment>This is a large comment field for those who want to investigate the different uses of the &apos;expresses&apos; relation for modeling different approaches to meaning characterization and modeling.
+For example, in all these cases, some aspect of meaning is involved:
+
+- Beehive means &quot;a structure in which bees are kept, typically in the form of a dome or box.&quot; (Oxford dictionary)
+- &apos;Beehive&apos; is a synonym in noun synset 09218159 &quot;beehive|hive&quot; (WordNet)
+- &apos;the term Beehive can be interpreted as the fact of &apos;being a beehive&apos;, i.e. a relation that holds for concepts such as Bee, Honey, Hosting, etc.&apos;
+- &apos;the text of Italian apiculture regulation expresses a rule by which beehives should be kept at least one kilometer away from inhabited areas&apos;
+- &apos;the term Beehive expresses the concept Beehive&apos;
+- &apos;&apos;Beehive&apos; for apiculturists does not express the same meaning as for, say, fishermen&apos;
+- &apos;Your meaning of &apos;Beautiful&apos; does not seem to fit mine&apos;
+- &apos;&apos;Beehive&apos; is formally interpreted as the set of all beehives&apos;
+- &apos;from the term &apos;Beehive&apos;, we can build a vector space of statistically significant cooccurring terms in the documents that contain it&apos;
+- the lexeme &apos;Belly&apos; expresses the role &apos;Body_Part&apos; in the frame &apos;ObservableBodyParts&apos; (FrameNet)
+
+As the examples suggest, the &apos;meaning of meaning&apos; is dependent on the background approach/theory that one assumes. One can hardly make a summary of the too many approaches and theories of meaning, therefore this relation is maybe the most controversial and difficult to explain; normally, in such cases it would be better to give up formalizing. 
+However, the usefulness of having a &apos;semantic abstraction&apos; in modeling information objects is so high (e.g. for the semantic web, interoperability, reengineering, etc.), that we accept this challenging task, although without taking any particular position in the debate. 
+We provide here some examples, which we want to generalize upon when using the &apos;expresses&apos; relation to model semantic aspects of social reality.
+
+In the most common approach, lexicographers that write dictionaries, glossaries, etc. assume that the meaning of a term is a paraphrase (or &apos;gloss&apos;, or &apos;definition&apos;). 
+Another approach is provided by concept schemes like thesauri and lexicons, which assume that the meaning of a term is a &apos;concept&apos;, encoded as a &apos;lemma&apos;, &apos;synset&apos;, or &apos;descriptor&apos;.
+Still another approach is that of psychologists and cognitive scientists, which often assume that the meaning of an information object is a concept encoded in the mind or cognitive system of an agent. 
+A radically different approach is taken by social scientists and semioticians, who usually assume that meanings of an information object are spread across the communication practices in which members of a community use that object.
+Another approach that tackles the distributed nature of meaning is assumed by geometrical models of semantics, which assume that the meaning of an InformationObject (e.g. a word) results from the set of informational contexts (e.g. within texts) in which that object is used similarly.
+The logical approach to meaning is still different, since it assumes that the meaning of e.g. a term is equivalent to the set of individuals that the term can be applied to; for example, the meaning of &apos;Ali&apos; is e.g. an individual person called Ali, the meaning of &apos;Airplane&apos; is e.g. the set of airplanes, etc. 
+Finally, an approach taken by structuralist linguistics and frame semantics is that a meaning is the relational context in which an information object can be applied; for example, a meaning of &apos;Airplane&apos; is situated e.g. in the context (&apos;frame&apos;) of passenger airline flights.
+
+These different approaches are not necessarily conflicting, and they mostly talk about different aspects of so-called &apos;semantics&apos;. They can be summarized and modelled within DOLCE-Ultralite as follows (notice that such list is far from exhaustive):
+
+(1) Informal meaning (as for linguistic or commonsense semantics: a distinction is assumed between (informal) meaning and reference; see isAbout for an alternative pattern on reference)
+	- Paraphrase meaning (as for lexicographic semantics). Here it is modelled as the expresses relation between instances of InformationObject and different instances of InformationObject that act as &apos;paraphrases&apos;
+	- Conceptual meaning (as for &apos;concept scheme&apos; semantics). Here it is modelled as the expresses relation between instances of InformationObject and instances of Concept
+	- Relational meaning (as for frame semantics). Here it is modelled as the expresses relation between instances of InformationObject and instances of Description
+	- Cognitive meaning (as for &apos;psychological&apos; semantics). Here it is modelled as the expresses relation between any instance of InformationObject and any different instance of InformationObject that isRealizedBy a mental, cognitive or neural state (depending on which theory of mind is assumed). Such states can be considered here as instances of Process (occurring in the mind, cognitive system, or neural system of an agent)
+	- Cultural meaning (as for &apos;social science&apos; semantics). Here it is modelled as the expresses relation between instances of InformationObject and instances of SocialObject (institutions, cultural paradigms, norms, social practices, etc.)
+	- Distributional meaning (as for geometrical models of meaning). Here it is modelled as the expresses relation between any instance of InformationObject and any different instance of InformationObject that isFormallyRepresentedIn some (geometrical) Region (e.g. a vector space)
+
+(2) Formal meaning (as for logic and formal semantics: no distinction is assumed between informal meaning and reference, therefore between &apos;expresses&apos; and &apos;isAbout&apos;, which can be used interchangeably)
+	- Object-level formal meaning (as in the traditional first-order logic semantics). Here it is modelled as the expresses relation between an instance of InformationObject and an instance of Collection that isGroundingFor (in most cases) a Set; isGroundingFor is defined in the ontology: http://www.loa-cnr.it/ontologies/IOLite.owl
+	- Modal formal meaning (as in possible-world semantics). Here it is modelled as the expresses relation between an instance of InformationObject and an instance of Collection that isGroundingFor a Set, and which isPartOf some different instance of Collection that isGroundingFor a PossibleWorld
+
+This is only a first step to provide a framework, in which one can model different aspects of meaning. A more developed ontology should approach the problem of integrating the different uses of &apos;expresses&apos;, so that different theories, resources, methods can interoperate.</rdfs:comment>
+        <rdfs:label xml:lang="it">esprime</rdfs:label>
+        <rdfs:label xml:lang="en">expresses</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#expressesConcept -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#expressesConcept">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#expresses"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isConceptExpressedBy"/>
+        <rdfs:comment>A relation between an InformationObject and a Concept , e.g. the term &quot;dog&quot; expresses the Concept &quot;dog&quot;. For expressing a relational meaning, see the more general object property: expresses</rdfs:comment>
+        <rdfs:label xml:lang="it">esprime il concetto</rdfs:label>
+        <rdfs:label xml:lang="en">expresses concept</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#farFrom -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#farFrom">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#farFrom"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>Generic distance relation between any Entity(s). E.g. Rome is far from Beijing, astronomy is far from necromancy.</rdfs:comment>
+        <rdfs:label xml:lang="en">far from</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#follows -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#follows">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#precedes"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between entities, expressing a &apos;sequence&apos; schema. 
+E.g. &apos;year 2000 follows 1999&apos;, &apos;preparing coffee&apos; follows &apos;deciding what coffee to use&apos;, &apos;II World War follows I World War&apos;, etc. 
+It can be used between tasks, processes or time intervals, and subproperties would fit best in order to distinguish the different uses.</rdfs:comment>
+        <rdfs:label xml:lang="en">follows</rdfs:label>
+        <rdfs:label xml:lang="it">segue</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasCommonBoundary -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasCommonBoundary">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasCommonBoundary"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>A relation to encode either formal or informal characterizations of &apos;boundaries&apos; common to two different entities: an Event that ends when another begins, two abstract regions that have a common topological boundary, two objects that are said to be &apos;in contact&apos; from a commonsense perspective, etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">has common boundary</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasComponent -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasComponent">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasPart"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isComponentOf"/>
+        <rdfs:comment>The hasPart relation without transitivity, holding between an Object (the system) and another (the component), and assuming a Design that structures the Object.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha componente</rdfs:label>
+        <rdfs:label xml:lang="en">has component</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasConstituent -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasConstituent">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isConstituentOf"/>
+        <rdfs:comment>&apos;Constituency&apos; depends on some layering of  the world described by the ontology. For example, scientific granularities (e.g. body-organ-tissue-cell) or ontological &apos;strata&apos; (e.g. social-mental-biological-physical) are  typical layerings. 
+Intuitively, a constituent is a part belonging to a lower layer. Since layering is actually a partition of the world described by the ontology, constituents are not properly classified as parts, although this kinship can be intuitive for common sense.
+A desirable advantage of this distinction is that we are able to talk e.g. of physical constituents of non-physical objects (e.g. systems), while this is not possible in terms of parts.
+Example of are the persons constituting a social system, the molecules constituting a person, the atoms constituting a river, etc. 
+In all these examples, we notice a typical discontinuity between the constituted and the constituent object: e.g. a social system is conceptualized at a different layer from the persons that constitute it, a person is conceptualized at a different layer from the molecules that constitute them, and a river is conceptualized at a different layer from the atoms that constitute it.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha costituente</rdfs:label>
+        <rdfs:label xml:lang="en">has constituent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasConstraint -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasConstraint">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isClassifiedBy"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isConstraintFor"/>
+        <rdfs:comment>A relation between parameters and entities. It allows to assert generic constraints (encoded as parameters), e.g. MinimumAgeForDriving isConstraintFor John (where John is a legal subject under the TrafficLaw).
+The intended semantics (not expressible in OWL) is that a Parameter isParameterFor a Concept that classifies an Entity; moreover, it entails that a Parameter parametrizes a Region that isRegionFor that Entity.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha vincolo</rdfs:label>
+        <rdfs:label xml:lang="en">has constraint</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasLocation">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isLocationOf"/>
+        <rdfs:comment>A generic, relative localization, holding between any entities. E.g. &apos;the cat is on the mat&apos;, &apos;Omar is in Samarcanda&apos;, &apos;the wound is close to the femural artery&apos;.
+For &apos;absolute&apos; locations, see SpaceRegion</rdfs:comment>
+        <rdfs:label xml:lang="it">ha localizzazione</rdfs:label>
+        <rdfs:label xml:lang="en">has location</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasMember -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasMember">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isMemberOf"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between collections and entities, e.g. &apos;my collection of saxophones includes an old Adolphe Sax original alto&apos; (i.e. my collection has member an Adolphe Sax alto).</rdfs:comment>
+        <rdfs:label xml:lang="it">ha membro</rdfs:label>
+        <rdfs:label xml:lang="en">has member</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasParameter -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasParameter">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isParameterFor"/>
+        <rdfs:comment>A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha parametro</rdfs:label>
+        <rdfs:label xml:lang="en">has parameter</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasPart -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasPart">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isPartOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A schematic relation between any entities, e.g. &apos;the human body has a brain as part&apos;, &apos;20th century contains year 1923&apos;, &apos;World War II includes the Pearl Harbour event&apos;.
+Subproperties and restrictions can be used to specialize hasPart for objects, events, etc.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha parte</rdfs:label>
+        <rdfs:label xml:lang="en">has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasParticipant -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasParticipant">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isParticipantIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an object and a process, e.g. &apos;John took part in the discussion&apos;, &apos;a large mass of snow fell during the avalanche&apos;, or &apos;a cook, some sugar, flour, etc. are all present in the cooking of a cake&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha come partecipante</rdfs:label>
+        <rdfs:label xml:lang="en">has participant</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasPostcondition -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasPostcondition">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyPrecedes"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isPostconditionOf"/>
+        <rdfs:comment>Direct succession applied to situations. 
+E.g., &apos;A postcondition of our Plan is to have things settled&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha postcondizione</rdfs:label>
+        <rdfs:label xml:lang="en">has postcondition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasPrecondition -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasPrecondition">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyFollows"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isPreconditionOf"/>
+        <rdfs:comment>Direct precedence applied to situations. 
+E.g., &apos;A precondition to declare war against a foreign country is claiming to find nuclear weapons in it&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha precondizione</rdfs:label>
+        <rdfs:label xml:lang="en">has precondition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasQuality -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasQuality">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isQualityOf"/>
+        <rdfs:comment>A relation between entities and qualities, e.g. &apos;Dmitri&apos;s skin is yellowish&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha qualità</rdfs:label>
+        <rdfs:label xml:lang="en">has quality</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasRegion -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasRegion">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRegionFor"/>
+        <rdfs:comment>A relation between entities and regions, e.g. &apos;the number of wheels of that truck is 12&apos;, &apos;the time of the experiment is August 9th, 2004&apos;, &apos;the whale has been localized at 34 degrees E, 20 degrees S&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha attributo</rdfs:label>
+        <rdfs:label xml:lang="en">has region</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasRole">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isClassifiedBy"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRoleOf"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an object and a role, e.g. the person &apos;John&apos; has role &apos;student&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha ruolo</rdfs:label>
+        <rdfs:label xml:lang="en">has role</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasSetting -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasSetting">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between entities and situations, e.g. &apos;this morning I&apos;ve prepared my coffee with a new fantastic Arabica&apos;, i.e.: (an amount of) a new fantastic Arabica hasSetting the preparation of my coffee this morning.</rdfs:comment>
+        <rdfs:label xml:lang="en">has setting</rdfs:label>
+        <rdfs:label xml:lang="it">è nel contesto di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasTask -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasTask">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isTaskOf"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between roles and tasks, e.g. &apos;students have the duty of giving exams&apos; (i.e. the Role &apos;student&apos; hasTask the Task &apos;giving exams&apos;).</rdfs:comment>
+        <rdfs:label xml:lang="it">ha come obiettivo</rdfs:label>
+        <rdfs:label xml:lang="en">has task</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#includesAction -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#includesAction">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#includesEvent"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isActionIncludedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between situations and actions, e.g. &apos;this morning I&apos;ve prepared my coffee and had my fingers burnt&apos; (i.e.: the preparation of my coffee this morning included a burning of my fingers).</rdfs:comment>
+        <rdfs:label xml:lang="it">include azione</rdfs:label>
+        <rdfs:label xml:lang="en">includes action</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#includesAgent -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#includesAgent">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#includesObject"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isAgentIncludedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between situations and persons, e.g. &apos;this morning I&apos;ve prepared my coffee and had my fingers burnt&apos; (i.e.: the preparation of my coffee this morning included me).</rdfs:comment>
+        <rdfs:label xml:lang="it">include l&apos;agente</rdfs:label>
+        <rdfs:label xml:lang="en">includes agent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#includesEvent -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#includesEvent">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isEventIncludedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between situations and events, e.g. &apos;this morning I&apos;ve prepared my coffee and had my fingers burnt&apos; (i.e.: the preparation of my coffee this morning included a burning of my fingers).</rdfs:comment>
+        <rdfs:label xml:lang="it">include l&apos;evento</rdfs:label>
+        <rdfs:label xml:lang="en">includes event</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#includesObject -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#includesObject">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isObjectIncludedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between situations and objects, e.g. &apos;this morning I&apos;ve prepared my coffee and had my fingers burnt&apos; (i.e.: the preparation of my coffee this morning included me).</rdfs:comment>
+        <rdfs:label xml:lang="it">include l&apos;oggetto</rdfs:label>
+        <rdfs:label xml:lang="en">includes object</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#includesTime -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#includesTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSettingFor"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isTimeIncludedIn"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between situations and time intervals, e.g. &apos;this morning I&apos;ve prepared my coffee and had my fingers burnt&apos; (i.e.: preparing my coffee was held this morning). A data value attached to the time interval typically complements this modelling pattern.</rdfs:comment>
+        <rdfs:label xml:lang="it">include tempo</rdfs:label>
+        <rdfs:label xml:lang="en">includes time</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#introduces -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#introduces">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isIntroducedBy"/>
+        <rdfs:comment>A relation between a Description and a SocialAgent, e.g. a Constitutional Charter introduces the SocialAgent &apos;PresidentOfRepublic&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">introduce</rdfs:label>
+        <rdfs:label xml:lang="en">introduces</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#involvesAgent -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#involvesAgent">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasParticipant"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isAgentInvolvedIn"/>
+        <rdfs:comment>Agent participation.</rdfs:comment>
+        <rdfs:label xml:lang="it">coinvolge agente</rdfs:label>
+        <rdfs:label xml:lang="en">involves agent</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isAbout -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isAbout">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isReferenceOf"/>
+        <rdfs:comment>A relation between information objects and any Entity (including information objects). It can be used to talk about e.g. entities are references of proper nouns: the proper noun &apos;Leonardo da Vinci&apos; isAbout the Person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun &apos;person&apos; isAbout the set of all persons in a domain of discourse, which can be represented in DOLCE-Ultralite as an individual of the class: Collection .
+The isAbout relation is reflexive (not expressible in OWL1.0), because information objects are also about themselves.</rdfs:comment>
+        <rdfs:label xml:lang="en">is about</rdfs:label>
+        <rdfs:label xml:lang="it">si riferisce a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isActionIncludedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isActionIncludedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isEventIncludedIn"/>
+        <rdfs:label xml:lang="en">is action included in</rdfs:label>
+        <rdfs:label xml:lang="it">è un&apos;azione nel contesto di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isAgentIncludedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isAgentIncludedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isObjectIncludedIn"/>
+        <rdfs:label xml:lang="en">is agent included in</rdfs:label>
+        <rdfs:label xml:lang="it">è un agente nel contesto di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isAgentInvolvedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isAgentInvolvedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isParticipantIn"/>
+        <rdfs:comment>Agent participation.</rdfs:comment>
+        <rdfs:label xml:lang="en">is agent involved in</rdfs:label>
+        <rdfs:label xml:lang="it">è un agente coinvolto in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isCharacterizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isCharacterizedBy">
+        <rdfs:label xml:lang="en">is characterized by</rdfs:label>
+        <rdfs:label xml:lang="en-us}">is characterized by {</rdfs:label>
+        <rdfs:label xml:lang="it">è caratterizzato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isClassifiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isClassifiedBy">
+        <rdfs:comment>A relation between a Concept and an Entity, e.g. &apos;John is considered a typical rude man&apos;; your last concert constitutes the achievement of a lifetime; &apos;20-year-old means she&apos;s mature enough&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is classified by</rdfs:label>
+        <rdfs:label xml:lang="it">è classificato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isComponentOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isComponentOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isPartOf"/>
+        <rdfs:comment>The hasPart relation without transitivity, holding between an Object (the system) and another (the component), and assuming a Design that structures the Object.</rdfs:comment>
+        <rdfs:label xml:lang="en">is component of</rdfs:label>
+        <rdfs:label xml:lang="it">è componente di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isConceptExpressedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isConceptExpressedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isExpressedBy"/>
+        <rdfs:comment>A relation between an InformationObject and a Concept , e.g. the term &quot;dog&quot; expresses the Concept &quot;dog&quot;. For expressing a relational meaning, see the more general object property: expresses</rdfs:comment>
+        <rdfs:label xml:lang="en">is concept expressed by</rdfs:label>
+        <rdfs:label xml:lang="it">è un concetto espresso da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isConceptUsedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isConceptUsedIn">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#usesConcept"/>
+        <rdfs:comment>A more generic relation holding between a Description and a Concept. In order to be used, a Concept must be previously definedIn another Description</rdfs:comment>
+        <rdfs:label xml:lang="en">is concept used in</rdfs:label>
+        <rdfs:label xml:lang="it">è un concetto usato in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isConceptualizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isConceptualizedBy">
+        <rdfs:comment>A relation stating that an Agent is internally representing a Description . E.g., &apos;John believes in the conspiracy theory&apos;; &apos;Niels Bohr created a solar-system metaphor for his atomic theory&apos;; &apos;Jacques assumes all swans are white&apos;; &apos;the task force shares the attack plan&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is conceptualized by</rdfs:label>
+        <rdfs:label xml:lang="it">è concettualizzato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isConcretelyExpressedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isConcretelyExpressedBy">
+        <rdfs:comment>A relation between an InformationRealization and a Description, e.g. &apos;the printout of the Italian Constitution concretelyExpresses the Italian Constitution&apos;. It should be supplied also with a rule stating that the InformationRealization realizes an InformationObject that expresses the Description</rdfs:comment>
+        <rdfs:label xml:lang="en">is concretely expressed by</rdfs:label>
+        <rdfs:label xml:lang="it">è espresso concretamente da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isConstituentOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isConstituentOf">
+        <rdfs:comment>&apos;Constituency&apos; depends on some layering of  the world described by the ontology. For example, scientific granularities (e.g. body-organ-tissue-cell) or ontological &apos;strata&apos; (e.g. social-mental-biological-physical) are  typical layerings. 
+Intuitively, a constituent is a part belonging to a lower layer. Since layering is actually a partition of the world described by the ontology, constituents are not properly classified as parts, although this kinship can be intuitive for common sense.
+A desirable advantage of this distinction is that we are able to talk e.g. of physical constituents of non-physical objects (e.g. systems), while this is not possible in terms of parts.
+Example of are the persons constituting a social system, the molecules constituting a person, the atoms constituting a river, etc. 
+In all these examples, we notice a typical discontinuity between the constituted and the constituent object: e.g. a social system is conceptualized at a different layer from the persons that constitute it, a person is conceptualized at a different layer from the molecules that constitute them, and a river is conceptualized at a different layer from the atoms that constitute it.</rdfs:comment>
+        <rdfs:label xml:lang="en">is constituent of</rdfs:label>
+        <rdfs:label xml:lang="it">è costituente di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isConstraintFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isConstraintFor">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#classifies"/>
+        <rdfs:comment>A relation between parameters and entities. It allows to assert generic constraints (encoded as parameters), e.g. MinimumAgeForDriving isConstraintFor John (where John is a legal subject under the TrafficLaw).
+The intended semantics (not expressible in OWL) is that a Parameter isConstraintFor and Entity if the Parameter isParameterFor a Concept that classifies that Entity; moreover, it entails that a Parameter parametrizes a Region that isRegionFor that Entity. The use in OWL is therefore a shortcut to annotate what Parameter constrains what Entity</rdfs:comment>
+        <rdfs:label xml:lang="en">is constraint for</rdfs:label>
+        <rdfs:label xml:lang="it">è un vincolo per</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isCoveredBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isCoveredBy">
+        <rdfs:comment>A relation between concepts and collections, where a Concept is said to cover a Collection; it corresponds to a link between the (reified) intensional and extensional interpretations of a (reified) class.
+E.g. the collection of vintage saxophones is covered by the Concept &apos;Saxophone&apos; with the Parameter &apos;Vintage&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is covered by</rdfs:label>
+        <rdfs:label xml:lang="it">è ricoperto da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isDefinedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isDefinedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isConceptUsedIn"/>
+        <rdfs:comment>A relation between a Description and a Concept, e.g. a Workflow for a governmental Organization defines the Role &apos;officer&apos;, or &apos;the Italian Traffic Law defines the role Vehicle&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is defined in</rdfs:label>
+        <rdfs:label xml:lang="it">è definito in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isDescribedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isDescribedBy">
+        <rdfs:comment>The relation between an Entity and a Description: a Description gives a unity to a Collection of parts (the components), or constituents, by assigning a Role to each of them in the context of a whole Object (the system).
+A same Entity can be given different descriptions, for example, an old cradle can be given a unifying Description based on the original aesthetic design, the functionality it was built for, or a new aesthetic functionality in which it can be used as a flower pot.</rdfs:comment>
+        <rdfs:label xml:lang="en">is described by</rdfs:label>
+        <rdfs:label xml:lang="it">è descritto da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isEventIncludedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isEventIncludedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasSetting"/>
+        <rdfs:label xml:lang="en">is event included in</rdfs:label>
+        <rdfs:label xml:lang="it">è un evento nel contesto di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isExecutedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isExecutedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#classifies"/>
+        <rdfs:comment>A relation between an action and a task, e.g. &apos;putting some water in a pot and putting the pot on a fire until the water starts bubbling&apos; executes the task &apos;boiling&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is executed in</rdfs:label>
+        <rdfs:label xml:lang="it">è eseguito mediante</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isExpandedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isExpandedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToDescription"/>
+        <rdfs:comment>A partial order relation that holds between descriptions. It represents the proper part relation between a description and another description featuring the same properties as the former, with at least one additional one.
+Descriptions can be expanded either by adding other descriptions as parts, or by refining concepts that are used by them. 
+An &apos;intention&apos; to expand must be present (unless purely formal theories are considered, but even in this case a criterion of relevance is usually active).</rdfs:comment>
+        <rdfs:label xml:lang="en">is expanded in</rdfs:label>
+        <rdfs:label xml:lang="it">è espansa in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isExpressedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isExpressedBy">
+        <rdfs:comment>A relation between a dul:SocialObject (the &apos;meaning&apos;) and a dul:InformationObject (the &apos;expression&apos;). 
+For example: &apos;A Beehive is a structure in which bees are kept, typically in the form of a dome or box.&apos; (Oxford dictionary)&apos;; &apos;the term Beehive expresses the concept Beehive in my apiculture ontology&apos;.
+The intuition for &apos;meaning&apos; is intended to be very broad. A separate, large comment is included in the encoding of &apos;expresses&apos;, for those who want to investigate more on what kind of meaning can be represented in what form.</rdfs:comment>
+        <rdfs:label xml:lang="en">is expressed by</rdfs:label>
+        <rdfs:label xml:lang="it">è espresso da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isIntroducedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isIntroducedBy">
+        <rdfs:comment>A relation between a Description and a SocialAgent, e.g. a Constitutional Charter introduces the SocialAgent &apos;PresidentOfRepublic&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is introduced by</rdfs:label>
+        <rdfs:label xml:lang="it">è introdotto da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isLocationOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isLocationOf">
+        <rdfs:comment>A generic, relative localization, holding between any entities. E.g. &apos;Rome is the seat of the Pope&apos;, &apos;the liver is the location of the tumor&apos;.
+For &apos;absolute&apos; locations, see SpaceRegion</rdfs:comment>
+        <rdfs:label xml:lang="en">is location of</rdfs:label>
+        <rdfs:label xml:lang="it">è una localizzazione di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isMemberOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isMemberOf">
+        <rdfs:comment>A relation between collections and entities, e.g. &apos;the Night Watch by Rembrandt is in the Rijksmuseum collection&apos;; &apos;Davide is member of the Pen Club&apos;, &apos;Igor is one the subjects chosen for the experiment&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is member of</rdfs:label>
+        <rdfs:label xml:lang="it">è membro di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isObjectIncludedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isObjectIncludedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasSetting"/>
+        <rdfs:label xml:lang="en">is object included in</rdfs:label>
+        <rdfs:label xml:lang="it">è un oggetto nel contesto di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isObservableAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isObservableAt">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegion"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isTimeOfObservationOf"/>
+        <rdfs:comment>A relation to represent a (past, present or future) TimeInterval at which an Entity is observable.
+In order to encode a specific time, a data value should be related to the TimeInterval. 
+An alternative way of representing time is the datatype property: hasIntervalDate</rdfs:comment>
+        <rdfs:label xml:lang="en">is observable at</rdfs:label>
+        <rdfs:label xml:lang="it">è osservabile a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isParameterFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isParameterFor">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <rdfs:comment>A Concept can have a Parameter that constrains the attributes that a classified Entity can have in a certain Situation, e.g. a 4WheelDriver Role definedIn the ItalianTrafficLaw has a MinimumAge parameter on the Amount 16.</rdfs:comment>
+        <rdfs:label xml:lang="en">is parameter for</rdfs:label>
+        <rdfs:label xml:lang="it">è un parametro per</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isParametrizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isParametrizedBy">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isClassifiedBy"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#parametrizes"/>
+        <rdfs:comment>The relation between a Parameter, e.g. &apos;MajorAge&apos;, and a Region, e.g. &apos;&gt;17 year&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is parametrized by</rdfs:label>
+        <rdfs:label xml:lang="it">è parametrizzato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isPartOf">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between any entities, e.g.&apos;brain is a part of the human body&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is part of</rdfs:label>
+        <rdfs:label xml:lang="it">è parte di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isParticipantIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isParticipantIn">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an object and a process, e.g. &apos;John took part in the discussion&apos;, &apos;a large mass of snow fell during the avalanche&apos;, or &apos;a cook, some sugar, flour, etc. are all present in the cooking of a cake&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is participant in</rdfs:label>
+        <rdfs:label xml:lang="it">è un partecipante a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isPostconditionOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isPostconditionOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyFollows"/>
+        <rdfs:comment>Direct succession applied to situations. 
+E.g., &apos;Taking some rest is a postcondition of my search for a hotel&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is postcondition of</rdfs:label>
+        <rdfs:label xml:lang="it">è postcondizione di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isPreconditionOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isPreconditionOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyPrecedes"/>
+        <rdfs:comment>Direct precedence applied to situations. 
+E.g., &apos;claiming to find nuclear weapons in a foreign country is a precondition to declare war against it&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is precondition of</rdfs:label>
+        <rdfs:label xml:lang="it">è precondizione di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isQualityOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isQualityOf">
+        <rdfs:comment>A relation between entities and qualities, e.g. &apos;Dmitri&apos;s skin is yellowish&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is quality of</rdfs:label>
+        <rdfs:label xml:lang="it">è una qualità di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isRealizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isRealizedBy">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#realizes"/>
+        <rdfs:comment>A relation between an information realization and an information object, e.g. the paper copy of the Italian Constitution realizes the text of the Constitution.</rdfs:comment>
+        <rdfs:label xml:lang="en">is realized by</rdfs:label>
+        <rdfs:label xml:lang="it">è realizzato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isReferenceOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isReferenceOf">
+        <rdfs:comment>A relation between information objects and any Entity (including information objects). It can be used to talk about e.g. entities are references of proper nouns: the proper noun &apos;Leonardo da Vinci&apos; isAbout the Person Leonardo da Vinci; as well as to talk about sets of entities that can be described by a common noun: the common noun &apos;person&apos; isAbout the set of all persons in a domain of discourse, which can be represented in DOLCE-Ultralite as an individual of the class: Collection .
+The isReferenceOf relation is irreflexive, differently from its inverse isAbout.</rdfs:comment>
+        <rdfs:label xml:lang="en">is reference of</rdfs:label>
+        <rdfs:label xml:lang="it">è il riferimento di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isReferenceOfInformationRealizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isReferenceOfInformationRealizedBy">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#realizesInformationAbout"/>
+        <rdfs:comment>The relation between entities and information realizations, e.g. between Italy and a paper copy of the text of the Italian Constitution.</rdfs:comment>
+        <rdfs:label xml:lang="en">is reference of information realized by</rdfs:label>
+        <rdfs:label xml:lang="it">è riferimento dell&apos;informazione realizzata da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isRegionFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isRegionFor">
+        <rdfs:comment>A relation between entities and regions, e.g. &apos;the color of my car is red&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is region for</rdfs:label>
+        <rdfs:label xml:lang="it">è una regione di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>Any relation between concepts, e.g. superordinated, conceptual parthood, having a parameter, having a task, superordination, etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">is related to concept</rdfs:label>
+        <rdfs:label xml:lang="it">è associato al concetto</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isRelatedToDescription -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isRelatedToDescription">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToDescription"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>Any relation between descriptions.</rdfs:comment>
+        <rdfs:label xml:lang="en">is related to description</rdfs:label>
+        <rdfs:label xml:lang="it">è associata alla descrizione</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isRoleDefinedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isRoleDefinedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isDefinedIn"/>
+        <rdfs:comment>A relation between a description and a role, e.g. the role &apos;Ingredient&apos; is defined in the recipe for a cake.</rdfs:comment>
+        <rdfs:label xml:lang="en">is role defined in</rdfs:label>
+        <rdfs:label xml:lang="it">è un ruolo definito in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isRoleOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isRoleOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#classifies"/>
+        <rdfs:comment>A relation between an object and a role, e.g. &apos;student&apos; is the role of &apos;John&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is role of</rdfs:label>
+        <rdfs:label xml:lang="it">è un ruolo di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isSatisfiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isSatisfiedBy">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#satisfies"/>
+        <rdfs:comment>A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.</rdfs:comment>
+        <rdfs:label xml:lang="en">is satisfied by</rdfs:label>
+        <rdfs:label xml:lang="it">è soddisfatta da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isSettingFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isSettingFor">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between situations and entities, e.g. &apos;this morning I&apos;ve prepared my coffee with a new fantastic Arabica&apos;, i.e.: the preparation of my coffee this morning is the setting for (an amount of) a new fantastic Arabica.</rdfs:comment>
+        <rdfs:label xml:lang="it">include</rdfs:label>
+        <rdfs:label xml:lang="en">is setting for</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isSpecializedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isSpecializedBy">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#specializes"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment>A partial order relation that holds between social objects. It represents the subsumption relation between e.g. a Concept and another Concept that is broader in extensional interpretation, but narrowe in intensional interpretation.
+E.g. PhDStudent Role specializes Student Role</rdfs:comment>
+        <rdfs:label xml:lang="en">is specialized by</rdfs:label>
+        <rdfs:label xml:lang="it">è specializzato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isSubordinatedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isSubordinatedTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyFollows"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isSuperordinatedTo"/>
+        <rdfs:comment>Direct succession applied to concepts. E.g. the role &apos;Officer&apos; is subordinated to &apos;Director&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is subordinated to</rdfs:label>
+        <rdfs:label xml:lang="it">è subordinato a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isSuperordinatedTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isSuperordinatedTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#directlyPrecedes"/>
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <rdfs:comment>Direct precedence applied to concepts. E.g. the role &apos;Executive&apos; is superordinated to &apos;DepartmentManager&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="en">is superordinated to</rdfs:label>
+        <rdfs:label xml:lang="it">è superordinato a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isTaskDefinedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isTaskDefinedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isDefinedIn"/>
+        <rdfs:comment>A relation between a description and a task, e.g. the task &apos;boil&apos; is defined in a recipe for a cake.</rdfs:comment>
+        <rdfs:label xml:lang="en">is task defined in</rdfs:label>
+        <rdfs:label xml:lang="it">è un task definito in</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isTaskOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isTaskOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRelatedToConcept"/>
+        <rdfs:comment>A relation between roles and tasks, e.g. &apos;students have the duty of giving exams&apos; (i.e. the Role &apos;student&apos; hasTask the Task &apos;giving exams&apos;).</rdfs:comment>
+        <rdfs:label xml:lang="en">is task of</rdfs:label>
+        <rdfs:label xml:lang="it">è un obiettivo per</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isTimeIncludedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isTimeIncludedIn">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasSetting"/>
+        <rdfs:label xml:lang="en">is time included in</rdfs:label>
+        <rdfs:label xml:lang="it">è un tempo nel contesto di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isTimeOfObservationOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isTimeOfObservationOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#isRegionFor"/>
+        <rdfs:comment>A relation to represent a (past, present or future) TimeInterval at which an Entity is observable.
+In order to encode a specific time, a data value should be related to the TimeInterval. 
+An alternative way of representing time is the datatype property: hasIntervalDate</rdfs:comment>
+        <rdfs:label xml:lang="en">is time of observation of</rdfs:label>
+        <rdfs:label xml:lang="it">è il tempo di osservazione di</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#isUnifiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#isUnifiedBy">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#unifies"/>
+        <rdfs:comment>A Collection has a unification criterion, provided by a Description; for example, a community of practice can be unified by a shared theory or interest, e.g. the community that makes research on mirror neurons shares some core knowledge about mirror neurons, which can be represented as a Description MirrorNeuronTheory that unifies the community. There can be several unifying descriptions.</rdfs:comment>
+        <rdfs:label xml:lang="en">is unified by</rdfs:label>
+        <rdfs:label xml:lang="it">è unificato da</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#nearTo -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#nearTo">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#nearTo"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>Generic distance relation between any Entity(s). E.g. Rome is near to Florence, astronomy is near to physics.</rdfs:comment>
+        <rdfs:label xml:lang="en">near to</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#overlaps -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#overlaps">
+        <owl:inverseOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#overlaps"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment>A schematic relation between any entities, e.g. &apos;the chest region overlaps with the abdomen region&apos;, &apos;my spoken words overlap with hers&apos;, &apos;the time of my leave overlaps with the time of your arrival&apos;, &apos;fibromyalgia overlaps with other conditions&apos;.
+Subproperties and restrictions can be used to specialize overlaps for objects, events, time intervals, etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">overlaps</rdfs:label>
+        <rdfs:label xml:lang="it">sovrapposto a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#parametrizes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#parametrizes">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#classifies"/>
+        <rdfs:comment>The relation between a Parameter, e.g. &apos;MajorAgeLimit&apos;, and a Region, e.g. &apos;18_year&apos;.
+For a more data-oriented relation, see hasDataValue</rdfs:comment>
+        <rdfs:label xml:lang="en">parametrizes</rdfs:label>
+        <rdfs:label xml:lang="it">parametrizza</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#precedes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#precedes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between entities, expressing a &apos;sequence&apos; schema. 
+E.g. &apos;year 1999 precedes 2000&apos;, &apos;deciding what coffee to use&apos; precedes &apos;preparing coffee&apos;, &apos;World War II follows World War I&apos;, &apos;in the Milan to Rome autoroute, Bologna precedes Florence&apos;, etc.
+It can then be used between tasks, processes, time intervals, spatially locate objects, situations, etc. 
+Subproperties can be defined in order to distinguish the different uses.</rdfs:comment>
+        <rdfs:label xml:lang="it">precede</rdfs:label>
+        <rdfs:label xml:lang="en">precedes</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#realizes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#realizes">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between an information realization and an information object, e.g. the paper copy of the Italian Constitution realizes the text of the Constitution.</rdfs:comment>
+        <rdfs:label xml:lang="en">realizes</rdfs:label>
+        <rdfs:label xml:lang="it">realizza</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#realizesInformationAbout -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#realizesInformationAbout">
+        <rdfs:comment>The relation between entities and information realizations, e.g. between Italy and a paper copy of the text of the Italian Constitution.</rdfs:comment>
+        <rdfs:label xml:lang="en">realizes information about</rdfs:label>
+        <rdfs:label xml:lang="it">realizza informazione che si riferisce a a</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#satisfies -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#satisfies">
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A relation between a Situation and a Description, e.g. the execution of a Plan satisfies that plan.</rdfs:comment>
+        <rdfs:label xml:lang="en">satisfies</rdfs:label>
+        <rdfs:label xml:lang="it">soddisfa</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#specializes -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#specializes">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:comment>A partial order relation that holds between social objects. 
+It mainly represents the subsumption relation between e.g. a Concept or Description and another Concept (resp. Description) that is broader in extensional interpretation, but narrower in intensional interpretation. For example, the role PhDStudent specializes the role Student.
+Another possible use is between a Collection that isCoveredBy a Concept A, and another Collection that isCoveredBy a Concept B that on its turm specializes A. For example, the 70,000 series Selmer Mark VI saxophone Collection specializes the Selmer Mark VI saxophone Collection.</rdfs:comment>
+        <rdfs:label xml:lang="en">specializes</rdfs:label>
+        <rdfs:label xml:lang="it">specializza</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#unifies -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#unifies">
+        <rdfs:comment>A Collection has a unification criterion, provided by a Description; for example, a community of practice can be unified by a shared theory or interest, e.g. the community that makes research on mirror neurons shares some core knowledge about mirror neurons, which can be represented as a Description MirrorNeuronTheory that unifies the community. There can be several unifying descriptions.</rdfs:comment>
+        <rdfs:label xml:lang="it">unifica</rdfs:label>
+        <rdfs:label xml:lang="en">unifies</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#usesConcept -->
+
+    <owl:ObjectProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#usesConcept">
+        <rdfs:comment>A generic relation holding between a Description and a Concept. In order to be used, a Concept must be previously definedIn another Description. This last condition cannot be encoded for object properties in OWL.</rdfs:comment>
+        <rdfs:label xml:lang="it">usa il concetto</rdfs:label>
+        <rdfs:label xml:lang="en">uses concept</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.insight-centre.org/ces#OWLDataProperty_00000000000000000000 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#OWLDataProperty_00000000000000000000">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">hasNodeId</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#accuracyWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#accuracyWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#availabilityWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#availabilityWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#bandwidthConsumptionWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#bandwidthConsumptionWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#energyConsumptionWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#energyConsumptionWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasCardinality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#hasCardinality">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#Repetition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#hasInternalNodeID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#hasInternalNodeID">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#ServiceNode"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#jmsService -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#jmsService">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#JmsGrounding"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#latencyWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#latencyWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#priceWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#priceWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#reliabilityWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#reliabilityWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#securityWeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#securityWeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.insight-centre.org/ces#weight"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#weight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/ces#weight">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#QosWeightPreference"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasAvgSpeed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasAvgSpeed">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/citytraffic#AvgSpeed"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasLat -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasLat">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/citytraffic#Node"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasLon -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasLon">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/citytraffic#Node"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasMeasureTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasMeasureTime">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/citytraffic#MeasureTime"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasTRID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasTRID">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/ces#EventProfile"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasValue"/>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#hasVehicleCount -->
+
+    <owl:DatatypeProperty rdf:about="http://www.insight-centre.org/citytraffic#hasVehicleCount">
+        <rdfs:domain rdf:resource="http://www.insight-centre.org/citytraffic#VehicleCount"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/eventTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/eventTime"/>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasDataValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasDataValue">
+        <rdfs:comment>A datatype property that encodes values from a datatype for an Entity. 
+There are several ways to encode values in DOLCE (Ultralite):
+
+1) Directly assert an xsd:_ value to an Entity by using hasDataValue
+2) Assert a Region for an Entity by using hasRegion, and then assert an xsd:_ value to that Region, by using hasRegionDataValue
+3) Assert a Quality for an Entity by using hasQuality, then assert a Region for that Quality, and assert an xsd:_ value to that Region, by using hasRegionDataValue
+4) When the value is required, but not directly observed, assert a Parameter for an xsd:_ value by using hasParameterDataValue, and then associate the Parameter to an Entity by using isConstraintFor
+5) When the value is required, but not directly observed, you can also assert a Parameter for a Region by using parametrizes, and then assert an xsd:_ value to that Region, by using hasRegionDataValue
+
+The five approaches obey different requirements. 
+For example, a simple value can be easily asserted by using pattern (1), but if one needs to assert an interval between two values, a Region should be introduced to materialize that interval, as pattern (2) suggests. 
+Furthermore, if one needs to distinguish the individual Quality of a value, e.g. the particular nature of the density of a substance, pattern (3) can be used. 
+Patterns (4) and (5) should be used instead when a constraint or a selection is modeled, independently from the actual observation of values in the real world.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha valore</rdfs:label>
+        <rdfs:label xml:lang="en">has data value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasEventDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasEventDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasDataValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>A datatype property that encodes values from xsd:date for an Event; a same Event can have more than one xsd:date value: begin date, end date, date at which the interval holds, as well as dates expressed in different formats: xsd:gYear, xsd:dateTime, etc.</rdfs:comment>
+        <rdfs:label xml:lang="it">evento ha data</rdfs:label>
+        <rdfs:label xml:lang="en">has event date</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasIntervalDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasIntervalDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasRegionDataValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+        <rdfs:comment>A datatype property that encodes values from xsd:date for a TimeInterval; a same TimeInterval can have more than one xsd:date value: begin date, end date, date at which the interval holds, as well as dates expressed in different formats: xsd:gYear, xsd:dateTime, etc.</rdfs:comment>
+        <rdfs:label xml:lang="en">has interval date</rdfs:label>
+        <rdfs:label xml:lang="it">intervallo ha data</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasParameterDataValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasParameterDataValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasDataValue"/>
+        <rdfs:comment>Parametrizes values from a datatype. For example, a Parameter MinimumAgeForDriving hasParameterDataValue 18 on datatype xsd:int, in the Italian traffic code. In this example, MinimumAgeForDriving isDefinedIn the Norm ItalianTrafficCodeAgeDriving.
+More complex parametrization requires workarounds. E.g. AgeRangeForDrugUsage could parametrize data value: 14 to 50 on the datatype: xsd:int. Since complex datatypes are not allowed in OWL1.0, a solution to this can only work by creating two &apos;sub-parameters&apos;: MinimumAgeForDrugUsage (that hasParameterDataValue 14) and MaximumAgeForDrugUsage (that hasParameterDataValue 50), which are components of (cf. hasComponent) the main Parameter AgeRangeForDrugUsage.
+Ordering on subparameters can be created by using or specializing the object property &apos;precedes&apos;.</rdfs:comment>
+        <rdfs:label xml:lang="it">ha valore</rdfs:label>
+        <rdfs:label xml:lang="en">has parameter data value</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasProxy -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasProxy">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:label xml:lang="it">ha proxy</rdfs:label>
+        <rdfs:label xml:lang="en">has proxy</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.rsplab.org/triplewave/citybench/#hasRegionDataValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.rsplab.org/triplewave/citybench/#hasRegionDataValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.rsplab.org/triplewave/citybench/#hasDataValue"/>
+        <rdfs:comment>A datatype property that encodes values for a Region, e.g. a float for the Region Height.</rdfs:comment>
+        <rdfs:label xml:lang="en">has region data value</rdfs:label>
+        <rdfs:label xml:lang="it">regione ha valore</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#CongestionLevel -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#CongestionLevel"/>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#CongestionLevelA -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#CongestionLevelA">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#CongestionLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#CongestionLevelB -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#CongestionLevelB">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#CongestionLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <dc:source>skos:exactMatch &apos;feature&apos; [O&amp;M] 
+		                    http://www.opengeospatial.org/standards/om</dc:source>
+        <rdfs:comment>A feature is an abstraction of real world phenomena (thing, person, event, etc).</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>Feature of Interest</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Skeleton#Skeleton</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Input -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Input">
+        <owl:disjointWith rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Output"/>
+        <dc:source>http://marinemetadata.org/community/teams/ontdevices</dc:source>
+        <rdfs:comment>Any information that is provided to a process for its use [MMI OntDev]</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>Input</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#Process</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.oclc.org/NET/ssnx/ssn#Output -->
+
+    <owl:Class rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Output">
+        <dc:source>http://marinemetadata.org/community/teams/ontdevices</dc:source>
+        <rdfs:comment>Any information that is reported from a process. [MMI OntDev]</rdfs:comment>
+        <rdfs:isDefinedBy>http://purl.oclc.org/NET/ssnx/ssn</rdfs:isDefinedBy>
+        <rdfs:label>Output</rdfs:label>
+        <rdfs:seeAlso>http://www.w3.org/2005/Incubator/ssn/wiki/SSN_Model#Process</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Grounding.owl#Grounding -->
+
+    <owl:Class rdf:about="http://www.daml.org/services/owl-s/1.2/Grounding.owl#Grounding"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Profile.owl#Profile -->
+
+    <owl:Class rdf:about="http://www.daml.org/services/owl-s/1.2/Profile.owl#Profile"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/Service.owl#Service -->
+
+    <owl:Class rdf:about="http://www.daml.org/services/owl-s/1.2/Service.owl#Service"/>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#ServiceParameter -->
+
+    <owl:Class rdf:about="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#ServiceParameter"/>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Accessiblity -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Accessiblity">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#QoS"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Accuracy -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Accuracy">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Believability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Aggregation -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Aggregation">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#And -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#And">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Bag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Availability -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Availability">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Accessiblity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#BandWidthConsumption -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#BandWidthConsumption">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Cost"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Believability -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Believability">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#QoS"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#ComplexEventService -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#ComplexEventService">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Constraint -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Constraint"/>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Context -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Context">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#NFP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Cost -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Cost">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#QoS"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#EnergyConsumption -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#EnergyConsumption">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Cost"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#EventPattern -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#EventPattern"/>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#EventPayload -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#EventPayload">
+        <rdfs:seeAlso>ssn:Observation
+</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#EventProfile -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#EventProfile">
+        <rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.2/Profile.owl#Profile"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#EventRequest -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#EventRequest">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#EventService -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#EventService">
+        <rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.2/Service.owl#Service"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Filter -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Filter">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#JmsGrounding -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#JmsGrounding">
+        <rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.2/Grounding.owl#Grounding"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Latency -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Latency">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Timeliness"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#NFP -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#NFP">
+        <rdfs:subClassOf rdf:resource="http://www.daml.org/services/owl-s/1.2/ServiceParameter.owl#ServiceParameter"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Or -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Or">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Bag"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Preference -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Preference"/>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Price -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Price">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Cost"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#PrimitiveEventService -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#PrimitiveEventService">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#QoS -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#QoS">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#NFP"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#QosWeightPreference -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#QosWeightPreference">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Preference"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Reliability -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Reliability">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Believability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Repetition -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Repetition">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Seq"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Security -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Security">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Believability"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Selection -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Selection">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Sequence -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Sequence">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#Seq"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#ServiceNode -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#ServiceNode">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#EventPattern"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#SlidingWindow -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#SlidingWindow"/>
+    
+
+
+    <!-- http://www.insight-centre.org/ces#Timeliness -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/ces#Timeliness">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#QoS"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#AvgSpeed -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#AvgSpeed"/>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#City -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#City">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#CongestionFactor -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#CongestionFactor"/>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#CongestionLevel -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#CongestionLevel"/>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#CongestionLevelA -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#CongestionLevelA">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/citytraffic#CongestionLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#CongestionLevelB -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#CongestionLevelB">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/citytraffic#CongestionLevel"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#Distance -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#Distance">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#District -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#District">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#DistrictTrafficReportService -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#DistrictTrafficReportService">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#ComplexEventService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#MeasureTime -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#MeasureTime"/>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#Node -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#Node">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#Place -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#Place">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#SegTrafficReportService -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#SegTrafficReportService">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#PrimitiveEventService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#Street -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#Street">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/citytraffic#Place"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#StreetTrafficReportService -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#StreetTrafficReportService">
+        <rdfs:subClassOf rdf:resource="http://www.insight-centre.org/ces#ComplexEventService"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.insight-centre.org/citytraffic#VehicleCount -->
+
+    <owl:Class rdf:about="http://www.insight-centre.org/citytraffic#VehicleCount"/>
+    
+
+
+    <!-- http://www.insight-centre/DataRequest#DataRequest -->
+
+    <owl:Class rdf:about="http://www.insight-centre/DataRequest#DataRequest"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#Bag -->
+
+    <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Bag"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#Seq -->
+
+    <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Seq"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
