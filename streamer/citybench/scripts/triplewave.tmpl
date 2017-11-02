@@ -3,7 +3,7 @@
             server.name: $stream_name
           container_name: ds$stream
           command: running/$stream_name.properties
-          image: citybench-data-server
+          build: ./ontop/
           ports:
             - "$ds_port:$ds_port"
           networks:
@@ -21,7 +21,7 @@
             - demo
           container_name: $stream
           command: running/$stream_name.properties
-          image: streamreasoning/twcitybench
+          build: ./triplewave/
           ports:
             - "$port:$port"
             - "$ws_port:$ws_port"

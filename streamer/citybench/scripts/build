@@ -3,7 +3,6 @@ from sys import argv
 import uuid
 import os
 
-machine=os.environ['MACHINE']
 run_uuid=str(uuid.uuid1())
 host="localhost"
 base_port=4000
