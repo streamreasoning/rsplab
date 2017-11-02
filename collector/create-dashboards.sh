@@ -17,8 +17,8 @@
 #   create-dashboards.sh
 #
 
-INFLUXDB_API_URL='http://localhost:8086/'
-INFLUXDB_API_REMOTE_URL='http://localhost:8086/'      # url for commands proxied through Grafana
+INFLUXDB_API_URL='http://influxsrv:8086/'
+INFLUXDB_API_REMOTE_URL='http://influxsrv:8086/'      # url for commands proxied through Grafana
 INFLUXDB_ROOT_LOGIN='root'
 INFLUXDB_ROOT_PASSWORD='root'
 

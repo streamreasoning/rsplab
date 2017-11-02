@@ -1,42 +1,54 @@
-influxsrv:
-  build: ./influxdb 
-  container_name: influxsrv
-  ports:
-    - "8086:8086"
-  volumes:
-    - influxdata:/var/lib/influxdb:rw
+version: '3'
+networks:
+  demo:
+    external:
+      name: demo
 
-grafana:
-  build: ./grafana
-  container_name: grafana
-  ports:
-    - "3000:3000"
-  links:
-    - influxsrv:influxsrv
-  volumes:
-    - grafanadb:/var/lib/grafana
-  environment:
-    - INFLUXDB_HOST=influxsrv
-    - INFLUXDB_PORT=8086
-    - INFLUXDB_NAME=rspengines
-    - INFLUXDB_USER=root
-    - INFLUXDB_PASS=root
+volumes:
+  resultsdata:
+  grafanadb:
+  influxdata:
 
-notebook:
-  build: ./lab
-  container_name: controller
-  links:
-    - influxsrv:influxsrv
-    - grafana:grafana
-  ports:
-    - "8888:8888"
-  volumes:
-    - ../collector/lab/streamapp:/home/jovyan/work/streamapp:rw
-    - ../collector/lab/demo:/home/jovyan/work/demo:rw
-    - resultsdata:/home/jovyan/work/data
-    - /:/rootfs:ro
-    - /var/run:/var/run:rw
-    - /sys:/sys:ro
-    - /var/lib/docker/:/var/lib/docker:ro
+services:
+    influxsrv:
+      build: ./influxdb 
+      container_name: influxsrv
+      ports:
+        - "8086:8086"
+      volumes:
+        - influxdata:/var/lib/influxdb:rw
+
+    grafana:
+      build: ./grafana
+      container_name: grafana
+      ports:
+        - "3000:3000"
+      links:
+        - influxsrv:influxsrv
+      volumes:
+        - grafanadb:/var/lib/grafana
+      environment:
+        - INFLUXDB_HOST=influxsrv
+        - INFLUXDB_PORT=8086
+        - INFLUXDB_NAME=rspengines
+        - INFLUXDB_USER=root
+        - INFLUXDB_PASS=root
+
+    notebook:
+      build: ./lab
+      container_name: controller
+      links:
+        - influxsrv:influxsrv
+        - grafana:grafana
+      ports:
+        - "8888:8888"
+      volumes:
+        - ../collector/lab/streamapp:/home/jovyan/work/streamapp:rw
+        - ../collector/lab/demo:/home/jovyan/work/demo:rw
+        - resultsdata:/home/jovyan/work/data
+        - /:/rootfs:ro
+        - /var/run:/var/run:rw
+        - /sys:/sys:ro
+        - /var/lib/docker/:/var/lib/docker:ro
 
 
