@@ -24,7 +24,7 @@ source		SELECT _id, "TIMESTAMP"::timestamp AS TIMESTAMP, tp."property" AS PID, "
 				WHERE tp."service"='AarhusTrafficData182955' and tp.property_class='VehicleCount'
 
 mappingId	AarhusTrafficObservationCongestionLevel-AarhusTrafficData182955
-target		:AarhusTrafficData182955/{ID}-CL{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {cl}^^xsd:decimal ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData182955 . ses:{PID} a ct:CongestionLevel .
+target		:AarhusTrafficData182955/{ID}-CL{RANDOM} a ssn:Observation ; :eventTime {TIMESTAMP}^^xsd:dateTime ; ct:hasValue {cl}^^xsd:decimal ; ssn:observedProperty ses:{PID} ; ssn:observedBy ses:AarhusTrafficData182955 . ses:{PID} a ct:CongestionLevelA .
 source		SELECT ist._id AS ID, tp."property" AS PID, "vehicleCount"::int / "DISTANCE_IN_METERS"::float AS cl, setseed(ist._id::int * 0.00000003), md5(random()::text) AS random, ist."TIMESTAMP"::timestamp AS TIMESTAMP
 			FROM "AarhusTrafficData182955" AS ist, "trafficMetaData" AS tmd, "service_properties" AS tp
 			where tmd."REPORT_ID"=ist."REPORT_ID"  and tp."service"='AarhusTrafficData182955' and tp.property_class='CongestionLevel'

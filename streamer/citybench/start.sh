@@ -1,9 +1,5 @@
 #!/bin/bash
 
-## Build the image for the ontop SPARQL server 
-docker rmi citybench-data-server
-docker rmi streamreasoning/twcitybench
-
 rm -rf ./*.yml
 
 python ./scripts/build $@
