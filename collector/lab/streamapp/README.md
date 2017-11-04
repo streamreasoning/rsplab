@@ -106,7 +106,7 @@ You can monitor csparql engine performanct at [http://localhost:3000/dashboard/d
 - cd consumer
 - ./stop.sh
 
-#Part 2: Running the Consumer 
+# Part 2: Running the Consumer 
 
 ## Steps
 - Go back to rsplab folder
