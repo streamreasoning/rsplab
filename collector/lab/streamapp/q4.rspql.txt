@@ -1,4 +1,5 @@
 PREFIX ct: <http://www.insight-centre.org/citytraffic#>
 CONSTRUCT {?s a ct:CongestionLevelT }
 FROM NAMED WINDOW <win1> [RANGE 30s , SLIDE 5s] ON STREAM <AarhusTrafficData158505>
+FROM NAMED WINDOW <win2> [RANGE 30s , SLIDE 5s] ON STREAM <AarhusTrafficData182955>
 WHERE  { WINDOW ?w { ?s a ct:CongestionLevelT }}
