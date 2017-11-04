@@ -100,9 +100,8 @@ You can monitor csparql engine performanct at [http://localhost:3000/dashboard/d
 - An example of the notebook is available on [github](https://github.com/streamreasoning/rsplab/blob/tutorial/collector/lab/streamapp/StreamApp%20-%20Part%201%20-%20%20RDF%20Stream%20Processing%20with%20the%20CSPARQL%20engine.ipynb)
 - If you are running the collector on you laptop [follow this link](http://localhost:8888/notebooks/work/streamapp/StreamApp%20-%20Part%202%20-%20Stream%20Reasoning%20Streams%20With%20Jasper.ipynb)
 
-# Part 1: Stopping the consumer 
+## Stopping the consumer 
 
-## Steps
 - Go back to rsplab folder
 - cd consumer
 - ./stop.sh
@@ -136,9 +135,8 @@ You open [http://localhost:3000](http://localhost:3000) and you get
 
 ![grafana jasper](./images/image5.png) 
 
-# Part 2: Stopping the consumer 
+## Stopping the consumer 
 
-## Steps
 - Go back to rsplab folder
 - cd consumer
 - ./stop.sh
